@@ -1,0 +1,23 @@
+/pcc_client.log
+/pcc_log.txt
+/make.elg
+/pcc_client.elg
+/pcc_client_bp_send_rate.txt
+/pcc_client_python_send_rate.txt
+/pcc_bp_log.txt
+/bpc_rate_control.txt
+/ixp_rate_control_loss_only.txt
+/m0_raz_loss_only.txt
+/m1_raz_loss_only.txt
+/m2_raz_loss_only.txt
+/paper_model_v0_29_04.txt
+/paper_model_v0_loss_only.txt
+/paper_model_v0_loss_only_bpc.txt
+/python_rate_control.txt
+/monitor_interval_events.txt
+/monitor_intervals_aurora_dl.txt
+/monitor_intervals_bpc (copy).txt
+/monitor_intervals_bpc.txt
+/sending_rate_aurora_dl.txt
+/bpc_log.txt
+/bpc.log
