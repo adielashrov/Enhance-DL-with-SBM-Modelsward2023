@@ -1,0 +1,23 @@
+Moving forward with a low score -> led to a collision in the end:
+================================================================
+
+BEvent(name=output_event_proxy,data={'action': 0, 'score': 0.3116816})
+BEvent(name=output_event,data={'action': 0})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 0.6241724 , 0.33004442, 0.2742874 ,
+       0.30442938, 0.48931125, 0.62769926, 0.15682606], dtype=float32)})
+BEvent(name=output_event_proxy,data={'action': 0, 'score': 0.30215317})
+BEvent(name=output_event,data={'action': 0})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 0.5296135 , 0.28004438, 0.23273426,
+       0.25830987, 0.4151831 , 0.63532853, 0.15004829], dtype=float32)})
+BEvent(name=output_event_proxy,data={'action': 0, 'score': 0.29205325})
+BEvent(name=output_event,data={'action': 0})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 0.4350545 , 0.23004429, 0.19118111,
+       0.21219037, 0.34105492, 0.6436583 , 0.14364734], dtype=float32)})
+BEvent(name=output_event_proxy,data={'action': 0, 'score': 0.28382382})
+BEvent(name=output_event,data={'action': 0})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 0.34049556, 0.18004426, 0.14962797,
+       0.16607086, 0.26692677, 0.6527375 , 0.13767584], dtype=float32)})
+BEvent(name=output_event_proxy,data={'action': 0, 'score': 0.2771311})
+BEvent(name=output_event,data={'action': 0})
+Done, no more actions to perform on the environment
+Collided into obstacle, num_of_steps: 418

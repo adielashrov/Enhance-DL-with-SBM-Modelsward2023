@@ -1,0 +1,22 @@
+
+
+
+Best model - RUL_s221_r1True_r2True_r5True_cl1-0-5_id221_ep46023_srate89.h5
+	No override:
+
+
+	STARTED
+	Done, no more actions to perform on the environment
+	Solved the maze, num_of_steps: 179
+	ENDED
+	num_of_overrides for model: 0
+
+
+With override:
+
+	WARNING:tensorflow:No training configuration found in the save file, so the model was *not* compiled. Compile it manually.
+	STARTED
+	Done, no more actions to perform on the environment
+	Solved the maze, num_of_steps: 167
+	ENDED
+	num_of_overrides for model: 11

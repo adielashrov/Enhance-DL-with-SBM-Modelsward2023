@@ -1,0 +1,145 @@
+C:\Users\adiel\Documents\Robotis\TurtlebotAndBP\venv_pycharm\Scripts\python.exe "C:\Program Files\JetBrains\PyCharm Community Edition 2021.1.3\plugins\python-ce\helpers\pydev\pydevd.py" --multiproc --qt-support=auto --client 127.0.0.1 --port 53071 --file C:/Users/adiel/Documents/Robotis/TurtlebotAndBP/main_guard.py
+Connected to pydev debugger (build 212.5284.44)
+[INFO] Listening on port 5004. Start training by pressing the Play button in the Unity Editor.
+[INFO] Connected to Unity environment with package version 2.3.0-exp.2 and communication version 1.5.0
+[INFO] Connected new brain: agent_navigation?team=0
+[WARNING] The environment contains multiple observations. You must define allow_multiple_obs=True to receive them all. Otherwise, only the first visual observation (or vector observation ifthere are no visual observations) will be provided in the observation.
+2022-09-02 17:20:27.482588: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudnn64_8.dll'; dlerror: cudnn64_8.dll not found
+2022-09-02 17:20:27.483040: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1850] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
+2022-09-02 17:20:27.484582: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+WARNING:tensorflow:No training configuration found in the save file, so the model was *not* compiled. Compile it manually.
+STARTED
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.20906027, 0.5993179 ], dtype=float32)})
+ODNN_no_proxy - request action_event: [BEvent(name=output_event,data={'action': 0, 'score': 0.3795342}), BEvent(name=output_event,data={'action': 1, 'score': 0.31969258}), BEvent(name=output_event,data={'action': 2, 'score': 0.30077317})]
+BEvent(name=output_event,data={'action': 0, 'score': 0.3795342})
+blockFoward:False, output event after blocking:BEvent(name=output_event,data={'action': 0, 'score': 0.3795342})
+BEvent(name=env_updated,data={})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.20650312, 0.6019396 ], dtype=float32)})
+ODNN_no_proxy - request action_event: [BEvent(name=output_event,data={'action': 0, 'score': 0.37922812}), BEvent(name=output_event,data={'action': 1, 'score': 0.31987274}), BEvent(name=output_event,data={'action': 2, 'score': 0.30089915})]
+BEvent(name=output_event,data={'action': 0, 'score': 0.37922812})
+blockFoward:False, output event after blocking:BEvent(name=output_event,data={'action': 0, 'score': 0.37922812})
+BEvent(name=env_updated,data={})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.20396881, 0.6047154 ], dtype=float32)})
+ODNN_no_proxy - request action_event: [BEvent(name=output_event,data={'action': 0, 'score': 0.37891027}), BEvent(name=output_event,data={'action': 1, 'score': 0.32006276}), BEvent(name=output_event,data={'action': 2, 'score': 0.30102706})]
+BEvent(name=output_event,data={'action': 0, 'score': 0.37891027})
+blockFoward:False, output event after blocking:BEvent(name=output_event,data={'action': 0, 'score': 0.37891027})
+BEvent(name=env_updated,data={})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 0.9818796 , 1.        ,
+       1.        , 1.        , 0.20145828, 0.607643  ], dtype=float32)})
+ODNN_no_proxy - request action_event: [BEvent(name=output_event,data={'action': 0, 'score': 0.37683344}), BEvent(name=output_event,data={'action': 1, 'score': 0.32163367}), BEvent(name=output_event,data={'action': 2, 'score': 0.3015328})]
+BEvent(name=output_event,data={'action': 0, 'score': 0.37683344})
+blockFoward:False, output event after blocking:BEvent(name=output_event,data={'action': 0, 'score': 0.37683344})
+BEvent(name=env_updated,data={})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 0.9318796 , 1.        ,
+       1.        , 1.        , 0.19897243, 0.61072046], dtype=float32)})
+ODNN_no_proxy - request action_event: [BEvent(name=output_event,data={'action': 0, 'score': 0.37168732}), BEvent(name=output_event,data={'action': 1, 'score': 0.3256332}), BEvent(name=output_event,data={'action': 2, 'score': 0.3026795})]
+BEvent(name=output_event,data={'action': 0, 'score': 0.37168732})
+blockFoward:False, output event after blocking:BEvent(name=output_event,data={'action': 0, 'score': 0.37168732})
+BEvent(name=env_updated,data={})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 0.8818797 , 0.97879076,
+       1.        , 1.        , 0.19651209, 0.6139453 ], dtype=float32)})
+ODNN_no_proxy - request action_event: [BEvent(name=output_event,data={'action': 0, 'score': 0.36526737}), BEvent(name=output_event,data={'action': 1, 'score': 0.3303105}), BEvent(name=output_event,data={'action': 2, 'score': 0.3044222})]
+BEvent(name=output_event,data={'action': 0, 'score': 0.36526737})
+blockFoward:False, output event after blocking:BEvent(name=output_event,data={'action': 0, 'score': 0.36526737})
+BEvent(name=env_updated,data={})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 0.8318796 , 0.92329633,
+       1.        , 1.        , 0.19407804, 0.61731535], dtype=float32)})
+ODNN_no_proxy - request action_event: [BEvent(name=output_event,data={'action': 0, 'score': 0.35670048}), BEvent(name=output_event,data={'action': 1, 'score': 0.33622122}), BEvent(name=output_event,data={'action': 2, 'score': 0.3070783})]
+BEvent(name=output_event,data={'action': 0, 'score': 0.35670048})
+blockFoward:False, output event after blocking:BEvent(name=output_event,data={'action': 0, 'score': 0.35670048})
+BEvent(name=env_updated,data={})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 0.94081986, 0.78187954, 0.8678018 ,
+       1.        , 1.        , 0.19167098, 0.62082815], dtype=float32)})
+ODNN_no_proxy - request action_event: [BEvent(name=output_event,data={'action': 0, 'score': 0.35438874}), BEvent(name=output_event,data={'action': 1, 'score': 0.33813965}), BEvent(name=output_event,data={'action': 2, 'score': 0.30747157})]
+BEvent(name=output_event,data={'action': 0, 'score': 0.35438874})
+blockFoward:False, output event after blocking:BEvent(name=output_event,data={'action': 0, 'score': 0.35438874})
+BEvent(name=env_updated,data={})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 0.8806558 , 0.73187965, 0.8123072 ,
+       1.        , 1.        , 0.18929155, 0.6244813 ], dtype=float32)})
+ODNN_no_proxy - request action_event: [BEvent(name=output_event,data={'action': 0, 'score': 0.35406914}), BEvent(name=output_event,data={'action': 1, 'score': 0.33771014}), BEvent(name=output_event,data={'action': 2, 'score': 0.30822074})]
+BEvent(name=output_event,data={'action': 0, 'score': 0.35406914})
+blockFoward:False, output event after blocking:BEvent(name=output_event,data={'action': 0, 'score': 0.35406914})
+BEvent(name=env_updated,data={})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 0.82049197, 0.68187976, 0.7568125 ,
+       1.        , 1.        , 0.18694033, 0.62827253], dtype=float32)})
+ODNN_no_proxy - request action_event: [BEvent(name=output_event,data={'action': 0, 'score': 0.3543379}), BEvent(name=output_event,data={'action': 1, 'score': 0.33688188}), BEvent(name=output_event,data={'action': 2, 'score': 0.3087802})]
+BEvent(name=output_event,data={'action': 0, 'score': 0.3543379})
+blockFoward:False, output event after blocking:BEvent(name=output_event,data={'action': 0, 'score': 0.3543379})
+BEvent(name=env_updated,data={})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 0.76032805, 0.63187975, 0.7013181 ,
+       1.        , 1.        , 0.1846178 , 0.63219917], dtype=float32)})
+ODNN_no_proxy - request action_event: [BEvent(name=output_event,data={'action': 0, 'score': 0.35534343}), BEvent(name=output_event,data={'action': 1, 'score': 0.3356948}), BEvent(name=output_event,data={'action': 2, 'score': 0.3089618})]
+BEvent(name=output_event,data={'action': 0, 'score': 0.35534343})
+blockFoward:False, output event after blocking:BEvent(name=output_event,data={'action': 0, 'score': 0.35534343})
+BEvent(name=env_updated,data={})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 0.7001641 , 0.5818797 , 0.64582354,
+       1.        , 1.        , 0.18232442, 0.6362587 ], dtype=float32)})
+ODNN_no_proxy - request action_event: [BEvent(name=output_event,data={'action': 0, 'score': 0.35875532}), BEvent(name=output_event,data={'action': 1, 'score': 0.33307788}), BEvent(name=output_event,data={'action': 2, 'score': 0.30816674})]
+BEvent(name=output_event,data={'action': 0, 'score': 0.35875532})
+blockFoward:False, output event after blocking:BEvent(name=output_event,data={'action': 0, 'score': 0.35875532})
+BEvent(name=env_updated,data={})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 0.64000005, 0.5318798 , 0.59032893,
+       1.        , 1.        , 0.18006058, 0.6404487 ], dtype=float32)})
+ODNN_no_proxy - request action_event: [BEvent(name=output_event,data={'action': 0, 'score': 0.36185727}), BEvent(name=output_event,data={'action': 1, 'score': 0.33078298}), BEvent(name=output_event,data={'action': 2, 'score': 0.30735976})]
+BEvent(name=output_event,data={'action': 0, 'score': 0.36185727})
+blockFoward:False, output event after blocking:BEvent(name=output_event,data={'action': 0, 'score': 0.36185727})
+BEvent(name=env_updated,data={})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 0.57983613, 0.48187983, 0.5348343 ,
+       1.        , 1.        , 0.17782664, 0.6447665 ], dtype=float32)})
+ODNN_no_proxy - request action_event: [BEvent(name=output_event,data={'action': 0, 'score': 0.36448452}), BEvent(name=output_event,data={'action': 1, 'score': 0.3289705}), BEvent(name=output_event,data={'action': 2, 'score': 0.306545})]
+BEvent(name=output_event,data={'action': 0, 'score': 0.36448452})
+blockFoward:False, output event after blocking:BEvent(name=output_event,data={'action': 0, 'score': 0.36448452})
+BEvent(name=env_updated,data={})
+BEvent(name=input_event,data={'state': array([1.        , 0.98279196, 0.5196722 , 0.43187982, 0.47933984,
+       1.        , 1.        , 0.1756228 , 0.6492097 ], dtype=float32)})
+ODNN_no_proxy - request action_event: [BEvent(name=output_event,data={'action': 0, 'score': 0.3678551}), BEvent(name=output_event,data={'action': 1, 'score': 0.3276147}), BEvent(name=output_event,data={'action': 2, 'score': 0.30453023})]
+BEvent(name=output_event,data={'action': 0, 'score': 0.3678551})
+blockFoward:False, output event after blocking:BEvent(name=output_event,data={'action': 0, 'score': 0.3678551})
+BEvent(name=env_updated,data={})
+BEvent(name=input_event,data={'state': array([1.        , 0.86901116, 0.45950812, 0.38187978, 0.4238452 ,
+       0.6812489 , 1.        , 0.17344937, 0.6537757 ], dtype=float32)})
+ODNN_no_proxy - request action_event: [BEvent(name=output_event,data={'action': 0, 'score': 0.3655971}), BEvent(name=output_event,data={'action': 1, 'score': 0.33198652}), BEvent(name=output_event,data={'action': 2, 'score': 0.30241638})]
+BEvent(name=output_event,data={'action': 0, 'score': 0.3655971})
+blockFoward:False, output event after blocking:BEvent(name=output_event,data={'action': 0, 'score': 0.3655971})
+BEvent(name=env_updated,data={})
+BEvent(name=input_event,data={'state': array([1.        , 0.75523037, 0.39934418, 0.33187973, 0.3683506 ,
+       0.5920522 , 1.        , 0.17130648, 0.65846187], dtype=float32)})
+ODNN_no_proxy - request action_event: [BEvent(name=output_event,data={'action': 0, 'score': 0.3730932}), BEvent(name=output_event,data={'action': 1, 'score': 0.33359623}), BEvent(name=output_event,data={'action': 2, 'score': 0.29331058})]
+BEvent(name=output_event,data={'action': 0, 'score': 0.3730932})
+blockFoward:False, output event after blocking:BEvent(name=output_event,data={'action': 0, 'score': 0.3730932})
+BEvent(name=env_updated,data={})
+BEvent(name=input_event,data={'state': array([1.        , 0.6414496 , 0.33918008, 0.28187972, 0.31285602,
+       0.50285524, 1.        , 0.16919424, 0.6632657 ], dtype=float32)})
+ODNN_no_proxy - request action_event: [BEvent(name=output_event,data={'action': 0, 'score': 0.3838732}), BEvent(name=output_event,data={'action': 1, 'score': 0.33417732}), BEvent(name=output_event,data={'action': 2, 'score': 0.28194955})]
+BEvent(name=output_event,data={'action': 0, 'score': 0.3838732})
+blockFoward:False, output event after blocking:BEvent(name=output_event,data={'action': 0, 'score': 0.3838732})
+BEvent(name=env_updated,data={})
+BEvent(name=input_event,data={'state': array([1.        , 0.5276688 , 0.2790161 , 0.23187971, 0.25736132,
+       0.41365847, 1.        , 0.16711274, 0.6681847 ], dtype=float32)})
+ODNN_no_proxy - request action_event: [BEvent(name=output_event,data={'action': 0, 'score': 0.39440885}), BEvent(name=output_event,data={'action': 1, 'score': 0.33474004}), BEvent(name=output_event,data={'action': 2, 'score': 0.27085108})]
+guard_colliade_into_obstable lastEv: [1.         0.5276688  0.2790161  0.23187971 0.25736132 0.41365847
+ 1.         0.16711274 0.6681847 ], blockForward = True
+BEvent(name=output_event,data={'action': 1, 'score': 0.33474004})
+blockFoward:True, output event after blocking:BEvent(name=output_event,data={'action': 1, 'score': 0.33474004})
+BEvent(name=env_updated,data={})
+BEvent(name=input_event,data={'state': array([0.5276689 , 0.27901608, 0.23187971, 0.25736132, 0.4136584 ,
+       1.        , 1.        , 0.08377944, 0.6681847 ], dtype=float32)})
+ODNN_no_proxy - request action_event: [BEvent(name=output_event,data={'action': 0, 'score': 0.38488108}), BEvent(name=output_event,data={'action': 1, 'score': 0.33925974}), BEvent(name=output_event,data={'action': 2, 'score': 0.27585918})]
+BEvent(name=output_event,data={'action': 0, 'score': 0.38488108})
+blockFoward:False, output event after blocking: BEvent(name=output_event,data={'action': 0, 'score': 0.38488108})
+BEvent(name=env_updated,data={})
+BEvent(name=input_event,data={'state': array([0.42515358, 0.22480898, 0.18683018, 0.20736128, 0.33329302,
+       1.        , 1.        , 0.08259799, 0.67684954], dtype=float32)})
+ODNN_no_proxy - request action_event: [BEvent(name=output_event,data={'action': 0, 'score': 0.3717366}), BEvent(name=output_event,data={'action': 1, 'score': 0.34571338}), BEvent(name=output_event,data={'action': 2, 'score': 0.28255004})]
+BEvent(name=output_event,data={'action': 0, 'score': 0.3717366})
+Done, no more actions to perform on the environment
+Collided into obstacle, num_of_steps: 21
+blockFoward:False, output event after blocking:BEvent(name=output_event,data={'action': 0, 'score': 0.3717366})
+ENDED
+
+Process finished with exit code 0

@@ -1,0 +1,91 @@
+When we move forward - values in sensors are reduced - distance is also reduced:
+front sensor is reduced by 0.05 value 
+Distance is normally reduced
+Angle is straight ahead
+======================================================================================================
+BEvent(name=input_event,data={'state': array([0.93502754, 0.49441567, 0.41089013, 0.45604357, 0.73300165,
+       1.        , 1.        , 0.45450148, 0.18324623], dtype=float32)})
+	   
+BEvent(name=output_event_proxy,data={'action': 0, 'score': 0.24769329})
+
+BEvent(name=input_event,data={'state': array([0.8325124 , 0.44020858, 0.3658407 , 0.40604356, 0.6526363 ,
+       1.        , 1.        , 0.45191714, 0.17367497], dtype=float32)})
+
+
+When we turn left -1 - there is no actual progress - only a change in the angle- Symmetric for right
+=================================================================================================
+
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 0.6028298 , 0.50098896, 0.5560436 ,
+       0.8937326 , 1.        , 0.54226774, 0.20251307], dtype=float32)})
+BEvent(name=output_event_proxy,data={'action': 1, 'score': 0.5007603})
+BEvent(name=input_event,data={'state': array([1.        , 0.6028298 , 0.50098896, 0.5560437 , 0.89373225,
+       1.        , 1.        , 0.4589345 , 0.20251307], dtype=float32)})
+	   
+	   
+Turn right - 2
+=====================================================================================================
+BEvent(name=input_event,data={'state': array([0.8325124 , 0.44020858, 0.3658407 , 0.40604356, 0.6526363 ,
+       1.        , 1.        , 0.45191714, 0.17367497], dtype=float32)})
+BEvent(name=output_event_proxy,data={'action': 2, 'score': 0.14422664})
+BEvent(name=output_event,data={'action': 2})
+BEvent(name=input_event,data={'state': array([1.        , 0.83251184, 0.44020858, 0.3658407 , 0.40604362,
+       0.65263647, 1.        , 0.5352504 , 0.17367497], dtype=float32)})
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+Staying in the same location - left / right / left / right - we even get the same score/confidence for the action:
+=================================================================================================================
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 0.6028298 , 0.50098896,
+       0.5560436 , 0.8937324 , 0.6256011 , 0.20251307], dtype=float32)})
+BEvent(name=output_event_proxy,data={'action': 1, 'score': 0.36979243})
+BEvent(name=output_event,data={'action': 1}) - Left
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 0.6028298 , 0.50098896, 0.5560436 ,
+       0.8937326 , 1.        , 0.54226774, 0.20251307], dtype=float32)})
+BEvent(name=output_event_proxy,data={'action': 2, 'score': 0.23301205})
+BEvent(name=output_event,data={'action': 2}) - Right
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 0.6028298 , 0.50098896,
+       0.5560436 , 0.8937324 , 0.6256011 , 0.20251307], dtype=float32)})
+BEvent(name=output_event_proxy,data={'action': 1, 'score': 0.36979243})
+BEvent(name=output_event,data={'action': 1}) - Left 
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 0.6028298 , 0.50098896, 0.5560436 ,
+       0.8937326 , 1.        , 0.54226774, 0.20251307], dtype=float32)})
+BEvent(name=output_event_proxy,data={'action': 1, 'score': 0.5007603})
+BEvent(name=output_event,data={'action': 1}) - Left
+BEvent(name=input_event,data={'state': array([1.        , 0.6028298 , 0.50098896, 0.5560437 , 0.89373225,
+       1.        , 1.        , 0.4589345 , 0.20251307], dtype=float32)})
+	   
+Guard rule obstacleAhead - Class A:
+===================================
+bSync( input_event, none, none )
+	if ( input_event contains obstacleAhead ) {
+		bSync( none, "Right, Left", "Forward" )
+	}
+	
+# Here Right will be overriden to either "Right, Left" - Regardless of the confidence level
+
+	   
+Guard rule obstacleAhead - Class B:
+# We don't want to take action if we are not above a certain threshold
+=======================================================================
+
+bSync( input_event , none, none );
+bSync( none, output_event_proxy, none );
+	if ( input_event contains obstacleAhead  ) {
+		
+		if ( output_event_proxy contains "Forward" ) {
+			output_event_proxy = getNextRightOrLeftEvent()
+		}
+
+		output_event = BEvent("outputEvent", output_event_proxy.direction)
+
+		if(output_event_proxy.score < 0.33)
+		{
+			output_event = BEvent("outputEvent", reverseDirection(output_event_proxy.direction))
+		}
+		
+		bSync( output_event , none,  none ) 
+}

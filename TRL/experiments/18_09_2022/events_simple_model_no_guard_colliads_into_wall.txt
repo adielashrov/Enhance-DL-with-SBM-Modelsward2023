@@ -1,0 +1,1271 @@
+C:\Users\adiel\Documents\Robotis\TurtlebotAndBP\venv_pycharm\Scripts\python.exe C:/Users/adiel/Documents/Robotis/TurtlebotAndBP/main_guard.py
+[INFO] Listening on port 5004. Start training by pressing the Play button in the Unity Editor.
+[INFO] Connected to Unity environment with package version 2.3.0-exp.2 and communication version 1.5.0
+[INFO] Connected new brain: agent_navigation?team=0
+[WARNING] The environment contains multiple observations. You must define allow_multiple_obs=True to receive them all. Otherwise, only the first visual observation (or vector observation ifthere are no visual observations) will be provided in the observation.
+2022-09-18 12:49:42.680919: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudnn64_8.dll'; dlerror: cudnn64_8.dll not found
+2022-09-18 12:49:42.681136: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1850] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
+2022-09-18 12:49:42.681795: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+WARNING:tensorflow:No training configuration found in the save file, so the model was *not* compiled. Compile it manually.
+STARTED
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.20906027, 0.5993179 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.41064924})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.20650312, 0.6019396 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.4377225})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.28983647, 0.6019396 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.4135423})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.28726447, 0.599541  ], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.40555796})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.37059778, 0.599541  ], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.37169465})
+BEvent(name=input_event,data={'state': array([1.       , 1.       , 1.       , 1.       , 1.       , 1.       ,
+       1.       , 0.4539311, 0.599541 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.40331024})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.4531611 , 0.58996385], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.33737436})
+BEvent(name=input_event,data={'state': array([0.9603572 , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.53649443, 0.58996385], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.38985324})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.53711796, 0.5802301 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.39199096})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.53776264, 0.5705055 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.3054925})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.45442927, 0.5705055 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.40653256})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.45362794, 0.56091976], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.3357687})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.53696126, 0.56091976], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.30430537})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.45362794, 0.56091976], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.40772888})
+BEvent(name=input_event,data={'state': array([1.       , 1.       , 1.       , 1.       , 1.       , 1.       ,
+       1.       , 0.4527987, 0.5513487], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.25543267})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.36946538, 0.5513487 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.213342})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.28613204, 0.5513487 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.17826997})
+BEvent(name=input_event,data={'state': array([1.       , 1.       , 1.       , 1.       , 1.       , 1.       ,
+       1.       , 0.2027987, 0.5513487], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.43673366})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.28613204, 0.5513487 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.4182728})
+BEvent(name=input_event,data={'state': array([1.       , 1.       , 1.       , 1.       , 1.       , 1.       ,
+       1.       , 0.2833082, 0.5491843], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.41846505})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.28046298, 0.5471942 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.41863492})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 0.98221225,
+       1.        , 1.        , 0.27759787, 0.54538023], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.41765875})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 0.94065905,
+       1.        , 1.        , 0.2747146 , 0.543744  ], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.40951514})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       0.94065905, 1.        , 0.35804793, 0.543744  ], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.419802})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       0.918687  , 1.        , 0.35574347, 0.5375212 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.19882122})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 0.918687  ,
+       1.        , 1.        , 0.27241012, 0.5375212 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.41438884})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 0.87713385,
+       0.9735237 , 1.        , 0.26947117, 0.5362091 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.17295024})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 0.87713385, 0.9735237 ,
+       1.        , 1.        , 0.18613784, 0.5362091 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.43097547})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 0.87713385,
+       0.9735237 , 1.        , 0.26947117, 0.5362091 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.4124549})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 0.83558065,
+       0.9274042 , 1.        , 0.26651883, 0.53508085], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.4104971})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 0.95543724, 0.7940276 ,
+       0.88128483, 1.        , 0.26355505, 0.53413737], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.40519145})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 0.9054373 , 0.7524746 ,
+       0.83516544, 1.        , 0.2605818 , 0.5333798 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.4239521})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 0.9054373 ,
+       0.7524746 , 0.8351653 , 0.34391513, 0.5333798 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.41967833})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 0.87899876,
+       0.73050255, 0.81077874, 0.34140992, 0.52788085], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.44274724})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       0.87899876, 0.73050255, 0.42474324, 0.52788085], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.16325812})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 0.87899876,
+       0.73050255, 0.81077874, 0.34140992, 0.52788085], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.44274724})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       0.87899876, 0.73050255, 0.42474324, 0.52788085], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.42915294})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       0.88320583, 0.7339989 , 0.4233466 , 0.5189981 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.42982525})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       0.88741297, 0.73749524, 0.42190146, 0.51015675], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.4304908})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       0.89162004, 0.7409916 , 0.42040548, 0.50135887], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.4311493})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       0.8958271 , 0.74448794, 0.41885617, 0.49260688], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.40403298})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 0.8958271 , 0.5021891 , 0.49260688], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.33379984})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.5855229 , 0.49260688], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.39212194})
+BEvent(name=input_event,data={'state': array([1.       , 1.       , 1.       , 1.       , 1.       , 1.       ,
+       1.       , 0.5872059, 0.4840433], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.27801692})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.67053926, 0.4840433 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.38283983})
+BEvent(name=input_event,data={'state': array([1.       , 1.       , 1.       , 1.       , 1.       , 1.       ,
+       1.       , 0.5872059, 0.4840433], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.39273536})
+BEvent(name=input_event,data={'state': array([1.       , 1.       , 1.       , 1.       , 1.       , 1.       ,
+       1.       , 0.5889494, 0.4755358], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.2770625})
+BEvent(name=input_event,data={'state': array([1.       , 1.       , 1.       , 1.       , 1.       , 1.       ,
+       1.       , 0.6722827, 0.4755358], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.24398516})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.75561607, 0.4755358 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.3486816})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.75895786, 0.47599354], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.3476111})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.7622918 , 0.47666064], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.44317618})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.6789585 , 0.47666064], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.37086207})
+BEvent(name=input_event,data={'state': array([1.       , 1.       , 1.       , 1.       , 1.       , 1.       ,
+       1.       , 0.6819974, 0.4724299], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.38936937})
+BEvent(name=input_event,data={'state': array([1.       , 1.       , 1.       , 1.       , 1.       , 1.       ,
+       1.       , 0.5986641, 0.4724299], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.27308318})
+BEvent(name=input_event,data={'state': array([1.       , 1.       , 1.       , 1.       , 1.       , 1.       ,
+       1.       , 0.6819974, 0.4724299], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.24011728})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.76533073, 0.4724299 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.2091217})
+BEvent(name=input_event,data={'state': array([1.       , 1.       , 1.       , 1.       , 1.       , 1.       ,
+       1.       , 0.8486641, 0.4724299], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.49968994})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.76533073, 0.4724299 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.3460477})
+BEvent(name=input_event,data={'state': array([1.       , 1.       , 1.       , 1.       , 1.       , 1.       ,
+       1.       , 0.7686767, 0.4734963], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.34489712})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.7720061 , 0.47477093], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.34372526})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.7753163 , 0.47625223], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.20579088})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.8586496 , 0.47625223], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.17787094})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.9419829 , 0.47625223], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.56110984})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.8586496 , 0.47625223], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.17787094})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.9419829 , 0.47625223], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.28706285})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.9431514 , 0.48560825], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.28572068})
+BEvent(name=input_event,data={'state': array([1.       , 1.       , 1.       , 1.       , 1.       , 1.       ,
+       1.       , 0.9442757, 0.4949894], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.5641314})
+BEvent(name=input_event,data={'state': array([1.       , 1.       , 1.       , 1.       , 1.       , 1.       ,
+       1.       , 0.8609423, 0.4949894], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.17756721})
+BEvent(name=input_event,data={'state': array([1.       , 1.       , 1.       , 1.       , 1.       , 1.       ,
+       1.       , 0.9442757, 0.4949894], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.5641314})
+BEvent(name=input_event,data={'state': array([1.       , 1.       , 1.       , 1.       , 1.       , 1.       ,
+       1.       , 0.8609423, 0.4949894], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.17756721})
+BEvent(name=input_event,data={'state': array([1.       , 1.       , 1.       , 1.       , 1.       , 1.       ,
+       1.       , 0.9442757, 0.4949894], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.5641314})
+BEvent(name=input_event,data={'state': array([1.       , 1.       , 1.       , 1.       , 1.       , 1.       ,
+       1.       , 0.8609423, 0.4949894], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.31280223})
+BEvent(name=input_event,data={'state': array([1.       , 1.       , 1.       , 1.       , 1.       , 1.       ,
+       1.       , 0.8633758, 0.5014678], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.51176393})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.78004247, 0.5014678 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.45678067})
+BEvent(name=input_event,data={'state': array([1.       , 1.       , 1.       , 1.       , 1.       , 1.       ,
+       1.       , 0.6967091, 0.5014678], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.40192416})
+BEvent(name=input_event,data={'state': array([1.       , 1.       , 1.       , 1.       , 1.       , 1.       ,
+       1.       , 0.6133758, 0.5014678], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.2680817})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.69670916, 0.5014678 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.36309367})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.6997261 , 0.49827117], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.23374252})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.7830594 , 0.49827117], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.33770716})
+BEvent(name=input_event,data={'state': array([1.        , 0.95949894, 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.7861716 , 0.5004291 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.19833902})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 0.95949894, 1.        , 1.        ,
+       1.        , 1.        , 0.8695049 , 0.5004291 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.30612773})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 0.91444933, 1.        , 1.        ,
+       1.        , 1.        , 0.87179863, 0.50730455], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.30107275})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 0.8694001 , 0.96494   , 1.        ,
+       1.        , 1.        , 0.87403053, 0.5142825 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.16854474})
+BEvent(name=input_event,data={'state': array([1.       , 1.       , 1.       , 0.8694001, 0.96494  , 1.       ,
+       1.       , 0.9573639, 0.5142825], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.62960887})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 0.8694001 , 0.96494   , 1.        ,
+       1.        , 1.        , 0.87403053, 0.5142825 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.5459353})
+BEvent(name=input_event,data={'state': array([1.       , 0.8694001, 0.96494  , 1.       , 1.       , 1.       ,
+       1.       , 0.7906972, 0.5142825], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.32819682})
+BEvent(name=input_event,data={'state': array([1.        , 0.8413721 , 0.93383217, 1.        , 1.        ,
+       1.        , 1.        , 0.7936763 , 0.5169024 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.49271548})
+BEvent(name=input_event,data={'state': array([0.8413721 , 0.93383217, 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.710343  , 0.5169024 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.18646704})
+BEvent(name=input_event,data={'state': array([1.        , 0.8413721 , 0.93383217, 1.        , 1.        ,
+       1.        , 1.        , 0.7936763 , 0.5169024 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.49271548})
+BEvent(name=input_event,data={'state': array([0.8413721 , 0.93383217, 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.710343  , 0.5169024 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.47277114})
+BEvent(name=input_event,data={'state': array([0.93383193, 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.6270097 , 0.5169024 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.37574527})
+BEvent(name=input_event,data={'state': array([0.9582187 , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.6292442 , 0.50997144], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.37750927})
+BEvent(name=input_event,data={'state': array([0.9826054, 1.       , 1.       , 1.       , 1.       , 1.       ,
+       1.       , 0.6315399, 0.5031438], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.25678074})
+BEvent(name=input_event,data={'state': array([0.8853164, 0.9826054, 1.       , 1.       , 1.       , 1.       ,
+       1.       , 0.7148732, 0.5031438], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.45327175})
+BEvent(name=input_event,data={'state': array([0.9826054, 1.       , 1.       , 1.       , 1.       , 1.       ,
+       1.       , 0.6315399, 0.5031438], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.36404037})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.54820657, 0.5031438 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.29453924})
+BEvent(name=input_event,data={'state': array([0.9826054, 1.       , 1.       , 1.       , 1.       , 1.       ,
+       1.       , 0.6315399, 0.5031438], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.36404037})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.54820657, 0.5031438 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.29453924})
+BEvent(name=input_event,data={'state': array([0.9826054, 1.       , 1.       , 1.       , 1.       , 1.       ,
+       1.       , 0.6315399, 0.5031438], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.37917882})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.63389814, 0.49642363], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.25967428})
+BEvent(name=input_event,data={'state': array([0.9072884 , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.7172315 , 0.49642363], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.44460836})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.63389814, 0.49642363], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.35996306})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.5505648 , 0.49642363], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.3989709})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.5515859 , 0.48693413], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.39985842})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.5526475 , 0.47746545], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.2917118})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.63598084, 0.47746545], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.3596305})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.5526475 , 0.47746545], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.30755237})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.4693142 , 0.47746545], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.32535064})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.5526475 , 0.47746545], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.2917118})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.63598084, 0.47746545], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.3820159})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.63852954, 0.4709591 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.36069876})
+BEvent(name=input_event,data={'state': array([1.       , 1.       , 1.       , 1.       , 1.       , 1.       ,
+       1.       , 0.5551963, 0.4709591], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.40097147})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.55636823, 0.46156698], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.40181002})
+BEvent(name=input_event,data={'state': array([1.       , 1.       , 1.       , 1.       , 1.       , 1.       ,
+       1.       , 0.5575889, 0.4522009], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.30848584})
+BEvent(name=input_event,data={'state': array([1.       , 1.       , 1.       , 1.       , 1.       , 1.       ,
+       1.       , 0.4742556, 0.4522009], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.41721275})
+BEvent(name=input_event,data={'state': array([1.       , 1.       , 1.       , 1.       , 1.       , 1.       ,
+       1.       , 0.473676 , 0.4423344], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.32200778})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.55700946, 0.4423344 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.40388268})
+BEvent(name=input_event,data={'state': array([1.       , 1.       , 1.       , 1.       , 1.       , 1.       ,
+       1.       , 0.5582981, 0.4329833], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.30735013})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.47496483, 0.4329833 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.41928554})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.47437558, 0.42310968], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.42049238})
+BEvent(name=input_event,data={'state': array([1.       , 1.       , 1.       , 1.       , 1.       , 1.       ,
+       1.       , 0.4737581, 0.4132421], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.42170295})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.4731105 , 0.40338105], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.32060832})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.55644387, 0.40338105], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.40846598})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.5578465 , 0.39401868], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.40926057})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.55931735, 0.38468838], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.30405134})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.47598404, 0.38468838], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.42462528})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.47534573, 0.37480503], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.25581875})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.39201242, 0.37480503], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.350927})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.47534573, 0.37480503], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.42584896})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.47467285, 0.364928  ], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.3180865})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.55800617, 0.364928  ], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.41256592})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.55960155, 0.35560274], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.30213916})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.47626823, 0.35560274], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.25510427})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.39293486, 0.35560274], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.34946814})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.47626823, 0.35560274], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.31698647})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.55960155, 0.35560274], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.41331425})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.56128263, 0.3463151 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.3024684})
+BEvent(name=input_event,data={'state': array([1.       , 1.       , 1.       , 1.       , 1.       , 1.       ,
+       1.       , 0.4779493, 0.3463151], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.42872325})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.47729594, 0.33641377], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.42995474})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.47660294, 0.32651842], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.3153578})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.5599363 , 0.32651842], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.41658905})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.5617813 , 0.31724054], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.30067727})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.47844788, 0.31724054], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.31416875})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.5617813 , 0.31724054], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.41728243})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.56373715, 0.3080078 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.41794643})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 0.97893983,
+       1.        , 1.        , 0.5658136 , 0.29882446], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.4173637})
+BEvent(name=input_event,data={'state': array([1.       , 1.       , 1.       , 1.       , 0.9373866, 1.       ,
+       1.       , 0.5680213, 0.2896952], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.2793387})
+BEvent(name=input_event,data={'state': array([1.       , 1.       , 1.       , 1.       , 1.       , 0.9373866,
+       1.       , 0.6513547, 0.2896952], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.40518883})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       0.91541463, 1.        , 0.65591687, 0.28400308], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.40660885})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       0.8934426 , 0.9916246 , 0.66066164, 0.27855378], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.40922073})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       0.8714706 , 0.967238  , 0.6655911 , 0.27336177], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.25667775})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 0.8714706 , 0.74892443, 0.27336177], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.39596397})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 0.87496686, 0.7547453 , 0.27347708], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.23236778})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.8380786 , 0.27347708], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.4767607})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 0.87496686, 0.7547453 , 0.27347708], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.23236778})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.8380786 , 0.27347708], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.4767607})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 0.87496686, 0.7547453 , 0.27347708], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.3937615})
+BEvent(name=input_event,data={'state': array([1.       , 1.       , 1.       , 1.       , 1.       , 1.       ,
+       0.8784632, 0.7605535, 0.2739576], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.37894544})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       0.8784632 , 0.9749991 , 0.67722017, 0.2739576 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.34030142})
+BEvent(name=input_event,data={'state': array([1.       , 1.       , 1.       , 1.       , 0.8784632, 0.9749993,
+       1.       , 0.5938868, 0.2739576], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.27130935})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       0.8784632 , 0.9749991 , 0.67722017, 0.2739576 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.40942517})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       0.8564912 , 0.95061255, 0.6825161 , 0.26969174], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.33031338})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 0.8564912 ,
+       0.9506128 , 1.        , 0.5991828 , 0.26969174], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.41038382})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 0.9805984 , 0.81493795,
+       0.9044932 , 1.        , 0.6027333 , 0.26163656], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.40650615})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 0.9305984 , 0.773385  ,
+       0.8583738 , 1.        , 0.60650736, 0.25371987], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.39439118})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 0.88059837, 0.73183197,
+       0.8122544 , 1.        , 0.6105221 , 0.24595499], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.38225305})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 0.8305983 , 0.69027877,
+       0.76613486, 1.        , 0.6147957 , 0.23835674], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.274958})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 0.8305983 ,
+       0.69027877, 0.76613474, 0.698129  , 0.23835674], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.31097248})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       0.8305983 , 0.69027877, 0.7814623 , 0.23835674], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.43281496})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       0.83480537, 0.6937751 , 0.78795236, 0.24052067], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.26782683})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 0.83480537, 0.8712857 , 0.24052067], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.36920393})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 0.86853075, 0.8759377 , 0.2475305 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.1896037})
+BEvent(name=input_event,data={'state': array([1.       , 1.       , 1.       , 1.       , 1.       , 1.       ,
+       1.       , 0.9592711, 0.2475305], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.30393755})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.96083724, 0.25721735], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.1420312})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.04417051, 0.25721735], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.46584073})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.12750393, 0.25721735], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.43001842})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.12317844, 0.26427388], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.4289192})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.11908082, 0.27151537], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.44541532})
+BEvent(name=input_event,data={'state': array([0.94336224, 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.2024142 , 0.27151537], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.442952})
+BEvent(name=input_event,data={'state': array([0.96774876, 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.19687489, 0.27462727], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.14761572})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.11354154, 0.27462727], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.42688695})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.10985133, 0.2822645 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.44917303})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.19318469, 0.2822645 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.4355862})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.18796812, 0.28591257], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.42418408})
+BEvent(name=input_event,data={'state': array([0.9354559 , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.27130145, 0.28591257], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.4458987})
+BEvent(name=input_event,data={'state': array([0.93195957, 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.26576105, 0.28475064], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.44605774})
+BEvent(name=input_event,data={'state': array([0.9284633 , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.26018205, 0.2839364 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.37888795})
+BEvent(name=input_event,data={'state': array([1.       , 0.9284633, 1.       , 1.       , 1.       , 1.       ,
+       1.       , 0.3435154, 0.2839364], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.44597533})
+BEvent(name=input_event,data={'state': array([1.        , 0.9004352 , 0.99938583, 1.        , 1.        ,
+       1.        , 1.        , 0.3387587 , 0.27851734], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.4472511})
+BEvent(name=input_event,data={'state': array([1.        , 0.8724075 , 0.9682779 , 1.        , 1.        ,
+       1.        , 1.        , 0.33381784, 0.2733568 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.3486025})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 0.8724075 , 0.9682781 , 1.        ,
+       1.        , 1.        , 0.41715118, 0.2733568 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.33684307})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 0.8724075 , 0.96827805,
+       1.        , 1.        , 0.5004853 , 0.2733568 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.29344448})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 0.8724075 ,
+       0.96827805, 1.        , 0.5838178 , 0.2733568 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.2757297})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       0.8724075 , 0.96827793, 0.66715115, 0.2733568 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.413496})
+BEvent(name=input_event,data={'state': array([1.       , 1.       , 1.       , 1.       , 1.       , 0.8504354,
+       0.9438912, 0.672294 , 0.2685234], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.4181812})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 0.9968729 ,
+       0.8284633 , 0.91950464, 0.67761964, 0.26398042], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.31123075})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 0.99687296, 0.8284633 ,
+       0.91950476, 1.        , 0.5942863 , 0.26398042], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.2776967})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 0.9968729 ,
+       0.8284633 , 0.91950464, 0.67761964, 0.26398042], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.2663225})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       0.99687296, 0.8284633 , 0.76095295, 0.26398042], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.23889725})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 0.99687296, 0.8442863 , 0.26398042], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.34370953})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.8491828 , 0.26969174], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.34071755})
+BEvent(name=input_event,data={'state': array([1.       , 1.       , 1.       , 1.       , 1.       , 1.       ,
+       1.       , 0.853872 , 0.2756476], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.48760375})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 0.88451916, 0.7705386 , 0.2756476 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.3873945})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 0.88801557, 0.77623546, 0.277112  ], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.22206287})
+BEvent(name=input_event,data={'state': array([1.       , 1.       , 1.       , 1.       , 1.       , 1.       ,
+       1.       , 0.8595688, 0.277112 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.17223592})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.94290215, 0.277112  ], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.14757782})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.02623541, 0.277112  ], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.47140136})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.10956879, 0.277112  ], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.42618665})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.10601934, 0.28490523], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.42511028})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.1026605 , 0.29283255], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.45226264})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.18599385, 0.29283255], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.4339593})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.18106003, 0.2968893 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.42720127})
+BEvent(name=input_event,data={'state': array([0.9930937 , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.26439333, 0.2968893 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.44024843})
+BEvent(name=input_event,data={'state': array([0.9895974 , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.25904024, 0.29615366], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.39578262})
+BEvent(name=input_event,data={'state': array([1.        , 0.9895974 , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.34237355, 0.29615366], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.1927596})
+BEvent(name=input_event,data={'state': array([0.9895974 , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.25904024, 0.29615366], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.44031423})
+BEvent(name=input_event,data={'state': array([0.98610103, 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.25366655, 0.29575452], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.3969391})
+BEvent(name=input_event,data={'state': array([1.        , 0.98610103, 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.3369999 , 0.29575452], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.36585978})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 0.98610103, 1.        , 1.        ,
+       1.        , 1.        , 0.42033327, 0.29575452], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.43989396})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 0.94105166, 1.        , 1.        ,
+       1.        , 1.        , 0.41767195, 0.28702155], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.43797863})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 0.8960022 , 0.9944655 , 1.        ,
+       1.        , 1.        , 0.41484445, 0.27837378], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.4350379})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 0.85095286, 0.9444656 , 1.        ,
+       1.        , 1.        , 0.4118367 , 0.26981956], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.42185545})
+BEvent(name=input_event,data={'state': array([1.        , 0.969727  , 0.8059033 , 0.8944656 , 1.        ,
+       1.        , 1.        , 0.40863326, 0.26136792], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.3305682})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 0.969727  , 0.8059033 , 0.89446557,
+       1.        , 1.        , 0.49196652, 0.26136792], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.37917563})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 0.909563  , 0.75590336, 0.838971  ,
+       1.        , 1.        , 0.4916472 , 0.2513812 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.2847761})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 0.90956295, 0.75590336,
+       0.83897096, 1.        , 0.57498044, 0.2513812 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.39638287})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 0.85956293, 0.7143503 ,
+       0.79285157, 1.        , 0.57795936, 0.24251302], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.38476273})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 0.8095629 , 0.67279714,
+       0.7467322 , 1.        , 0.58116317, 0.23373625], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.2883038})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 0.8095629 ,
+       0.67279714, 0.7467322 , 0.6644965 , 0.23373625], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.4447439})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 0.78312445,
+       0.6508251 , 0.72234553, 0.6704746 , 0.22878   ], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.4457188})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 0.7566859 ,
+       0.628853  , 0.69795895, 0.67670816, 0.22416052], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.34135777})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       0.7566859 , 0.628853  , 0.7600415 , 0.22416052], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.25260022})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 0.7566859 ,
+       0.628853  , 0.69795895, 0.67670816, 0.22416052], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.34135777})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       0.7566859 , 0.628853  , 0.7600415 , 0.22416052], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.25260022})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 0.7566859 ,
+       0.628853  , 0.69795895, 0.67670816, 0.22416052], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.21216594})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 0.7566859 , 0.628853  ,
+       0.69795895, 1.        , 0.5933748 , 0.22416052], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.3564312})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 0.7566859 , 0.628853  , 0.69795895,
+       1.        , 1.        , 0.5100413 , 0.22416052], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.3114727})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 0.696522  , 0.578853  , 0.6424643 ,
+       1.        , 1.        , 0.5105099 , 0.21418138], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.2937618})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 0.63635814, 0.5288531 , 0.5869698 ,
+       0.9434403 , 1.        , 0.51102424, 0.20420425], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.2804453})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 0.5761941 , 0.4788531 , 0.5314752 ,
+       0.8542434 , 1.        , 0.5115914 , 0.19422945], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.48185965})
+BEvent(name=input_event,data={'state': array([1.        , 0.5761941 , 0.4788531 , 0.5314751 , 0.8542432 ,
+       1.        , 1.        , 0.42825812, 0.19422945], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.48569915})
+BEvent(name=input_event,data={'state': array([0.57619417, 0.4788531 , 0.5314751 , 0.8542434 , 1.        ,
+       1.        , 1.        , 0.34492478, 0.19422945], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.18413985})
+BEvent(name=input_event,data={'state': array([1.        , 0.5761941 , 0.4788531 , 0.5314751 , 0.8542432 ,
+       1.        , 1.        , 0.42825812, 0.19422945], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.48569915})
+BEvent(name=input_event,data={'state': array([0.57619417, 0.4788531 , 0.5314751 , 0.8542434 , 1.        ,
+       1.        , 1.        , 0.34492478, 0.19422945], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.18413985})
+BEvent(name=input_event,data={'state': array([1.        , 0.5761941 , 0.4788531 , 0.5314751 , 0.8542432 ,
+       1.        , 1.        , 0.42825812, 0.19422945], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.48569915})
+BEvent(name=input_event,data={'state': array([0.57619417, 0.4788531 , 0.5314751 , 0.8542434 , 1.        ,
+       1.        , 1.        , 0.34492478, 0.19422945], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.36817858})
+BEvent(name=input_event,data={'state': array([0.5424688 , 0.45082518, 0.5003673 , 0.80424345, 1.        ,
+       1.        , 1.        , 0.33794793, 0.18879391], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.47979158})
+BEvent(name=input_event,data={'state': array([0.45082518, 0.5003673 , 0.80424345, 1.        , 1.        ,
+       1.        , 1.        , 0.2546146 , 0.18879391], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.18739796})
+BEvent(name=input_event,data={'state': array([0.5424688 , 0.45082518, 0.5003673 , 0.80424345, 1.        ,
+       1.        , 1.        , 0.33794793, 0.18879391], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.17181766})
+BEvent(name=input_event,data={'state': array([1.        , 0.5424687 , 0.45082518, 0.5003673 , 0.80424327,
+       1.        , 1.        , 0.42128128, 0.18879391], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.2827327})
+BEvent(name=input_event,data={'state': array([0.9233892 , 0.48826167, 0.40577576, 0.45036718, 0.72387797,
+       1.        , 1.        , 0.41708496, 0.18005493], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.25602597})
+BEvent(name=input_event,data={'state': array([0.82087404, 0.43405455, 0.36072627, 0.40036714, 0.6435126 ,
+       1.        , 1.        , 0.4124641 , 0.1714538 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.6197339})
+BEvent(name=input_event,data={'state': array([0.43405458, 0.36072627, 0.40036714, 0.6435127 , 1.        ,
+       1.        , 1.        , 0.32913077, 0.1714538 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.57708395})
+BEvent(name=input_event,data={'state': array([0.36072627, 0.4003672 , 0.6435127 , 1.        , 1.        ,
+       1.        , 1.        , 0.24579743, 0.1714538 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.42087695})
+BEvent(name=input_event,data={'state': array([0.40036714, 0.64351285, 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.16246413, 0.1714538 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.45091742})
+BEvent(name=input_event,data={'state': array([0.42475376, 0.68270963, 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.15479048, 0.17688628], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.22337067})
+BEvent(name=input_event,data={'state': array([0.38269842, 0.42475381, 0.68270946, 1.        , 1.        ,
+       1.        , 1.        , 0.23812383, 0.17688628], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.40992483})
+BEvent(name=input_event,data={'state': array([0.42475376, 0.68270963, 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.15479048, 0.17688628], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.4571218})
+BEvent(name=input_event,data={'state': array([0.4491403 , 0.7219063 , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.14758974, 0.18270494], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.46224278})
+BEvent(name=input_event,data={'state': array([0.47352692, 0.76110303, 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.14084634, 0.18887414], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.2805451})
+BEvent(name=input_event,data={'state': array([0.7611029 , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.05751296, 0.18887414], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.39369082})
+BEvent(name=input_event,data={'state': array([0.47352692, 0.7611029 , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.14084634, 0.18887414], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.25316978})
+BEvent(name=input_event,data={'state': array([0.42664242, 0.47352692, 0.76110274, 1.        , 1.        ,
+       1.        , 1.        , 0.22417967, 0.18887414], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.18720092})
+BEvent(name=input_event,data={'state': array([0.51337016, 0.42664242, 0.47352692, 0.76110274, 1.        ,
+       1.        , 1.        , 0.30751303, 0.18887414], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.4903749})
+BEvent(name=input_event,data={'state': array([0.42664242, 0.47352692, 0.76110274, 1.        , 1.        ,
+       1.        , 1.        , 0.22417967, 0.18887414], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.4230936})
+BEvent(name=input_event,data={'state': array([0.42314616, 0.46964642, 0.7548656 , 1.        , 1.        ,
+       1.        , 1.        , 0.21594168, 0.19074483], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.42360657})
+BEvent(name=input_event,data={'state': array([0.4196498 , 0.46576586, 0.7486284 , 1.        , 1.        ,
+       1.        , 1.        , 0.2078848 , 0.19311588], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.38607958})
+BEvent(name=input_event,data={'state': array([0.46576586, 0.7486285 , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.12455148, 0.19311588], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.46665132})
+BEvent(name=input_event,data={'state': array([0.49015248, 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.11894849, 0.20033097], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.22718613})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.0356152 , 0.20033097], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.4234408})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.03393402, 0.21009335], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.46505132})
+BEvent(name=input_event,data={'state': array([0.5362719 , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.1172674 , 0.21009335], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.4699855})
+BEvent(name=input_event,data={'state': array([0.5606586 , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.11235207, 0.21760325], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.32488498})
+BEvent(name=input_event,data={'state': array([0.5051469 , 0.5606586 , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.19568543, 0.21760325], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.44689786})
+BEvent(name=input_event,data={'state': array([0.5016506 , 0.556778  , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.18890174, 0.22115092], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.34046543})
+BEvent(name=input_event,data={'state': array([0.556778  , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.10556836, 0.22115092], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.4696917})
+BEvent(name=input_event,data={'state': array([0.58116466, 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.10129068, 0.22911327], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.46884272})
+BEvent(name=input_event,data={'state': array([0.6055512 , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.09730301, 0.23722997], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.4672198})
+BEvent(name=input_event,data={'state': array([0.6299379, 1.       , 1.       , 1.       , 1.       , 1.       ,
+       1.       , 0.0935813, 0.2454857], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.46522972})
+BEvent(name=input_event,data={'state': array([0.6543244 , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.09010357, 0.25386685], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.4625071})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.08684956, 0.26236147], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.4244482})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.0838008 , 0.27095887], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.45673057})
+BEvent(name=input_event,data={'state': array([0.633483  , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.16713414, 0.27095887], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.46152472})
+BEvent(name=input_event,data={'state': array([0.62998664, 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.16213225, 0.27606973], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.20836706})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.07879889, 0.27606973], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.42228353})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.07614462, 0.28490853], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.4212343})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.07365074, 0.29382178], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.46136507})
+BEvent(name=input_event,data={'state': array([0.6739308 , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.15698406, 0.29382178], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.34539995})
+BEvent(name=input_event,data={'state': array([0.81092733, 0.6739308 , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.24031743, 0.29382178], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.30109692})
+BEvent(name=input_event,data={'state': array([1.        , 0.8109271 , 0.6739308 , 1.        , 1.        ,
+       1.        , 1.        , 0.32365075, 0.29382178], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.42724955})
+BEvent(name=input_event,data={'state': array([1.        , 0.7567202 , 0.62888145, 1.        , 1.        ,
+       1.        , 1.        , 0.31873053, 0.28949592], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.34639683})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 0.7567202 , 0.62888145, 1.        ,
+       1.        , 1.        , 0.40206385, 0.28949592], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.30646342})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 0.7567202 , 0.62888145,
+       1.        , 1.        , 0.48539716, 0.28949592], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.3573242})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 0.7067201 , 0.5873284 ,
+       1.        , 1.        , 0.48487562, 0.2795395 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.28105438})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 0.7067201 ,
+       0.5873284 , 1.        , 0.56820893, 0.2795395 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.33485135})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       0.7067202 , 0.5873284 , 0.65154225, 0.2795395 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.35058472})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 0.7067201 , 0.73487556, 0.2795395 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.272405})
+BEvent(name=input_event,data={'state': array([1.       , 1.       , 1.       , 1.       , 1.       , 1.       ,
+       1.       , 0.8182089, 0.2795395], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.46370366})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 0.7067202 , 0.73487556, 0.2795395 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.42258516})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 0.74044555, 0.74056023, 0.27876842], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.41705522})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 0.77417094, 0.7462691 , 0.2783547 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.41106078})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 0.80789644, 0.7519876 , 0.27829993], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.4045934})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 0.8416219 , 0.7577009 , 0.27860433], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.36449614})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       0.84162164, 0.69944   , 0.6743676 , 0.27860433], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.2467026})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 0.8416218 ,
+       0.69944   , 1.        , 0.59103423, 0.27860433], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.30563107})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       0.84162164, 0.69944   , 0.6743676 , 0.27860433], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.2467026})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 0.8416218 ,
+       0.69944   , 1.        , 0.59103423, 0.27860433], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.26690185})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 0.8416218 , 0.69944   ,
+       1.        , 1.        , 0.50770074, 0.27860433], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.2899116})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 0.8416218 ,
+       0.69944   , 1.        , 0.5910343 , 0.27860433], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.42746705})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 0.81518316,
+       0.6774679 , 1.        , 0.5942223 , 0.27025026], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.26438624})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 0.81518316, 0.6774679 ,
+       1.        , 1.        , 0.51088893, 0.27025026], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.36857274})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 0.76518327, 0.6359148 ,
+       0.7057967 , 1.        , 0.51130694, 0.26027453], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.30770022})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 0.76518327, 0.6359148 , 0.7057967 ,
+       1.        , 1.        , 0.42797366, 0.26027453], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.2935673})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 0.76518327, 0.6359148 ,
+       0.7057967 , 1.        , 0.51130694, 0.26027453], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.30770022})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 0.76518327, 0.6359148 , 0.7057967 ,
+       1.        , 1.        , 0.42797366, 0.26027453], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.3753271})
+BEvent(name=input_event,data={'state': array([1.        , 0.76518327, 0.6359148 , 0.7057968 , 1.        ,
+       1.        , 1.        , 0.34464034, 0.26027453], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.3106779})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 0.76518327, 0.6359148 , 0.7057967 ,
+       1.        , 1.        , 0.42797366, 0.26027453], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.3311056})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 0.7050194 , 0.5859149 , 0.65030223,
+       1.        , 1.        , 0.42520446, 0.25131926], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.31485736})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 0.6448554 , 0.5359149 , 0.5948076 ,
+       1.        , 1.        , 0.42223153, 0.24244566], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.42311203})
+BEvent(name=input_event,data={'state': array([1.        , 0.6448554 , 0.5359149 , 0.5948075 , 1.        ,
+       1.        , 1.        , 0.3388982 , 0.24244566], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.38116232})
+BEvent(name=input_event,data={'state': array([0.64485544, 0.5359149 , 0.59480757, 1.        , 1.        ,
+       1.        , 1.        , 0.25556487, 0.24244566], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.3186106})
+BEvent(name=input_event,data={'state': array([0.5359149 , 0.5948076 , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.17223151, 0.24244566], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.2320895})
+BEvent(name=input_event,data={'state': array([0.64485544, 0.5359149 , 0.59480757, 1.        , 1.        ,
+       1.        , 1.        , 0.25556487, 0.24244566], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.24877869})
+BEvent(name=input_event,data={'state': array([1.        , 0.6448554 , 0.5359149 , 0.5948075 , 1.        ,
+       1.        , 1.        , 0.3388982 , 0.24244566], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.33854598})
+BEvent(name=input_event,data={'state': array([1.        , 0.59064835, 0.4908654 , 0.5448075 , 1.        ,
+       1.        , 1.        , 0.33320937, 0.23729756], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.2675671})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 0.59064835, 0.4908654 , 0.5448076 ,
+       1.        , 1.        , 0.41654268, 0.23729756], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.28477392})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 0.5304843 , 0.44086543, 0.48931298,
+       1.        , 1.        , 0.41305807, 0.22869602], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.46727315})
+BEvent(name=input_event,data={'state': array([1.        , 0.5304843 , 0.44086543, 0.48931292, 1.        ,
+       1.        , 1.        , 0.32972476, 0.22869602], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.43852034})
+BEvent(name=input_event,data={'state': array([0.5304844 , 0.44086543, 0.48931292, 1.        , 1.        ,
+       1.        , 1.        , 0.24639143, 0.22869602], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.35932872})
+BEvent(name=input_event,data={'state': array([0.44086543, 0.48931298, 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.16305807, 0.22869602], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.3686302})
+BEvent(name=input_event,data={'state': array([0.48931292, 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.07972476, 0.22869602], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.21281889})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.99639106, 0.22869602], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.5760628})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.9130581 , 0.22869602], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.1548169})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.99639106, 0.22869602], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.5760628})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.9130581 , 0.22869602], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.52265406})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.8297248 , 0.22869602], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.4669355})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 0.5304843 , 0.7463914 , 0.22869602], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.3004318})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.8297248 , 0.22869602], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.3520644})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.83570063, 0.23366305], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.4714773})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 0.5846914 , 0.7523673 , 0.23366305], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.27358913})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       0.5846914 , 0.48591486, 0.66903394, 0.23366305], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.37050533})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 0.5846914 , 0.7523673 , 0.23366305], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.27358913})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       0.5846914 , 0.48591486, 0.66903394, 0.23366305], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.37050533})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 0.5846914 , 0.7523673 , 0.23366305], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.27358913})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       0.5846914 , 0.48591486, 0.66903394, 0.23366305], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.46841082})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       0.58889836, 0.48941115, 0.6751064 , 0.22895905], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.16403511})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 0.5888984 ,
+       0.48941115, 0.5431935 , 0.5917731 , 0.22895905], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.4244046})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       0.58889836, 0.48941115, 0.6751064 , 0.22895905], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.36714312})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 0.58889836, 0.7584397 , 0.22895905], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.43737143})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 0.62262386, 0.76536083, 0.22970626], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.43204245})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 0.6563494 , 0.7722241 , 0.23088458], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.42627633})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 0.69007474, 0.7790053 , 0.23248741], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.25766304})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.86233866, 0.23248741], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.34017512})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.8674056 , 0.23909536], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.49368617})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 0.7442819 , 0.7840722 , 0.23909536], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.34406516})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       0.7442817 , 0.61854446, 0.7007389 , 0.23909536], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.45862386})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       0.74848884, 0.6220408 , 0.70715743, 0.23624146], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.31782824})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 0.74848896, 0.7904908 , 0.23624146], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.24228004})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.8738241 , 0.23624146], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.33566985})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.8784831 , 0.24336433], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.5012818})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 0.80269593, 0.7951498 , 0.24336433], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.23042262})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.8784831 , 0.24336433], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.5012818})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 0.80269593, 0.7951498 , 0.24336433], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.37170655})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       0.8026958 , 0.6670901 , 0.7118165 , 0.24336433], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.30255717})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 0.80269593, 0.7951498 , 0.24336433], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.3978708})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 0.83642143, 0.8013537 , 0.24635044], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.3880508})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       0.83642125, 0.6951182 , 0.7180203 , 0.24635044], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.44309017})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       0.8406283 , 0.69861454, 0.72439915, 0.24455097], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.2883272})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 0.8406285 , 0.8077325 , 0.24455097], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.39359802})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       0.8406283 , 0.69861454, 0.72439915, 0.24455097], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.44150499})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       0.84483534, 0.70211077, 0.73086196, 0.2431498 ], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.43980548})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       0.8490424 , 0.7056071 , 0.73738885, 0.24215381], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.28151515})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 0.8490426 , 0.82072216, 0.24215381], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.40503502})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       0.8490424 , 0.7056071 , 0.73738885, 0.24215381], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.43799338})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       0.8532495 , 0.70910347, 0.7439584 , 0.24156804], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.27811348})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 0.8532496 , 0.8272918 , 0.24156804], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.20934907})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 1.        , 0.9106251 , 0.24156804], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.52202845})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 0.8532496 , 0.8272918 , 0.24156804], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.4108983})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       0.8532495 , 0.70910347, 0.7439584 , 0.24156804], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.28581497})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 0.8532496 ,
+       0.70910347, 0.787028  , 0.6606251 , 0.24156804], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.44198442})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 0.82681084,
+       0.6871312 , 0.7626413 , 0.666325  , 0.23639452], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.44333044})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 0.80037236,
+       0.66515917, 0.7382547 , 0.67227185, 0.23153758], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.32927024})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       0.8003722 , 0.66515917, 0.75560516, 0.23153758], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.44367754})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       0.80457944, 0.6686556 , 0.76246005, 0.23210494], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.4416939})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       0.8087866 , 0.6721519 , 0.769269  , 0.23310032], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.43961164})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       0.81299365, 0.6756483 , 0.7760078 , 0.23451826], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.43743733})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       0.8172006 , 0.6791446 , 0.7826538 , 0.23635116], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.43517792})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       0.8214078 , 0.68264097, 0.7891864 , 0.23858944], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.27085656})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       1.        , 0.8214079 , 0.8725198 , 0.23858944], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.42934185})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       0.8214078 , 0.68264097, 0.7891864 , 0.23858944], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.2963027})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 1.        , 0.8214078 ,
+       0.68264097, 0.7576576 , 0.7058531 , 0.23858944], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.2510599})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 0.8214078 , 0.68264097,
+       0.7576576 , 1.        , 0.62251973, 0.23858944], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.36169767})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 0.8214079 , 0.68264097, 0.7576577 ,
+       1.        , 1.        , 0.53918636, 0.23858944], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.3225526})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 0.7612438 , 0.63264096, 0.7021631 ,
+       1.        , 1.        , 0.54088104, 0.22890398], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.45258915})
+BEvent(name=input_event,data={'state': array([1.        , 0.7612438 , 0.63264096, 0.7021631 , 1.        ,
+       1.        , 1.        , 0.45754778, 0.22890398], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.2605505})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 0.7612438 , 0.63264096, 0.7021631 ,
+       1.        , 1.        , 0.54088104, 0.22890398], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.45258915})
+BEvent(name=input_event,data={'state': array([1.        , 0.7612438 , 0.63264096, 0.7021631 , 1.        ,
+       1.        , 1.        , 0.45754778, 0.22890398], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.34427327})
+BEvent(name=input_event,data={'state': array([1.        , 0.7070369 , 0.5875916 , 0.652163  , 1.        ,
+       1.        , 1.        , 0.4556346 , 0.21927348], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.3285541})
+BEvent(name=input_event,data={'state': array([1.        , 0.6528298 , 0.54254216, 0.602163  , 0.9678604 ,
+       1.        , 1.        , 0.4535459 , 0.20967755], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.23329872})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 0.6528298 , 0.54254216, 0.60216314,
+       0.9678606 , 1.        , 0.5368793 , 0.20967755], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.23142508})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 0.65282977, 0.54254216,
+       0.6021631 , 0.9678604 , 0.6202126 , 0.20967755], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.3358079})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 0.6028298 , 0.50098896,
+       0.5560436 , 0.8937324 , 0.6256011 , 0.20251307], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.36979243})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 0.6028298 , 0.50098896, 0.5560436 ,
+       0.8937326 , 1.        , 0.54226774, 0.20251307], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.23301205})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 1.        , 0.6028298 , 0.50098896,
+       0.5560436 , 0.8937324 , 0.6256011 , 0.20251307], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.36979243})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 0.6028298 , 0.50098896, 0.5560436 ,
+       0.8937326 , 1.        , 0.54226774, 0.20251307], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.5007603})
+BEvent(name=input_event,data={'state': array([1.        , 0.6028298 , 0.50098896, 0.5560437 , 0.89373225,
+       1.        , 1.        , 0.4589345 , 0.20251307], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.29266912})
+BEvent(name=input_event,data={'state': array([1.        , 0.5486227 , 0.45593956, 0.5060437 , 0.813367  ,
+       1.        , 1.        , 0.45682868, 0.19286099], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.2739118})
+BEvent(name=input_event,data={'state': array([0.93502754, 0.49441567, 0.41089013, 0.45604357, 0.73300165,
+       1.        , 1.        , 0.45450148, 0.18324623], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.24769329})
+BEvent(name=input_event,data={'state': array([0.8325124 , 0.44020858, 0.3658407 , 0.40604356, 0.6526363 ,
+       1.        , 1.        , 0.45191714, 0.17367497], dtype=float32)})
+BEvent(name=output_event,data={'action': 1, 'score': 0.63858527})
+BEvent(name=input_event,data={'state': array([0.4402086 , 0.3658407 , 0.40604356, 0.65263647, 1.        ,
+       1.        , 1.        , 0.3685838 , 0.17367497], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.12879695})
+BEvent(name=input_event,data={'state': array([0.8325124 , 0.44020858, 0.3658407 , 0.40604356, 0.6526363 ,
+       1.        , 1.        , 0.45191714, 0.17367497], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.14422664})
+BEvent(name=input_event,data={'state': array([1.        , 0.83251184, 0.44020858, 0.3658407 , 0.40604362,
+       0.65263647, 1.        , 0.5352504 , 0.17367497], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.24849759})
+BEvent(name=input_event,data={'state': array([1.        , 0.718731  , 0.38004452, 0.31584057, 0.35054892,
+       0.5634396 , 1.        , 0.53738326, 0.16393396], dtype=float32)})
+BEvent(name=output_event,data={'action': 2, 'score': 0.22796099})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 0.7187314 , 0.38004452, 0.31584057,
+       0.35054892, 0.5634395 , 0.62071663, 0.16393396], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.3116816})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 0.6241724 , 0.33004442, 0.2742874 ,
+       0.30442938, 0.48931125, 0.62769926, 0.15682606], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.30215317})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 0.5296135 , 0.28004438, 0.23273426,
+       0.25830987, 0.4151831 , 0.63532853, 0.15004829], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.29205325})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 0.4350545 , 0.23004429, 0.19118111,
+       0.21219037, 0.34105492, 0.6436583 , 0.14364734], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.28382382})
+BEvent(name=input_event,data={'state': array([1.        , 1.        , 0.34049556, 0.18004426, 0.14962797,
+       0.16607086, 0.26692677, 0.6527375 , 0.13767584], dtype=float32)})
+BEvent(name=output_event,data={'action': 0, 'score': 0.2771311})
+Done, no more actions to perform on the environment
+Collided into obstacle, num_of_steps: 418
+ENDED
+
+Process finished with exit code 0
