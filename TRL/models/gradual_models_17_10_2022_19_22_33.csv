@@ -1,0 +1,11 @@
+model,override_enabled,success_rate,status,num_of_steps,num_of_overrides
+STD_id673_ep1062_no_rules_srate45.h5,False,45,collision,239,0
+STD_id673_ep1062_no_rules_srate45.h5,False,45,solved,391,0
+STD_id673_ep1062_no_rules_srate45.h5,False,45,solved,197,0
+STD_id673_ep1062_no_rules_srate45.h5,False,45,collision,399,0
+STD_id673_ep1062_no_rules_srate45.h5,False,45,solved,179,0
+STD_id673_ep1062_no_rules_srate45.h5,True,45,solved,239,22
+STD_id673_ep1062_no_rules_srate45.h5,True,45,solved,348,43
+STD_id673_ep1062_no_rules_srate45.h5,True,45,solved,112,8
+STD_id673_ep1062_no_rules_srate45.h5,True,45,solved,96,10
+STD_id673_ep1062_no_rules_srate45.h5,True,45,solved,32,3

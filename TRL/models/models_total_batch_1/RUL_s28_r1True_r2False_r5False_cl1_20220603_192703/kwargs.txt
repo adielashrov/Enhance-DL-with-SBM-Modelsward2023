@@ -1,0 +1,1 @@
+{'episodes': None, 'run_name': 'RUL_s28_r1True_r2False_r5False_cl1', 'cost_limit': 1, 'avoid_print': True, 'rules_list': ['rule1_active=True', 'rule2_active=False', 'rule5_active=False', 'only_count_asif_penalty=True']}
