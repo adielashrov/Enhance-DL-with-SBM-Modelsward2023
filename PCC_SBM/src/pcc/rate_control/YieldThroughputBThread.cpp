@@ -1,43 +1,26 @@
-class void ReduceThroughputThroughputScenario : public Scenario
+ #include "YieldThroughputBThread.h"
+
+
+YieldThroughputBThread::YieldThroughputBThread() : BThread("YieldThroughputBThread")
 {
-    void entryPoint() {
-        Vector<Event> requested;
-        Vector<Event> watched;
-        Vector<Event> blocked;
-        Vector<Event> emptySet;
-    bool yieldMode = false;
-        while( true )
-        {
-            bSync( emptySet, monitorInterval, emptySet );
-            Event lastEvent = lastEvent();
-            if( !enterYieldMode )
-            {
-                if( ShouldYieldThroughput(lastEvent) )
-                {
-                    enterYieldMode = true;                        
-                    bSync( YieldThroughput, emptySet, emptySet );
-                }
-            }
-            else
-            {
-                if( ShouldRestoreThroughput(lastEvent) )
-                {
-                    enterYieldMode = false;
-                    bSync( RestoreThroughput, emptySet, emptySet );
-                }
-            }
-        }
-    }
-};
+}
+
+YieldThroughputBThread::~YieldThroughputBThread()
+{
+}
 
 void YieldThroughputBThread::entryPoint()
 {
-  
+    printf("Enter YieldThroughputBThread...\n" );
+    
     Vector<Event> requested;
     Vector<Event> watched;
     Vector<Event> blocked;
 
-
+    int id = 1;
+    int counter = 0;
+    int exp = 1;
+    bool yield_enabled = false;
     while(true)
     {
         // First - listen to the update from the model
