@@ -13,5 +13,5 @@ Getting started with **PCC_SBM** appears in [PCC_SBM Readme](https://github.com/
 
 Getting started with **TRL** appears in [TRL Readme](https://github.com/adielashrov/Enhance-DL-with-SBM-Modelsward2023/tree/main/TRL)  
 
-##### Citation format
+#### Citation format
 Ashrov, A. and Katz, G. (2023). Enhancing Deep Learning with Scenario-Based Override Rules: A Case Study.  In Proceedings of the 11th International Conference on Model-Based Software and Systems Engineering, ISBN 978-989-758-633-0, ISSN 2184-4348, pages 253-268.  
