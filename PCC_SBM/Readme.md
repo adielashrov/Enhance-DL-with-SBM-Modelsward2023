@@ -11,7 +11,7 @@ There are two steps to start with this project:
 
 ### Part 1 - Train an Aurora-RL agent
 
-The full guide can be found at ...
+The full guide can be found at  [Getting started with PCC-RL](https://github.com/adielashrov/Enhance-DL-with-SBM-Modelsward2023/blob/main/PCC_SBM/Getting_Started_with_PCC_RL.md).
 
 ### Part 2 - Examine the trained agent extended by PCC-SBM with the Simulator
 
