@@ -44,13 +44,10 @@ public class CustomAgent : Agent {
 	// Reward support varaibles
 	//private float oldDistance;
 
-	// private bool randomTarget = false;
 
 	// Called at the creation of the enviornment (before the first episode)
 	// and only once
 	public override void Initialize() {
-		
-		// Debug.Log("Enter Initialize, this.randomTarget: " + this.randomTarget);
 		// Fill the game object target searching for the tag (setted in the editor)
 		target = GameObject.FindGameObjectWithTag("Target").transform;
 		// Fill the list of the Obstacle searching for the tag (setted in the editor)
@@ -66,20 +63,17 @@ public class CustomAgent : Agent {
 		// Reset the logging information
 		back_forth = 0;
 		last_action = 0;
-
-		// Debug.Log("Leave Initialize...");
 	}
 
 
 	// Called at the every new episode of the training loop,
 	// after each reset (both from target, crash or timeout)
 	public override void OnEpisodeBegin() {
-		// Debug.Log("Enter OnEpisodeBegin, randomizeTarget: " + randomizeTarget);
+
 		// Randomize the position of the target, iterate check to avoid compenetration
 		// between the target and the Obstacle
 		//target.GetComponentInChildren<MeshRenderer>().enabled = false;
-
-		if ( randomizeTarget ) {
+		if( randomizeTarget ) {
 			do {
 				target.position = new Vector3(Random.Range(-randomizeArea, randomizeArea), 0.0f, Random.Range(-randomizeArea, randomizeArea));	
 			} while ( verifyIntersectionWithObstacle( target.gameObject ) || verifyIntersectionWithCostArea( target.gameObject ) );
@@ -131,8 +125,7 @@ public class CustomAgent : Agent {
 		if (last_action == 1 && actionBuffer[0] == 2) back_forth ++; 
 		if (last_action == 2 && actionBuffer[0] == 1) back_forth ++; 
 		last_action = actionBuffer[0];
-		// logText.text = "Back And Forth: " + back_forth.ToString();
-		// logText.text = "Testing";
+		logText.text = "Back And Forth: " + back_forth.ToString();;
 	}
 
 
