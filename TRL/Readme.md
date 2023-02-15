@@ -54,3 +54,5 @@ Prerequisite: You should have both the Python project opened in pycharm, and the
 [INFO] Listening on port 5004. Start training by pressing the Play button in the Unity Editor. 
 
 3. Go to the "Unity Editor -> Game" and click "play".
+
+4. This will run the simulation seen in "**Enhancing Deep Learning with Scenario-Based Override Rules: A Case Study**"
