@@ -1,0 +1,17 @@
+
+TRL/.idea/inspectionProfiles/profiles_settings.xml
+TRL/.idea/misc.xml
+TRL/.idea/modules.xml
+TRL/.idea/TRL.iml
+TRL/.idea/vcs.xml
+TRL/bppy/__pycache__/b_event.cpython-39.pyc
+TRL/bppy/__pycache__/b_program_runner_listener.cpython-39.pyc
+TRL/bppy/__pycache__/b_thread.cpython-39.pyc
+TRL/bppy/__pycache__/bprogram.cpython-39.pyc
+TRL/bppy/__pycache__/event_selection_strategy.cpython-39.pyc
+TRL/bppy/__pycache__/event_set.cpython-39.pyc
+TRL/bppy/__pycache__/odnn_event_selection_strategy.cpython-39.pyc
+TRL/bppy/__pycache__/print_b_program_runner_listener.cpython-39.pyc
+TRL/bppy/__pycache__/simple_event_selection_strategy.cpython-39.pyc
+TRL/bppy/__pycache__/sync_statement.cpython-39.pyc
+TRL/env/__pycache__/robotic_navigation.cpython-39.pyc
