@@ -1,8 +1,20 @@
+
 ## TRL
 
 The **TRL** project was build on top of the https://github.com/d-corsi/ScenarioBasedRL project.
 
 ### Part 1: Setting up the python environment
+We used Pycharm for editing the project, but you can of course select a different method.
+
+1. Open the cloned python project in Pycharm.
+
+`"Enhance-DL-with-SBM-Modelsward2023\TRL\"`
+
+2. Pycharm should offer you to configure a virtual environment using the included `requirements.txt` file. More details in this [guide](https://www.jetbrains.com/help/pycharm/creating-virtual-environment.html#env-requirements).
+
+3. Configure a python interpreter created in your virtual environment. For example: 
+`Enhance-DL-with-SBM-Modelsward2023\TRL\venv_pycharm\Scripts\python.exe`.
+
 
 ### Part 2: Setting up Unity
 
@@ -29,4 +41,16 @@ For example:  `"Enhance-DL-with-SBM-Modelsward2023\TRL\unity_project\Build"`.
 
 9. You should now see two tabs: "Scene" and "Game". Click on the "Game" tab and you should be able to see the robot at the center of the maze.
 
+ 
+
 ### Part 3: Executing the simulation
+
+Prerequisite: You should have both the Python project opened in pycharm, and the unity project opened in Unity editor.
+
+1. In pycharm, add a run configuration to execute `main_guard.py` 
+
+2.  Run the python file, you should see the following line printed in the console:
+
+[INFO] Listening on port 5004. Start training by pressing the Play button in the Unity Editor. 
+
+3. Go to the "Unity Editor -> Game" and click "play".
