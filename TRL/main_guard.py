@@ -468,12 +468,11 @@ def summarize_stats( model_name ):
 
 
 if __name__ == "__main__":
-    print("This is a change in the side branch...")
     try:
         # models_dir_path = "models/models_rule_5"
-        models_dir_path = "models/local_models"
+        # models_dir_path = "models/local_models"
         # models_dir_path = "models/models_total_batch_1/RUL_s18_r1False_r2False_r5False_cl1_20220603_192745/models"
-        # models_dir_path = "models/gradual_models_no_rules"
+        models_dir_path = "models/gradual_models_no_rules"
 
         csv_file = open_csv_file(models_dir_path)
         file_writer = csv.writer(csv_file)
