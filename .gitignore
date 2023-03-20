@@ -20,3 +20,5 @@ TRL/unity_project/Assets/ML-Agents/Timers/SafeRobotics_timers.json
 TRL/unity_project/Assets/ML-Agents/Timers/SafeRobotics_timers.json.meta
 TRL/env/windows_training/SafeRobotics/SafeRobotics_Data/ML-Agents/Timers/SafetyGym_timers.json
 TRL/env/windows_training/SafeRobotics/SafeRobotics_Data/ML-Agents/Timers/SafetyGym_timers.json
+*.csv
+TRL/bppy/__pycache__/bprogram.cpython-39.pyc
