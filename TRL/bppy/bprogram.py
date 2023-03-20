@@ -104,8 +104,9 @@ class BProgram:
         if self.listener:
             self.listener.starting(b_program=self)
 
+        print("BProgram.run -> Before setup...")
         self.setup()
-
+        print("BProgram.run -> Finished setup...")
         # Main loop
         interrupted = False
         while not interrupted and not(self.reached_number_of_steps_limit()):
