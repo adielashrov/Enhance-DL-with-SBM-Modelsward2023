@@ -31,14 +31,13 @@ env = None
 policy_network = None
 
 # Statistics global variables.
-num_of_experiments = 1
+num_of_experiments = 100
 status = ""
 global_model_name = ""
 global_override_enabled = False
 num_of_steps = 0
 num_of_steps_with_override = 0
 num_of_overrides = 0
-num_of_repeat_eval = 0
 num_of_collisions = 0
 num_of_collisions_with_override = 0
 
@@ -58,13 +57,13 @@ def get_action(state, policy):
     #return selected_action
     return deterministic_action
 
-def get_all_possible_output_events(state, policy_network, id=None, proxy=False):
+def get_all_possible_output_events(state, policy,proxy=False):
     output_events = []
-    softmax_out = policy_network(state.reshape((1, -1)))
+    softmax_out = policy(state.reshape((1, -1)))
     all_possible_scores = softmax_out.numpy()[0]
     output_event_type = "output_event_proxy" if proxy else "output_event"
     for index, score in enumerate(all_possible_scores):
-        data = {"action": index, "score": all_possible_scores[index], "id":id}
+        data = {"action": index, "score": all_possible_scores[index]}
         output_events.append(BEvent(output_event_type, data))
     return output_events
 
@@ -119,8 +118,6 @@ def Actuator():
     while True:
         output_event = yield {waitFor: all_output_events}
         action = output_event.data['action']
-        if output_event.data['id']:
-            print(f"Acting on env with action:{action}, id:{output_event.data['id']}")
         t_state, _, done, info = env.step(action)
         num_of_steps = num_of_steps + 1
         if done:
@@ -150,28 +147,19 @@ def ODNN_no_proxy():
 @b_thread
 def ODNN_with_proxy():
     while True:
-        print("Odnn is waiting for input_event...")
         lastEv = yield {waitFor: BEvent("input_event")}
         state = lastEv.data['state']
-        id = lastEv.data['id']
-        # 19.2 - Proxy is disabled.
-        all_possible_output_events = get_all_possible_output_events(state, policy_network=policy_network, id=id, proxy=False)
-
+        all_possible_output_events = get_all_possible_output_events(state, policy_network,proxy=True)
         lastEv = yield {request: all_possible_output_events}
-        print("Odnn after request output event")
 
 def Sensor_v3(event_stack):
     input_event = None
-    id = 1
     while True:
         if(len(event_stack) > 0):
             input_event = event_stack.pop()
-            data = {"state": input_event, "id" : id}
-            print(f"Sensor going to request input_event {id}")
+            data = {"state": input_event}
             lastEv = yield {request: BEvent("input_event", data)}
-            id = id + 1
         else:
-            print(f"Sensor yields, not synced, waiting for env")
             yield {not_synced: 'Not_synced'}
 
 def request_same_output_event(outputEventProxy, requested_events):
@@ -253,39 +241,6 @@ def Guard_take_conservative_action(odnnEventSelectionStrategy, override_enabled=
         lastEv = yield {request: requested_events}
         # print(f"after request in Guard_take_conservative_action: {lastEv}")
         requested_events.clear()
-
-
-def Guard_take_conservative_action_v2(odnnEventSelectionStrategy, override_enabled=True):
-    global num_of_overrides
-    all_output_events = [BEvent("output_event_proxy", {'action': 0}),
-                         BEvent("output_event_proxy", {'action': 1}),
-                         BEvent("output_event_proxy", {'action': 2})]
-    requested_events = []
-    while True:
-        t_action = None
-        found_suitable_output_event = False
-        lastInputEvent = yield {waitFor: BEvent("input_event")}
-        state = lastInputEvent.data['state']
-        while not found_suitable_output_event:
-            outputEventProxy = yield {waitFor: all_output_events}
-            if override_enabled:
-                if (outputEventProxy.get_output_event_score() < 0.2):
-                    print("Requesting request of output_event")
-                    yield {request: BEvent("input_event", {'state': state})}
-                    num_of_repeat_eval = num_of_repeat_eval + 1
-                else:
-                    found_suitable_output_event = True
-                    t_action = outputEventProxy.data['action']
-            else:
-                found_suitable_output_event = True
-                t_action = outputEventProxy.data['action']
-
-        requested_events.append(
-            BEvent("output_event", {'action': t_action}))
-        lastEv = yield {request: requested_events}
-        print(f"after request in Guard_take_conservative_action_v2: {lastEv}")
-        requested_events.clear()
-
 
 def Guard_colliade_into_obstacle_blocking_with_proxy(odnnEventSelectionStrategy, override_enabled=True):
     global num_of_overrides
@@ -378,6 +333,7 @@ def Guard_colliade_into_obstacle():
             requested_events.append(BEvent("env_action", {'action': t_action}))
         lastEv = yield {request: requested_events}
         requested_events.clear()
+
 
 #TODO: Reduce to one variable only.
 def load_policy(model_choice=1, model_path=""):
@@ -516,8 +472,7 @@ if __name__ == "__main__":
         # models_dir_path = "models/models_rule_5"
         # models_dir_path = "models/local_models"
         # models_dir_path = "models/models_total_batch_1/RUL_s18_r1False_r2False_r5False_cl1_20220603_192745/models"
-        # models_dir_path = "models/gradual_models_no_rules"
-        models_dir_path = "models/baseline_models"
+        models_dir_path = "models/gradual_models_no_rules"
 
         csv_file = open_csv_file(models_dir_path)
         file_writer = csv.writer(csv_file)
@@ -530,17 +485,16 @@ if __name__ == "__main__":
                    "avg_num_steps_to_solve", "avg_num_steps_to_solve_with_override"]
         file_writer.writerow(headers)
 
-        # override_enabled_conf = [False, True]
-        override_enabled_conf = [False]
+        override_enabled_conf = [False, True]
         #env = RoboticNavigation(step_limit=upper_step_limit, editor_run=False,
         #                        random_seed=0)
-        env = RoboticNavigation(step_limit=upper_step_limit, editor_run=False,
+        env = RoboticNavigation(step_limit=upper_step_limit, editor_run=True,
                                 random_seed=0)
         events_q = []
         initial_list = []
         odnnEventSelectionStrategy = OdnnEventSelectionStrategy()
         Sensor_v3 = b_thread(Sensor_v3, events_queue=events_q)
-        Guard_take_conservative_action_v2 = b_thread(Guard_take_conservative_action_v2, deep_c=False)
+        Guard_take_conservative_action = b_thread(Guard_take_conservative_action, deep_c=False)
 
         if(LOAD_FROM_DIR):
             list_of_models = os.listdir(models_dir_path)
@@ -562,9 +516,10 @@ if __name__ == "__main__":
                     initial_list.clear()
                     sensor_thread = Sensor_v3()
                     actuator_thread = Actuator()
-                    # guard_take_conservative_action_v2 = Guard_take_conservative_action_v2(odnnEventSelectionStrategy, override_enabled)
+                    guard_take_conservative_action = Guard_take_conservative_action(odnnEventSelectionStrategy, override_enabled)
                     odnn_thread = ODNN_with_proxy()
-                    initial_list = [actuator_thread, odnn_thread]
+                    initial_list = [actuator_thread, odnn_thread,
+                                    guard_take_conservative_action]
                     sensors_list = [sensor_thread]
                     model_path = models_dir_path + "/" + model_name
                     if os.path.isfile(model_path):
@@ -574,10 +529,7 @@ if __name__ == "__main__":
                               f"override_enabled:{override_enabled}")
                         b_program = BProgram(bthreads=initial_list, sensors=sensors_list,
                                              event_selection_strategy=odnnEventSelectionStrategy,
-                                             listener=PrintBProgramRunnerListener(),
-                                             environment=env,
-                                             events_queue=events_q,
-                                             steps_limit=3)
+                                             listener=PrintBProgramRunnerListener(), environment=env, events_queue=events_q)
                         b_program.run()
                         log_statistics()
 
