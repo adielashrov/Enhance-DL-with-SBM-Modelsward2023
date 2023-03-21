@@ -1,6 +1,6 @@
 # bppy imports
 import os
-
+import logging
 from bppy.b_thread import b_thread, wait_for_external_event
 from bppy.b_event import BEvent
 from bppy.bprogram import BProgram
@@ -25,7 +25,6 @@ FWD_DIR = 0.5
 FWD_DIR_TOLERANCE = 0.1
 MINIMAL_CLEARANCE = 0.30
 MINIMAL_FWD_CLEARANCE = 0.35
-LOAD_FROM_DIR = True
 
 env = None
 policy_network = None
@@ -153,12 +152,12 @@ def ODNN_with_proxy():
         lastEv = yield {request: all_possible_output_events}
 
 def Sensor_v3(event_stack):
-    input_event = None
     while True:
         if(len(event_stack) > 0):
             input_event = event_stack.pop()
             data = {"state": input_event}
             lastEv = yield {request: BEvent("input_event", data)}
+            # print(f"Sensor requested: {lastEv}")
         else:
             yield {not_synced: 'Not_synced'}
 
@@ -225,7 +224,7 @@ def Guard_take_conservative_action(odnnEventSelectionStrategy, override_enabled=
         state = lastInputEvent.data['state']
         outputEventProxy = yield {waitFor: all_output_events}
         if override_enabled:
-            if (outputEventProxy.get_output_event_score() < 0.2):
+            if outputEventProxy.get_output_event_score() < 0.2:
                 all_possible_output_events = odnnEventSelectionStrategy.get_current_possible_output_events_and_scores()
                 next_output_event = odnnEventSelectionStrategy.get_next_output_event(outputEventProxy)
                 # print( f"The overriden event: {next_output_event}" )
@@ -241,6 +240,30 @@ def Guard_take_conservative_action(odnnEventSelectionStrategy, override_enabled=
         lastEv = yield {request: requested_events}
         # print(f"after request in Guard_take_conservative_action: {lastEv}")
         requested_events.clear()
+
+
+def Guard_take_conservative_action_2(override_enabled=True):
+    global num_of_overrides
+    all_output_events = [BEvent("output_event_proxy", {'action': 0}),
+                         BEvent("output_event_proxy", {'action': 1}),
+                         BEvent("output_event_proxy", {'action': 2})]
+    while True:
+        lastInputEvent = yield {waitFor: BEvent("input_event")}
+        # print(f"Guard_0, {lastInputEvent}")
+        outputEventProxy = yield {waitFor: all_output_events}
+        # print(f"Guard_0, {outputEventProxy}")
+        if override_enabled:
+            while outputEventProxy.get_output_event_score() < 0.2:
+                # print(f"Guard re-evaluating outputEventProxy, "\
+                #      f"{outputEventProxy.get_output_event_score}")
+                yield {request: lastInputEvent}
+                # print(f"Guard_loop, {i} {lastInputEvent}")
+                outputEventProxy = yield {waitFor: all_output_events}
+                # print(f"Guard_loop, {i} {outputEventProxy}")
+                num_of_overrides = num_of_overrides + 1
+        t_action = outputEventProxy.data['action']
+        last_output_event = yield {request: BEvent("output_event", {'action': t_action})}
+        # print(f"Guard_1, actual output event., {last_output_event}")
 
 def Guard_colliade_into_obstacle_blocking_with_proxy(odnnEventSelectionStrategy, override_enabled=True):
     global num_of_overrides
@@ -472,7 +495,8 @@ if __name__ == "__main__":
         # models_dir_path = "models/models_rule_5"
         # models_dir_path = "models/local_models"
         # models_dir_path = "models/models_total_batch_1/RUL_s18_r1False_r2False_r5False_cl1_20220603_192745/models"
-        models_dir_path = "models/gradual_models_no_rules"
+        # models_dir_path = "models/gradual_models_no_rules"
+        models_dir_path = "models/test_models"
 
         csv_file = open_csv_file(models_dir_path)
         file_writer = csv.writer(csv_file)
@@ -494,16 +518,14 @@ if __name__ == "__main__":
         initial_list = []
         odnnEventSelectionStrategy = OdnnEventSelectionStrategy()
         Sensor_v3 = b_thread(Sensor_v3, events_queue=events_q)
+        # Initialize generator
         Guard_take_conservative_action = b_thread(Guard_take_conservative_action, deep_c=False)
 
-        if(LOAD_FROM_DIR):
-            list_of_models = os.listdir(models_dir_path)
-        else:
-            list_of_models = ['STD_id673_ep101_no_rules_srate4.h5',
-                              'STD_id673_ep650_no_rules_srate11.h5',
-                              'STD_id673_ep860_no_rules_srate23.h5',
-                              'STD_id673_ep961_no_rules_srate30.h5',
-                              'STD_id673_ep1062_no_rules_srate45.h5']
+        Guard_take_conservative_action_2 = b_thread(
+            Guard_take_conservative_action_2, deep_c=False)
+
+        list_of_models = os.listdir(models_dir_path)
+
 
         for model_name in list_of_models:
             init_statistics( model_name=model_name )
@@ -516,10 +538,13 @@ if __name__ == "__main__":
                     initial_list.clear()
                     sensor_thread = Sensor_v3()
                     actuator_thread = Actuator()
+                    # guard_take_conservative_action - v1
                     guard_take_conservative_action = Guard_take_conservative_action(odnnEventSelectionStrategy, override_enabled)
+
+                    # guard_take_conservative_action - v2
+                    # guard_take_conservative_action = Guard_take_conservative_action_2(override_enabled)
                     odnn_thread = ODNN_with_proxy()
-                    initial_list = [actuator_thread, odnn_thread,
-                                    guard_take_conservative_action]
+                    initial_list = [actuator_thread, odnn_thread, guard_take_conservative_action]
                     sensors_list = [sensor_thread]
                     model_path = models_dir_path + "/" + model_name
                     if os.path.isfile(model_path):
@@ -532,7 +557,6 @@ if __name__ == "__main__":
                                              listener=PrintBProgramRunnerListener(), environment=env, events_queue=events_q)
                         b_program.run()
                         log_statistics()
-
 
 
             summarize_stats(model_name=model_name)
