@@ -39,6 +39,7 @@ num_of_steps_with_override = 0
 num_of_overrides = 0
 num_of_collisions = 0
 num_of_collisions_with_override = 0
+num_of_draws = 0
 
 # Dictionary from model name to statistics
 stats_per_model = {}
@@ -214,6 +215,7 @@ def reverse_output_event_direction(output_event):
 
 def Guard_take_conservative_action(odnnEventSelectionStrategy, override_enabled=True):
     global num_of_overrides
+    global num_of_draws
     all_output_events = [BEvent("output_event_proxy", {'action': 0}),
                          BEvent("output_event_proxy", {'action': 1}),
                          BEvent("output_event_proxy", {'action': 2})]
@@ -225,10 +227,11 @@ def Guard_take_conservative_action(odnnEventSelectionStrategy, override_enabled=
         outputEventProxy = yield {waitFor: all_output_events}
         if override_enabled:
             if outputEventProxy.get_output_event_score() < 0.2:
-                all_possible_output_events = odnnEventSelectionStrategy.get_current_possible_output_events_and_scores()
-                next_output_event = odnnEventSelectionStrategy.get_next_output_event(outputEventProxy)
+                # all_possible_output_events = odnnEventSelectionStrategy.get_current_possible_output_events_and_scores()
+                next_output_event, t_num_of_draws = odnnEventSelectionStrategy.get_next_output_event(outputEventProxy)
                 # print( f"The overriden event: {next_output_event}" )
                 num_of_overrides = num_of_overrides + 1
+                num_of_draws = num_of_draws + t_num_of_draws
                 t_action = next_output_event.data['action']
             else:
                 t_action = outputEventProxy.data['action']
@@ -389,6 +392,7 @@ def write_statistics(file_writer, model_name):
     row_as_array.append(stats_per_model[model_name]["num_of_solved_with_override"])
     row_as_array.append(stats_per_model[model_name]["num_of_steps_with_override"])
     row_as_array.append(stats_per_model[model_name]["num_of_overrides"])
+    row_as_array.append(stats_per_model[model_name]["num_of_draws"])
     row_as_array.append(stats_per_model[model_name]["num_of_collisions"])
     row_as_array.append(stats_per_model[model_name]["num_of_collisions_with_override"])
     row_as_array.append(stats_per_model[model_name]["unknown_termination"])
@@ -423,6 +427,7 @@ def init_statistics( model_name ):
     global num_of_overrides
     global num_of_collisions
     global num_of_collisions_with_override
+    global num_of_draws
     global stats_per_model
     status = ""
     global_model_name = model_name
@@ -432,21 +437,24 @@ def init_statistics( model_name ):
     num_of_overrides = 0
     num_of_collisions = 0
     num_of_collisions_with_override = 0
+    num_of_draws = 0
     stats_per_model[model_name] = {
         "num_of_experiments": num_of_experiments}
+    stats_per_model[model_name]["num_of_overrides"] = 0
+    stats_per_model[model_name]["num_of_draws"] = 0
     stats_per_model[model_name]["time_out"] = 0
     stats_per_model[model_name]["time_out_with_override"] = 0
     stats_per_model[model_name]["num_of_solved"] = 0
-    stats_per_model[model_name]["num_of_steps"] = 0
     stats_per_model[model_name]["num_of_solved_with_override"] = 0
+    stats_per_model[model_name]["num_of_steps"] = 0
     stats_per_model[model_name]["num_of_steps_with_override"] = 0
-    stats_per_model[model_name]["num_of_overrides"] = 0
     stats_per_model[model_name]["num_of_collisions"] = 0
     stats_per_model[model_name]["num_of_collisions_with_override"] = 0
     stats_per_model[model_name]["unknown_termination"] = 0
     stats_per_model[model_name]["unknown_termination_with_override"] = 0
     stats_per_model[model_name]["avg_num_steps_to_solve"] = 0
     stats_per_model[model_name]["avg_num_steps_to_solve_with_override"] = 0
+
 
 def log_statistics():
     if status == "time_out":
@@ -463,6 +471,8 @@ def log_statistics():
             update_dictionary(global_model_name, "num_of_steps_with_override", num_of_steps)
             update_dictionary(global_model_name, "num_of_overrides",
                               num_of_overrides)
+            update_dictionary(global_model_name, "num_of_draws",
+                              num_of_draws)
     elif status == "collision":
         if not global_override_enabled:
             update_dictionary(global_model_name, "num_of_collisions")
@@ -495,25 +505,25 @@ if __name__ == "__main__":
         # models_dir_path = "models/models_rule_5"
         # models_dir_path = "models/local_models"
         # models_dir_path = "models/models_total_batch_1/RUL_s18_r1False_r2False_r5False_cl1_20220603_192745/models"
-        # models_dir_path = "models/gradual_models_no_rules"
-        models_dir_path = "models/test_models"
+        models_dir_path = "models/gradual_models_no_rules"
+        # models_dir_path = "models/test_models"
 
         csv_file = open_csv_file(models_dir_path)
         file_writer = csv.writer(csv_file)
         headers = ["model", "num_of_experiments", "time_out",
                    "time_out_with_override", "num_of_solved",
                    "num_of_steps", "num_of_solved_with_override",
-                   "num_of_steps_with_override", "num_of_overrides",
+                   "num_of_steps_with_override", "num_of_overrides","num_of_draws",
                    "num_of_collisions", "num_of_collisions_with_override",
                    "unknown_termination", "unknown_termination_with_override",
                    "avg_num_steps_to_solve", "avg_num_steps_to_solve_with_override"]
         file_writer.writerow(headers)
 
         override_enabled_conf = [False, True]
-        #env = RoboticNavigation(step_limit=upper_step_limit, editor_run=False,
-        #                        random_seed=0)
-        env = RoboticNavigation(step_limit=upper_step_limit, editor_run=True,
+        env = RoboticNavigation(step_limit=upper_step_limit, editor_run=False,
                                 random_seed=0)
+        #env = RoboticNavigation(step_limit=upper_step_limit, editor_run=True,
+        #                        random_seed=0)
         events_q = []
         initial_list = []
         odnnEventSelectionStrategy = OdnnEventSelectionStrategy()
@@ -539,10 +549,10 @@ if __name__ == "__main__":
                     sensor_thread = Sensor_v3()
                     actuator_thread = Actuator()
                     # guard_take_conservative_action - v1
-                    guard_take_conservative_action = Guard_take_conservative_action(odnnEventSelectionStrategy, override_enabled)
+                    # guard_take_conservative_action = Guard_take_conservative_action(odnnEventSelectionStrategy, override_enabled)
 
                     # guard_take_conservative_action - v2
-                    # guard_take_conservative_action = Guard_take_conservative_action_2(override_enabled)
+                    guard_take_conservative_action = Guard_take_conservative_action_2(override_enabled)
                     odnn_thread = ODNN_with_proxy()
                     initial_list = [actuator_thread, odnn_thread, guard_take_conservative_action]
                     sensors_list = [sensor_thread]
