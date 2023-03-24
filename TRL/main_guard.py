@@ -95,6 +95,15 @@ def get_direction_from_event(BEvent):
     else:
         return "Direction unknown"
 
+'''
+In this method you add events to achive all events besides input/output
+The vector is used in the ODNN to block these events, as described in the paper
+'''
+def get_all_events_except_input_output_events():
+    all_events_except_input_output_events = []
+    all_events_except_input_output_events.append(BEvent("env_action"))
+    return all_events_except_input_output_events
+
 def main( env, policy_network, iterations=30 ):
     for ep in range(iterations):
         state = env.reset()
@@ -146,11 +155,12 @@ def ODNN_no_proxy():
 
 @b_thread
 def ODNN_with_proxy():
+    blocked_events = get_all_events_except_input_output_events()
     while True:
         lastEv = yield {waitFor: BEvent("input_event")}
         state = lastEv.data['state']
         all_possible_output_events = get_all_possible_output_events(state, policy_network,proxy=True)
-        lastEv = yield {request: all_possible_output_events}
+        lastEv = yield {request: all_possible_output_events, block: blocked_events}
 
 def Sensor_v3(event_stack):
     while True:
@@ -158,7 +168,6 @@ def Sensor_v3(event_stack):
             input_event = event_stack.pop()
             data = {"state": input_event}
             lastEv = yield {request: BEvent("input_event", data)}
-            # print(f"Sensor requested: {lastEv}")
         else:
             yield {not_synced: 'Not_synced'}
 
@@ -333,7 +342,7 @@ def Guard_as_channel_for_proxy():
         lastEv = yield {request: requested_events}
         requested_events.clear()
 
-# Raz comment
+
 @b_thread
 def Guard_colliade_into_obstacle():
     waitforEvList = [BEvent("output_event",{'action':0}),
@@ -520,7 +529,7 @@ if __name__ == "__main__":
         file_writer.writerow(headers)
 
         override_enabled_conf = [False, True]
-        env = RoboticNavigation(step_limit=upper_step_limit, editor_run=False,
+        env = RoboticNavigation(step_limit=upper_step_limit, editor_run=True,
                                 random_seed=0)
         events_q = []
         initial_list = []

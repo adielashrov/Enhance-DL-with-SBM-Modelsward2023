@@ -69,6 +69,7 @@ class OdnnEventSelectionStrategy(EventSelectionStrategy):
 
     # TODO: handle case when there are no more events - all events are blocked
     # TODO: Solution is not efficient - we sort every time
+    # TODO: documentation
     def select_next_event(self, selectable_events, statements):
         t_selected_event = None
         t_selectable_events = []
@@ -111,6 +112,7 @@ class OdnnEventSelectionStrategy(EventSelectionStrategy):
         events_copy = copy.deepcopy(self.current_possible_output_events)
         return events_copy
 
+    # TODO: do we use this function with the second version of the guard rule?
     def get_next_output_event(self, override_event):
         t_selected_event = None
         t_num_of_draws = 0
