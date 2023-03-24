@@ -20,7 +20,7 @@ np.random.seed(0)
 # Global variables
 PROXY_PATTERN = True
 upper_step_limit = 1500
-iterations=30
+iterations = 30
 FWD_DIR = 0.5
 FWD_DIR_TOLERANCE = 0.1
 MINIMAL_CLEARANCE = 0.30
@@ -505,8 +505,8 @@ if __name__ == "__main__":
         # models_dir_path = "models/models_rule_5"
         # models_dir_path = "models/local_models"
         # models_dir_path = "models/models_total_batch_1/RUL_s18_r1False_r2False_r5False_cl1_20220603_192745/models"
-        models_dir_path = "models/gradual_models_no_rules"
-        # models_dir_path = "models/test_models"
+        # models_dir_path = "models/gradual_models_no_rules"
+        models_dir_path = "models/test_models"
 
         csv_file = open_csv_file(models_dir_path)
         file_writer = csv.writer(csv_file)
@@ -522,8 +522,6 @@ if __name__ == "__main__":
         override_enabled_conf = [False, True]
         env = RoboticNavigation(step_limit=upper_step_limit, editor_run=False,
                                 random_seed=0)
-        #env = RoboticNavigation(step_limit=upper_step_limit, editor_run=True,
-        #                        random_seed=0)
         events_q = []
         initial_list = []
         odnnEventSelectionStrategy = OdnnEventSelectionStrategy()
@@ -536,7 +534,6 @@ if __name__ == "__main__":
 
         list_of_models = os.listdir(models_dir_path)
 
-
         for model_name in list_of_models:
             init_statistics( model_name=model_name )
 
@@ -548,10 +545,6 @@ if __name__ == "__main__":
                     initial_list.clear()
                     sensor_thread = Sensor_v3()
                     actuator_thread = Actuator()
-                    # guard_take_conservative_action - v1
-                    # guard_take_conservative_action = Guard_take_conservative_action(odnnEventSelectionStrategy, override_enabled)
-
-                    # guard_take_conservative_action - v2
                     guard_take_conservative_action = Guard_take_conservative_action_2(override_enabled)
                     odnn_thread = ODNN_with_proxy()
                     initial_list = [actuator_thread, odnn_thread, guard_take_conservative_action]

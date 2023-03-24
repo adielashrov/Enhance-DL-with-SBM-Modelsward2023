@@ -73,7 +73,7 @@ class OdnnEventSelectionStrategy(EventSelectionStrategy):
         t_selected_event = None
         t_selectable_events = []
         t_possible_output_events = []
-        t_num_of_trials = 0
+        t_num_of_draws = 0
         for possible_event in selectable_events:
             if(possible_event.is_output_event()):
                 t_possible_output_events.append(possible_event)
@@ -96,7 +96,7 @@ class OdnnEventSelectionStrategy(EventSelectionStrategy):
             if (self.selected_event_is_blocked(t_selected_event, statements)):
                 # print(f"Selected event is blocked:{t_selected_event}")
                 t_selected_event = None
-                t_num_of_trials = t_num_of_trials + 1
+                t_num_of_draws = t_num_of_draws + 1
         return t_selected_event
 
     def verify_there_are_output_events_to_select(self, override_event):
@@ -113,19 +113,19 @@ class OdnnEventSelectionStrategy(EventSelectionStrategy):
 
     def get_next_output_event(self, override_event):
         t_selected_event = None
-        t_num_of_trials = 0
+        t_num_of_draws = 0
         if (self.verify_there_are_output_events_to_select(override_event)):
             while(not t_selected_event):
                 t_selected_event = np.random.choice(self.current_possible_output_events,
                                                 p=self.current_possible_output_events_scores)
                 if (t_selected_event == override_event):
                     t_selected_event = None
-                    t_num_of_trials = t_num_of_trials + 1
+                    t_num_of_draws = t_num_of_draws + 1
                 elif(t_selected_event.get_output_event_score() <= override_event.get_output_event_score()):
                     t_selected_event = None
-                    t_num_of_trials = t_num_of_trials + 1
+                    t_num_of_draws = t_num_of_draws + 1
 
-        return t_selected_event
+        return t_selected_event,t_num_of_draws
 
     def select(self, statements):
         selectable_events = self.selectable_events(statements)
