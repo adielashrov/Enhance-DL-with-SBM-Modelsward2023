@@ -34,23 +34,18 @@ class OdnnEventSelectionStrategy(EventSelectionStrategy):
                     possible_events.add(statement['request'])
                 else:
                     raise TypeError("request parameter should be BEvent or iterable")
-        # for statement in statements:
-        #     if 'block' in statement:
-        #        if isinstance(statement.get('block'), BEvent):
-        #            possible_events.discard(statement.get('block'))
-        #        else:
-        #            possible_events = {x for x in possible_events if x not in statement.get('block')}
         return possible_events
 
-    def selected_event_is_blocked(self, selected_event, statements):
+    def event_is_blocked(self, event, statements):
         for statement in statements:
             if 'block' in statement:
                 if isinstance(statement.get('block'), BEvent):
-                    if (selected_event == statement.get('block')):
+                    if event == statement.get('block'):
                         return True
                 else:
-                    selected_event_is_blocked =  selected_event in statement.get('block')
-                    return selected_event_is_blocked
+                    if event in statement.get('block'):
+                        return True
+
         return False
 
     def keep_output_event_with_max_score(self, selectable_events):
@@ -67,43 +62,77 @@ class OdnnEventSelectionStrategy(EventSelectionStrategy):
             t_selectable_events.append(max_score_output_event)
         return t_selectable_events
 
-    # TODO: handle case when there are no more events - all events are blocked
-    # TODO: Solution is not efficient - we sort every time
-    # TODO: documentation
+    def exists_enabled_event(self, t_possible_events, statements):
+        if not t_possible_events:
+            return False
+        for event in t_possible_events:
+            if not self.event_is_blocked(event, statements):
+                return True
+        return False
+
+    def split_events_to_output_and_regular(self, selectable_events,
+                                           t_possible_output_events,
+                                           t_selectable_events):
+        for possible_event in selectable_events:
+            if possible_event.is_output_event():
+                t_possible_output_events.append(possible_event)
+            else:
+                t_selectable_events.append(possible_event)
+
+    '''
+    This method selects the next event to be triggered.
+    The selected event has to be enabled (Requested and not blocked).
+    The first priority is to select an output event
+    The selection needs to happen with respect to the induced probability
+    If there are no enabled output events, try to select a regular event
+    If there are no enabled output and regular events, we are in a deadlock
+    Alg.
+    1. First, check if there are enabled output events.
+        1.1. Select an output event from P_at
+    2. Otherwise, check if there are enabled regular events
+        2.1. Select a regular event
+    3. If the selected event is blocked.
+        3.1 Return to 1.
+    4. Otherwise, return the selected event 
+    '''
     def select_next_event(self, selectable_events, statements):
         t_selected_event = None
         t_selectable_events = []
         t_possible_output_events = []
         t_num_of_draws = 0
-        for possible_event in selectable_events:
-            if(possible_event.is_output_event()):
-                t_possible_output_events.append(possible_event)
-            else:
-                t_selectable_events.append(possible_event)
-        while (not t_selected_event):
-            if(t_possible_output_events):
+        self.split_events_to_output_and_regular(selectable_events,
+                                                t_possible_output_events,
+                                                t_selectable_events)
+        while not t_selected_event:
+            if self.exists_enabled_event(t_possible_output_events, statements):
                 t_possible_output_events.sort(
                     key=lambda output_event: output_event.get_output_event_score())
                 t_possible_output_events_scores = [
                     output_event.get_output_event_score() for output_event in
                     t_possible_output_events]
-                t_possible_output_events_scores /= np.array(t_possible_output_events_scores).sum() # override on known bug regarding precision
+                # override on known bug regarding precision
+                t_possible_output_events_scores /= np.array(t_possible_output_events_scores).sum()
                 # save output events and scores for re-draw if required.
                 self.current_possible_output_events = t_possible_output_events
                 self.current_possible_output_events_scores = t_possible_output_events_scores
                 t_selected_event = np.random.choice(t_possible_output_events, p=t_possible_output_events_scores)
-            else:
+            elif self.exists_enabled_event(t_selectable_events, statements):
                 t_selected_event = np.random.choice(t_selectable_events)
-            if (self.selected_event_is_blocked(t_selected_event, statements)):
-                # print(f"Selected event is blocked:{t_selected_event}")
+            else:
+                print("Deadlock - no enabled events in select_next_event")
+                return None
+
+            if self.event_is_blocked(t_selected_event, statements):
                 t_selected_event = None
                 t_num_of_draws = t_num_of_draws + 1
+
         return t_selected_event
 
     def verify_there_are_output_events_to_select(self, override_event):
         if(len(self.current_possible_output_events) == 0):
             return False
-        elif(len(self.current_possible_output_events) == 1 and self.current_possible_output_events.__contains__(override_event)):
+        elif(len(self.current_possible_output_events) == 1 and \
+             self.current_possible_output_events.__contains__(override_event)):
             return False
         else:
             return True
@@ -113,6 +142,7 @@ class OdnnEventSelectionStrategy(EventSelectionStrategy):
         return events_copy
 
     # TODO: do we use this function with the second version of the guard rule?
+    '''
     def get_next_output_event(self, override_event):
         t_selected_event = None
         t_num_of_draws = 0
@@ -128,13 +158,12 @@ class OdnnEventSelectionStrategy(EventSelectionStrategy):
                     t_num_of_draws = t_num_of_draws + 1
 
         return t_selected_event,t_num_of_draws
+    '''
 
     def select(self, statements):
         selectable_events = self.selectable_events(statements)
         if selectable_events:
             selected_event = self.select_next_event(selectable_events, statements)
-            # return random.choice(tuple(selectable_events))
-            # selected_event = np.random.choice(self.keep_output_event_with_max_score(selectable_events))
             return selected_event
         else:
             return None
