@@ -222,6 +222,7 @@ def reverse_output_event_direction(output_event):
     else:
         print("Tried to reverse direction for Forward event")
 
+'''
 def Guard_take_conservative_action(odnnEventSelectionStrategy, override_enabled=True):
     global num_of_overrides
     global num_of_draws
@@ -252,9 +253,9 @@ def Guard_take_conservative_action(odnnEventSelectionStrategy, override_enabled=
         lastEv = yield {request: requested_events}
         # print(f"after request in Guard_take_conservative_action: {lastEv}")
         requested_events.clear()
+'''
 
-
-def Guard_take_conservative_action_2(override_enabled=True):
+def Guard_take_conservative_action(override_enabled=True):
     global num_of_overrides
     all_output_events = [BEvent("output_event_proxy", {'action': 0}),
                          BEvent("output_event_proxy", {'action': 1}),
@@ -327,6 +328,7 @@ def Guard_colliade_into_obstacle_blocking():
         lastEv = yield {waitFor: all_output_events, block: blocked_events} # pattern here is similar to EnsureJobExits
         blocked_events.clear()
 
+
 @b_thread
 def Guard_as_channel_for_proxy():
     waitforEvList = [BEvent("output_event_proxy", {'action': 0}),
@@ -368,6 +370,16 @@ def Guard_colliade_into_obstacle():
             requested_events.append(BEvent("env_action", {'action': t_action}))
         lastEv = yield {request: requested_events}
         requested_events.clear()
+
+@b_thread
+def Guard_block_left_right_action():
+    blocked_events = [ BEvent("output_event_proxy", {'action': 1}),
+                       BEvent("output_event_proxy", {'action': 2})]
+    while True:
+        yield {waitFor: BEvent("input_event")}
+        output_event = yield {waitFor:  BEvent("output_event_proxy", {'action': 0}),
+                              block: blocked_events}
+        print(f"Guard_block_left_right_action (1,2) - Triggered action:{output_event.data['action']}")
 
 
 #TODO: Reduce to one variable only.
@@ -416,10 +428,12 @@ def extract_success_rate(model_name):
     success_rate = model_name[success_rate_index+5: success_rate_index+7]
     return success_rate
 
+
 def init_override_enabled_conf(range_size):
     override_enabled_conf = [False for i in range(10)]
     override_enabled_conf.extend([True for i in range(range_size)])
     return override_enabled_conf
+
 
 def update_dictionary( model_name, field_name, inc_value=1 ):
     if (stats_per_model[model_name].get(field_name) is None):
@@ -493,6 +507,7 @@ def log_statistics():
         else:
             update_dictionary(global_model_name, "unknown_termination_with_override")
 
+
 def summarize_stats( model_name ):
     avg_num_steps_to_solve = 0
     avg_num_steps_to_solve_with_override = 0
@@ -538,9 +553,6 @@ if __name__ == "__main__":
         # Initialize generator
         Guard_take_conservative_action = b_thread(Guard_take_conservative_action, deep_c=False)
 
-        Guard_take_conservative_action_2 = b_thread(
-            Guard_take_conservative_action_2, deep_c=False)
-
         list_of_models = os.listdir(models_dir_path)
 
         for model_name in list_of_models:
@@ -554,9 +566,11 @@ if __name__ == "__main__":
                     initial_list.clear()
                     sensor_thread = Sensor_v3()
                     actuator_thread = Actuator()
-                    guard_take_conservative_action = Guard_take_conservative_action_2(override_enabled)
+                    guard_take_conservative_action = Guard_take_conservative_action(override_enabled)
                     odnn_thread = ODNN_with_proxy()
-                    initial_list = [actuator_thread, odnn_thread, guard_take_conservative_action]
+                    block_left_right_action = Guard_block_left_right_action()
+                    initial_list = [actuator_thread, odnn_thread,
+                                    guard_take_conservative_action]
                     sensors_list = [sensor_thread]
                     model_path = models_dir_path + "/" + model_name
                     if os.path.isfile(model_path):
