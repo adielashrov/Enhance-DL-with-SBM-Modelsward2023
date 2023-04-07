@@ -35,8 +35,7 @@ class BEvent:
         return self.name
 
     def is_output_event(self):
-        return self.__name()=='output_event_proxy'
-        # return self.__name()=='output_event'
+        return self.__name()=='output_event'
 
     def get_output_event_score(self):
         if(self.is_output_event()):
