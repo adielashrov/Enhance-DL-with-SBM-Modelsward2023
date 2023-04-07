@@ -60,8 +60,10 @@ Prerequisite: You should have both the Python project opened in pycharm, and the
 ### Meaningful parameters:
 
 `models_dir_path`: the directory containing the trained TRL agents.
-`test_models`: The default option which is a subset of the trained models.
-`gradual_models` - The full simulation as seen in the paper.
+
+*test_models*: The default option which is a subset of the trained models.
+
+*gradual_models* - The full simulation as seen in the paper.
 
 `override_enabled`: A parameter that controls whether the override rule will be enabled in the next set of experiments.
 
