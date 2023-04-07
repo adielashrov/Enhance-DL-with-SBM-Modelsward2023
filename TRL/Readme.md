@@ -51,8 +51,20 @@ Prerequisite: You should have both the Python project opened in pycharm, and the
 
 2.  Run the python file, you should see the following line printed in the console:
 
-[INFO] Listening on port 5004. Start training by pressing the Play button in the Unity Editor. 
+`[INFO] Listening on port 5004. Start training by pressing the Play button in the Unity Editor.`
 
 3. Go to the "Unity Editor -> Game" and click "play".
 
-4. This will run the simulation seen in "**Enhancing Deep Learning with Scenario-Based Override Rules: A Case Study**"
+4. This will run a subset of the simulation seen in "**Enhancing Deep Learning with Scenario-Based Override Rules: A Case Study**"
+
+### Meaningful parameters:
+
+`models_dir_path`: the directory containing the trained TRL agents.
+`test_models`: The default option which is a subset of the trained models.
+`gradual_models` - The full simulation as seen in the paper.
+
+`override_enabled`: A parameter that controls whether the override rule will be enabled in the next set of experiments.
+
+`num_of_experiments`: The number of times a loaded agent attempts to solve the maze.
+
+`editor_run`: This parameter controls if the TRL simulation will run with/without UNITY gui
