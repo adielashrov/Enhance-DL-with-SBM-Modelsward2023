@@ -70,3 +70,5 @@ Prerequisite: You should have both the Python project opened in pycharm, and the
 `num_of_experiments`: The number of times a loaded agent attempts to solve the maze.
 
 `editor_run`: This parameter controls if the TRL simulation will run with/without UNITY gui
+
+Good luck!
