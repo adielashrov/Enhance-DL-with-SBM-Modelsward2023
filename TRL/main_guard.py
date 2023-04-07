@@ -15,7 +15,6 @@ from datetime import datetime
 np.random.seed(0)
 
 # Global variables
-PROXY_PATTERN = True
 upper_step_limit = 1500
 iterations = 30
 FWD_DIR = 0.5
@@ -27,7 +26,7 @@ env = None
 policy_network = None
 
 # Statistics global variables.
-num_of_experiments = 10
+num_of_experiments = 100
 status = ""
 global_model_name = ""
 global_override_enabled = False
@@ -48,7 +47,6 @@ a probability distribution over the set of possible
 actions.
 It then returns a vector with output events encapsulating this data.
 '''
-# Done - 2
 def get_all_possible_output_events(state, policy):
     output_events = []
     softmax_out = policy(state.reshape((1, -1)))
@@ -59,7 +57,6 @@ def get_all_possible_output_events(state, policy):
     return output_events
 
 
-# Done
 def get_direction_from_event(BEvent):
     action = BEvent.data['action']
     if action == 0:
@@ -72,7 +69,6 @@ def get_direction_from_event(BEvent):
         return "Direction unknown"
 
 
-# Done
 '''
 In this method you add events to achieve all events besides input/output
 The vector is used in the ODNN to block these events, as described in the paper
@@ -83,7 +79,6 @@ def get_all_events_except_input_output_events():
     return all_events_except_input_output_events
 
 
-# Done - 2
 @b_thread
 def Actuator():
     global num_of_steps
@@ -116,7 +111,6 @@ def Actuator():
             break
 
 
-# Done - 2
 @b_thread
 def ODNN_with_proxy():
     blocked_events = get_all_events_except_input_output_events()
@@ -129,7 +123,6 @@ def ODNN_with_proxy():
                         block: blocked_events}
 
 
-# Done - 2
 def Sensor(event_stack):
     while True:
         if len(event_stack) > 0:
@@ -140,14 +133,12 @@ def Sensor(event_stack):
             yield {not_synced: 'Not_synced'}
 
 
-# Done - 2
 def request_output_event_proxy(output_event, requested_events):
     t_action = output_event.data['action']
     requested_events.append(
         BEvent("output_event_proxy", {'action': t_action}))
 
 
-# Done - 2
 def Guard_avoid_turning_when_clear(override_enabled=False):
     global num_of_overrides
     requested_events = []
@@ -177,7 +168,6 @@ def Guard_avoid_turning_when_clear(override_enabled=False):
         requested_events.clear()
 
 
-# Done - 2
 def is_obstacle_ahead(state):
     ans = False
     distance_from_obstacle = 0.22  # lower bound - 0.185 - not enough - 0.3 too large
@@ -189,7 +179,6 @@ def is_obstacle_ahead(state):
     return ans
 
 
-# Done - 2
 def reverse_output_event_direction(output_event):
     if (get_direction_from_event(output_event) == "Left"):
         return BEvent("output_event", {'action': 2})
@@ -199,7 +188,6 @@ def reverse_output_event_direction(output_event):
         print("Tried to reverse direction for Forward event")
 
 
-# Done
 def Guard_take_conservative_action(override_enabled=True):
     global num_of_overrides
     all_output_events = [BEvent("output_event", {'action': 0}),
@@ -218,7 +206,6 @@ def Guard_take_conservative_action(override_enabled=True):
             request: BEvent("output_event_proxy", {'action': t_action})}
 
 
-# Done
 def Guard_colliade_into_obstacle_blocking_with_proxy(
         odnnEventSelectionStrategy, override_enabled=True):
     global num_of_overrides
@@ -290,11 +277,9 @@ def Guard_colliade_into_obstacle():
         requested_events.clear()
 
 
-
 '''
 An example scenario for forcing the TurtleBot to move only forward.
 '''
-# Done - 2
 @b_thread
 def Guard_block_left_right_action():
     blocked_events = [BEvent("output_event", {'action': 1}),
@@ -309,12 +294,11 @@ def Guard_block_left_right_action():
             f"Triggered action:{output_event.data['action']}")
 
 
-# Done
 def load_policy(model_path=""):
     policy_network = tf.keras.models.load_model(model_path)
     return policy_network
 
-# Done
+
 def open_csv_file(models_folder):
     # datetime object containing current date and time
     now = datetime.now()
@@ -323,7 +307,7 @@ def open_csv_file(models_folder):
     file = open(file_name, 'w', newline='')
     return file
 
-# Done
+
 def write_statistics(file_writer, model_name):
     row_as_array = []
     row_as_array.append(model_name)
@@ -350,26 +334,26 @@ def write_statistics(file_writer, model_name):
 
     file_writer.writerow(row_as_array)
 
-# Done
+
 def extract_success_rate(model_name):
     success_rate_index = model_name.index('srate')
     success_rate = model_name[success_rate_index + 5: success_rate_index + 7]
     return success_rate
 
-# Done
+
 def init_override_enabled_conf(range_size):
     override_enabled_conf = [False for i in range(10)]
     override_enabled_conf.extend([True for i in range(range_size)])
     return override_enabled_conf
 
-# Done
+
 def update_dictionary(model_name, field_name, inc_value=1):
     if (stats_per_model[model_name].get(field_name) is None):
         stats_per_model[model_name][field_name] = 0
     stats_per_model[model_name][field_name] = \
         stats_per_model[model_name][field_name] + inc_value
 
-# Done
+
 def init_statistics(model_name):
     global num_of_steps
     global status
@@ -407,7 +391,7 @@ def init_statistics(model_name):
     stats_per_model[model_name]["avg_num_steps_to_solve"] = 0
     stats_per_model[model_name]["avg_num_steps_to_solve_with_override"] = 0
 
-# Done
+
 def log_statistics():
     if status == "time_out":
         if not global_override_enabled:
@@ -439,7 +423,7 @@ def log_statistics():
             update_dictionary(global_model_name,
                               "unknown_termination_with_override")
 
-# Done
+
 def summarize_stats(model_name):
     avg_num_steps_to_solve = 0
     avg_num_steps_to_solve_with_override = 0
@@ -463,7 +447,7 @@ def summarize_stats(model_name):
                                                               model_name].get(
                 "num_of_solved_with_override")
 
-# Done
+
 def init_csv_file():
     csv_file = open_csv_file(models_dir_path)
     file_writer = csv.writer(csv_file)
