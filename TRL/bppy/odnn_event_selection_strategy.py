@@ -141,8 +141,7 @@ class OdnnEventSelectionStrategy(EventSelectionStrategy):
         events_copy = copy.deepcopy(self.current_possible_output_events)
         return events_copy
 
-    # TODO: do we use this function with the second version of the guard rule?
-    '''
+
     def get_next_output_event(self, override_event):
         t_selected_event = None
         t_num_of_draws = 0
@@ -158,7 +157,6 @@ class OdnnEventSelectionStrategy(EventSelectionStrategy):
                     t_num_of_draws = t_num_of_draws + 1
 
         return t_selected_event,t_num_of_draws
-    '''
 
     def select(self, statements):
         selectable_events = self.selectable_events(statements)

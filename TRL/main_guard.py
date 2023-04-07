@@ -48,15 +48,14 @@ a probability distribution over the set of possible
 actions.
 It then returns a vector with output events encapsulating this data.
 '''
-# Done
-def get_all_possible_output_events(state, policy, proxy=False):
+# Done - 2
+def get_all_possible_output_events(state, policy):
     output_events = []
     softmax_out = policy(state.reshape((1, -1)))
     all_possible_scores = softmax_out.numpy()[0]
-    output_event_type = "output_event_proxy" if proxy else "output_event"
     for index, score in enumerate(all_possible_scores):
         data = {"action": index, "score": all_possible_scores[index]}
-        output_events.append(BEvent(output_event_type, data))
+        output_events.append(BEvent("output_event", data))
     return output_events
 
 
@@ -84,7 +83,7 @@ def get_all_events_except_input_output_events():
     return all_events_except_input_output_events
 
 
-# Done
+# Done - 2
 @b_thread
 def Actuator():
     global num_of_steps
@@ -92,9 +91,9 @@ def Actuator():
     num_of_steps = 0
     status = ""
     # Actions - 0 - forward, 1 - right, 2 - left
-    all_output_events = [BEvent("output_event", {'action': 0}),
-                         BEvent("output_event", {'action': 1}),
-                         BEvent("output_event", {'action': 2})]
+    all_output_events = [BEvent("output_event_proxy", {'action': 0}),
+                         BEvent("output_event_proxy", {'action': 1}),
+                         BEvent("output_event_proxy", {'action': 2})]
     while True:
         output_event = yield {waitFor: all_output_events}
         action = output_event.data['action']
@@ -117,7 +116,7 @@ def Actuator():
             break
 
 
-# Done
+# Done - 2
 @b_thread
 def ODNN_with_proxy():
     blocked_events = get_all_events_except_input_output_events()
@@ -125,13 +124,12 @@ def ODNN_with_proxy():
         lastEv = yield {waitFor: BEvent("input_event")}
         state = lastEv.data['state']
         all_possible_output_events = get_all_possible_output_events(state,
-                                                                    policy_network,
-                                                                    proxy=True)
+                                                                    policy_network)
         lastEv = yield {request: all_possible_output_events,
                         block: blocked_events}
 
 
-# Done
+# Done - 2
 def Sensor(event_stack):
     while True:
         if len(event_stack) > 0:
@@ -142,44 +140,44 @@ def Sensor(event_stack):
             yield {not_synced: 'Not_synced'}
 
 
-# Done
-def request_same_output_event(outputEventProxy, requested_events):
-    t_action = outputEventProxy.data['action']
+# Done - 2
+def request_output_event_proxy(output_event, requested_events):
+    t_action = output_event.data['action']
     requested_events.append(
-        BEvent("output_event", {'action': t_action}))
+        BEvent("output_event_proxy", {'action': t_action}))
 
 
-# Done
+# Done - 2
 def Guard_avoid_turning_when_clear(override_enabled=False):
     global num_of_overrides
     requested_events = []
-    waitfor_ev_list = [BEvent("output_event_proxy", {'action': 0}),
+    waitfor_ev_list = [BEvent("output_event", {'action': 0}),
                        # 0 - forward
-                       BEvent("output_event_proxy", {'action': 1}),  # 1 - left
-                       BEvent("output_event_proxy",
+                       BEvent("output_event", {'action': 1}),  # 1 - left
+                       BEvent("output_event",
                               {'action': 2})]  # 2 - right
     while True:
         input_event = yield {waitFor: BEvent("input_event")}
         state = input_event.data['state']
-        output_event_proxy = yield {waitFor: waitfor_ev_list}
+        output_event = yield {waitFor: waitfor_ev_list}
         t_dir = state[-2]
         if (override_enabled and (state[3] > MINIMAL_FWD_CLEARANCE and state[
             2] > MINIMAL_CLEARANCE and
                                   state[4] > MINIMAL_CLEARANCE) and (
                 abs(FWD_DIR - t_dir) < FWD_DIR_TOLERANCE)):
-            if (output_event_proxy.data['action'] == 1) or (
-                    output_event_proxy.data['action'] == 2):
+            if (output_event.data['action'] == 1) or (
+                    output_event.data['action'] == 2):
                 num_of_overrides = num_of_overrides + 1
-                requested_events.append(BEvent("output_event", {'action': 0}))
+                requested_events.append(BEvent("output_event_proxy", {'action': 0}))
             else:
-                request_same_output_event(output_event_proxy, requested_events)
+                request_output_event_proxy(output_event, requested_events)
         else:
-            request_same_output_event(output_event_proxy, requested_events)
+            request_output_event_proxy(output_event, requested_events)
         lastEv = yield {request: requested_events}
         requested_events.clear()
 
 
-# Done
+# Done - 2
 def is_obstacle_ahead(state):
     ans = False
     distance_from_obstacle = 0.22  # lower bound - 0.185 - not enough - 0.3 too large
@@ -191,12 +189,12 @@ def is_obstacle_ahead(state):
     return ans
 
 
-# Done
+# Done - 2
 def reverse_output_event_direction(output_event):
     if (get_direction_from_event(output_event) == "Left"):
-        return BEvent("output_event_proxy", {'action': 2})
+        return BEvent("output_event", {'action': 2})
     elif (get_direction_from_event(output_event) == "Right"):
-        return BEvent("output_event_proxy", {'action': 1})
+        return BEvent("output_event", {'action': 1})
     else:
         print("Tried to reverse direction for Forward event")
 
@@ -204,56 +202,56 @@ def reverse_output_event_direction(output_event):
 # Done
 def Guard_take_conservative_action(override_enabled=True):
     global num_of_overrides
-    all_output_events = [BEvent("output_event_proxy", {'action': 0}),
-                         BEvent("output_event_proxy", {'action': 1}),
-                         BEvent("output_event_proxy", {'action': 2})]
+    all_output_events = [BEvent("output_event", {'action': 0}),
+                         BEvent("output_event", {'action': 1}),
+                         BEvent("output_event", {'action': 2})]
     while True:
         last_input_event = yield {waitFor: BEvent("input_event")}
-        output_event_proxy = yield {waitFor: all_output_events}
+        output_event = yield {waitFor: all_output_events}
         if override_enabled:
-            while output_event_proxy.get_output_event_score() < 0.2:
+            while output_event.get_output_event_score() < 0.2:
                 yield {request: last_input_event}
-                output_event_proxy = yield {waitFor: all_output_events}
+                output_event = yield {waitFor: all_output_events}
                 num_of_overrides = num_of_overrides + 1
-        t_action = output_event_proxy.data['action']
-        last_output_event = yield {
-            request: BEvent("output_event", {'action': t_action})}
+        t_action = output_event.data['action']
+        last_output_event_proxy = yield {
+            request: BEvent("output_event_proxy", {'action': t_action})}
 
 
 # Done
 def Guard_colliade_into_obstacle_blocking_with_proxy(
         odnnEventSelectionStrategy, override_enabled=True):
     global num_of_overrides
-    all_output_events = [BEvent("output_event_proxy", {'action': 0}),
-                         BEvent("output_event_proxy", {'action': 1}),
-                         BEvent("output_event_proxy", {'action': 2})]
+    all_output_events = [BEvent("output_event", {'action': 0}),
+                         BEvent("output_event", {'action': 1}),
+                         BEvent("output_event", {'action': 2})]
     requested_events = []
     while True:
-        lastInputEvent = yield {waitFor: BEvent("input_event")}
-        state = lastInputEvent.data['state']
-        outputEventProxy = yield {waitFor: all_output_events}
+        last_input_event = yield {waitFor: BEvent("input_event")}
+        state = last_input_event.data['state']
+        output_event = yield {waitFor: all_output_events}
         if override_enabled and is_obstacle_ahead(state):
-            if outputEventProxy.data['action'] == 0:  # we are moving forward
+            if output_event.data['action'] == 0:  # we are moving forward
                 print("guard_colliade_into_obstable: overriding move_forward")
-                outputEvent = odnnEventSelectionStrategy.get_next_output_event(
-                    outputEventProxy)
-                if outputEvent.get_output_event_score() < 0.3:
+                output_event = odnnEventSelectionStrategy.get_next_output_event(
+                    output_event)
+                if output_event.get_output_event_score() < 0.3:
                     print(
-                        f"Reverse direction: {get_direction_from_event(outputEvent)}"
-                        f", {outputEvent.get_output_event_score}")
-                    outputEvent = reverse_output_event_direction(outputEvent)
+                        f"Reverse direction: {get_direction_from_event(output_event)}"
+                        f", {output_event.get_output_event_score}")
+                    output_event = reverse_output_event_direction(output_event)
 
-                requested_events.append(BEvent("output_event", {
-                    'action': outputEvent.data['action']}))
                 num_of_overrides = num_of_overrides + 1
+                requested_events.append(BEvent("output_event_proxy", {
+                    'action': output_event.data['action']}))
             else:
                 requested_events.append(
-                    BEvent("output_event",
-                           {'action': outputEventProxy.data['action']}))
+                    BEvent("output_event_proxy",
+                           {'action': output_event.data['action']}))
         else:
-            t_action = outputEventProxy.data['action']
+            t_action = output_event.data['action']
             requested_events.append(
-                BEvent("output_event", {'action': t_action}))
+                BEvent("output_event_proxy", {'action': t_action}))
 
         lastEv = yield {request: requested_events}
         requested_events.clear()
@@ -296,15 +294,15 @@ def Guard_colliade_into_obstacle():
 '''
 An example scenario for forcing the TurtleBot to move only forward.
 '''
-# Done
+# Done - 2
 @b_thread
 def Guard_block_left_right_action():
-    blocked_events = [BEvent("output_event_proxy", {'action': 1}),
-                      BEvent("output_event_proxy", {'action': 2})]
+    blocked_events = [BEvent("output_event", {'action': 1}),
+                      BEvent("output_event", {'action': 2})]
     while True:
         yield {waitFor: BEvent("input_event")}
         output_event = yield {
-            waitFor: BEvent("output_event_proxy", {'action': 0}),
+            waitFor: BEvent("output_event", {'action': 0}),
             block: blocked_events}
         print(
             f"Guard_block_left_right_action (1,2) - "
@@ -491,7 +489,7 @@ if __name__ == "__main__":
 
         override_enabled_conf = [False, True]
         # editor_run=True/False -> TRL simulation runs with/without unity gui
-        env = RoboticNavigation(step_limit=upper_step_limit, editor_run=True,
+        env = RoboticNavigation(step_limit=upper_step_limit, editor_run=False,
                                 random_seed=0)
         events_q = []
         initial_list = []
