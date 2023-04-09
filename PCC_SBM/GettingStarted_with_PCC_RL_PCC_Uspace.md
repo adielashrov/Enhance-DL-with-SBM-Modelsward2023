@@ -87,8 +87,13 @@ Note that this should be defined in each terminal window where you plan to run t
 Go to src and build the project
 ```
 cd src
+make clean
+cd src/say_good_morning
+make
+cd ..
 make
 ```
+This should build the PCC client and PCC server applications.
 
 Start the udt server side of the environment – regular:
 ```
