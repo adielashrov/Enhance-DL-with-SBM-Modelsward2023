@@ -27,13 +27,13 @@ void RestoreThroughputBThread::entryPoint()
     while(true)
     {
         Event updateSendingRate(2, id); // 2 signals updateSendingRate from the model output
-        Event yieldBandwidthEvent(5, id); // 5 signals yield bandwidth event
+        Event enterYieldEvent(5, id); // 5 signals yield bandwidth event
         Event restoreThroughputEvent(6, id); // 6 signals restore bandwidth event
         requested.clear();
         watched.clear();
         blocked.clear();
         watched.append(updateSendingRate);
-        watched.append(yieldBandwidthEvent);
+        watched.append(enterYieldEvent);
         watched.append(restoreThroughputEvent);
         // printf("RestoreThroughputBThread: bSync(none, {updateSendingRate, restoreThroughputEvent}, none)...\n");
         bSync(requested, watched, blocked, "RestoreThroughputBThread"); // Stopped here
@@ -51,7 +51,7 @@ void RestoreThroughputBThread::entryPoint()
             }
 
             Event monitorIntervalEvent(0, id);
-            Event getNextSendingRateEvent(1, id);
+            Event queryNextSendingRateEvent(1, id);
             Event updateSendingRateIdentifyThread(3, id); // 3 signals updateSendingRateReal
             Event updateSendingRateRestoreThread(4, last_event_id, NULL, next_real_update_sending_rate); // 4 signals updateSendingRateRestoreThread - last event id is critical
         
@@ -67,10 +67,10 @@ void RestoreThroughputBThread::entryPoint()
             else
             {
                 blocked.append(monitorIntervalEvent);
-                blocked.append(getNextSendingRateEvent);
+                blocked.append(queryNextSendingRateEvent);
                 blocked.append(updateSendingRateIdentifyThread);
                 requested.append(updateSendingRateRestoreThread);
-                // printf("RestoreThroughputBThread: bSync(updateSendingRateRestoreThread, none, {monitorIntervalEvent, getNextSendingRateEvent, updateSendingRateIdentifyThread})...\n");
+                // printf("RestoreThroughputBThread: bSync(updateSendingRateRestoreThread, none, {monitorIntervalEvent, queryNextSendingRateEvent, updateSendingRateIdentifyThread})...\n");
             }
         
             bSync(requested, watched, blocked, "RestoreThroughputBThread");
@@ -82,7 +82,7 @@ void RestoreThroughputBThread::entryPoint()
         }
         else if(lastEvent.type() == 5) // yield bandwidth event
         {
-            // printf("****RestoreThroughputBThread: lastEvent: yieldBandwidthEvent****\n");
+            // printf("****RestoreThroughputBThread: lastEvent: enterYieldEvent****\n");
             this->next_sending_rate_for_restore = -1.0;
             enterRestoreThroughput = false; 
         }

@@ -25,14 +25,14 @@ void InterleaveBThread::entryPoint()
     while(true)
     {
         Event monitorEvent(0, id);
-        Event getNextSendingRateEvent(1, id);
+        Event queryNextSendingRateEvent(1, id);
         while(look_back_counter < look_back_limit)
         {
             watched.clear();
             watched.append(monitorEvent);
             blocked.clear();
-            blocked.append(getNextSendingRateEvent);
-            // printf("InterleaveBthread - requesting monitorEvent; blocking getNextSendingRateEvent , id:%d \n", id);
+            blocked.append(queryNextSendingRateEvent);
+            // printf("InterleaveBthread - requesting monitorEvent; blocking queryNextSendingRateEvent , id:%d \n", id);
             bSync(requested, watched, blocked, "InterleaveBThread");
             ++look_back_counter;
             ++id;
@@ -40,10 +40,10 @@ void InterleaveBThread::entryPoint()
 
         look_back_counter = 0;
         watched.clear();
-        watched.append(getNextSendingRateEvent);
+        watched.append(queryNextSendingRateEvent);
         blocked.clear();
         blocked.append(monitorEvent);
-        // printf("InterleaveBthread - requesting getNextSendingRateEvent; blocking monitorEvent , id:%d \n", id);
+        // printf("InterleaveBthread - requesting queryNextSendingRateEvent; blocking monitorEvent , id:%d \n", id);
         bSync(requested, watched, blocked, "InterleaveBThread");
 
         ++id;

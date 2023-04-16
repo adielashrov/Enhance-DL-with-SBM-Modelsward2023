@@ -10,8 +10,8 @@
 #include <unistd.h>
 
 #include "BProgram.h"
-#include "SensorBThread.h"
-#include "SendRateBthread.h"
+#include "MonitorIntervalSensorBThread.h"
+#include "SendRateSensorBthread.h"
 #include "SendRateActuatorBThread.h"
 #include "ODNN_BThread.h"
 #include "InterleaveBthread.h"
@@ -30,7 +30,7 @@ class PccBPRateController: public PccRateController {
 		QuicBandwidth GetNextSendingRate(QuicBandwidth current_rate, QuicTime cur_time);
 		void MonitorIntervalFinished(const MonitorInterval & mi);
 		void Reset();
-		void setSensorBThread(const SensorBThread& sensorBThread);
+		void setSensorBThread(const MonitorIntervalSensorBThread& monitorIntervalSensorBThread);
 
 	private:
 		void initializeBPProgram();
@@ -38,8 +38,8 @@ class PccBPRateController: public PccRateController {
 		int _numOfGetNextSendingRate;
 		int _numOfMonitorIntervalFinished;
 		StatisticsFileHandler* statisticsFileHandler_;
-		SensorBThread* sensorBThread_;
-		SendRateBthread* sendRateBthread_;
+		MonitorIntervalSensorBThread* monitorIntervalSensorBThread_;
+		SendRateSensorBthread* sendRateSensorBthread_;
 		SendRateActuatorBThread* sendRateActuatorBThread_;
 		ODNN_BThread* odnn_BThread_;
 		InterleaveBThread* interleaveBThread_;

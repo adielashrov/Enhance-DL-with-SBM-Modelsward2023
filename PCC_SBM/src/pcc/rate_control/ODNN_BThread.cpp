@@ -103,26 +103,22 @@ void ODNN_BThread::entryPoint()
     while(true)
     {
         Event monitorIntervalEvent(0, id);
-        Event getNextSendingRateEvent(1, id);
+        Event queryNextSendingRateEvent(1, id);
         requested.clear();
         watched.clear();
         blocked.clear();
         watched.append(monitorIntervalEvent);
-        watched.append(getNextSendingRateEvent);
-        printf("ODNN: bSync(none, {monitorIntervalEvent, getNextSendingRateEvent}, none), id: %d\n", id); 
-        bSync(requested, watched, blocked, "ODNN_BThread"); // Stopeed here
+        watched.append(queryNextSendingRateEvent);
+        bSync(requested, watched, blocked, "ODNN_BThread");
         Event lastEvent = this->lastEvent();
         
         if (lastEvent.type() == 0) // monitorIntervalEvent
         {
-            // printf("ODNN: lastEvent.monitorIntervalEvent id: %d, type: %d ,utility : %.4lf\n", lastEvent.id(), lastEvent.type(), lastEvent.monitorInterval()->GetUtility());
             MonitorIntervalFinished(lastEvent.monitorInterval());
-            // printf("\nODNN_BThread after MonitorIntervalFinished \n");
         }
 
-        if (lastEvent.type() == 1) // getNextSendingRateEvent - consider seperating 2 threads
+        if (lastEvent.type() == 1) // queryNextSendingRateEvent
         {
-            // printf("ODNN: lastEvent.getNextSendingRateEvent, id: %d, type: %d \n", lastEvent.id(), lastEvent.type());
             QuicBandwidth result = GetNextSendingRate();
             int event_id = lastEvent.id();
             Event updateSendingRate(2, event_id, NULL, result);
@@ -131,14 +127,11 @@ void ODNN_BThread::entryPoint()
             watched.clear();
             blocked.clear();
             blocked.append(monitorIntervalEvent);
-            blocked.append(getNextSendingRateEvent);
-            // printf("ODNN: bSync(updateSendingRate, none, {monitorIntervalEvent, getNextSendingRateEvent}), id: %d\n", id);
+            blocked.append(queryNextSendingRateEvent);
             bSync(requested, watched, blocked, "ODNN_BThread"); 
-            // printf("ODNN: lastEvent.updateSendingRate, id: %d, sendRate: %f \n", this->lastEvent().id(), this->lastEvent().nextSendingRate());
         }
 
         ++id;
-        // usleep(1000);
     }
 
     done();
@@ -189,22 +182,10 @@ void ODNN_BThread::GiveSample(int bytes_sent,
     {
         rtt_dev = UtilityCalculator::ComputeRttDeviation(mi);
     }
-    // TOOD: What if value is 0.0, do we still continue to document it? 
-    // TODO: what about avg_rtt - do we want to write this as well?
     this->statisticsFileHandler->LogGiveSample( bytes_sent, bytes_acked, bytes_lost, send_start_time_sec, 
                                                 send_end_time_sec, recv_start_time_sec, recv_end_time_sec, 
                                                 first_ack_latency_sec, last_ack_latency_sec, packet_size, 
                                                 utility, rtt_dev);
-    /*
-    if(counter < BP_COUNTER_LIMIT) 
-    {
-        log_file_samples.precision(7);
-        log_file_samples << counter << "\t"<< 1 << "\t\t" << bytes_sent << "\t" << bytes_acked << "\t" << bytes_lost << "\t";
-        log_file_samples << std::fixed << send_start_time_sec << "\t" << send_end_time_sec << "\t" << recv_start_time_sec << "\t" << recv_end_time_sec << "\t";
-        log_file_samples << first_ack_latency_sec << "\t" << last_ack_latency_sec << "\t" << packet_size << "\t" << utility << "\n" << std::flush;
-        counter = counter + 1;
-    }
-    */
 
     static PyObject* args = PyTuple_New(11);
     
@@ -251,8 +232,8 @@ void ODNN_BThread::MonitorIntervalFinished(MonitorInterval* mi) {
     if (!has_time_offset) {
         time_offset_usec = mi->GetSendStartTime();
         has_time_offset = true;
-        // printf("ODNN_BThread - update time_offset_usec %ld\n", time_offset_usec);
     }
+
     GiveSample(
         mi->GetBytesSent(),
         mi->GetBytesAcked(),
@@ -290,16 +271,7 @@ QuicBandwidth ODNN_BThread::GetNextSendingRate() {
     }
     Py_DECREF(result);
 
-    // double sending_rate_log_div_by_10 = log10(result_double) / 10.0;
     this->statisticsFileHandler->LogSendingRate(result_double);
-    /*
-    if(counter < BP_COUNTER_LIMIT)
-    {
-        log_file_samples.precision(7);
-        log_file_samples << counter << "\t" << 2 << "\t" << std::fixed << result_double <<"\n" << std::flush;
-        ++counter;
-    }
-    */
     return result_double;
 }
 
@@ -318,14 +290,11 @@ void ODNN_BThread::testModel() {
         
         if(isMonitorEvent(vec))
         {
-            // printf("testModel - Next event is monitor interval event...\n");
             testMonitorInterval(vec);
         }
         else
         {
-            // printf("testModel - Next event is sending rate event...\n");
             QuicBandwidth result = GetNextSendingRate();
-            // printf("Counter: %d, Sending rate %f\n", counter,result);
         }
         ++counter;
     }
@@ -351,9 +320,6 @@ void ODNN_BThread::testMonitorInterval(std::vector<double> vec) {
                     send_end_time_sec, recv_start_time_sec, recv_end_time_sec,
                     first_ack_latency_sec, last_ack_latency_sec, packet_size,
                     utility);
-    }
-    else {
-        // printf("values vector should have 13 values\n");
     }
 }
 

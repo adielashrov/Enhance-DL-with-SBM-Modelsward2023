@@ -7,7 +7,7 @@
 #include "../core/options.h"
 #include <signal.h>
 #include "BProgram.h"
-#include "../pcc/rate_control/SensorBThread.h"
+#include "../pcc/rate_control/MonitorIntervalSensorBThread.h"
 // #define DATA_BATCH_SIZE 1000000
 #define DATA_BATCH_SIZE 100
 
@@ -90,9 +90,9 @@ int main(int argc, char* argv[]) {
         // start the BPProgram in the pccclient
         BProgram bProgram;
         
-        // cout << "Before create sensorBThread..." << endl; 
-        SensorBThread sensorBThread;
-        bProgram.addThread(sensorBThread);
+        // cout << "Before create monitorIntervalSensorBThread..." << endl; 
+        MonitorIntervalSensorBThread monitorIntervalSensorBThread;
+        bProgram.addThread(monitorIntervalSensorBThread);
 
         cout << "Before run engine..." << endl;
         bProgram.runEngine();

@@ -1,5 +1,5 @@
-#ifndef __sendRateBThread_h__
-#define __sendRateBThread_h__
+#ifndef __sendRateSensorBthread_h__
+#define __sendRateSensorBthread_h__
 
 #include "../monitor_interval/pcc_mi.h"
 #include "Event.h"
@@ -10,11 +10,11 @@
 #include <mutex>
 #include <vector>
 
-class SendRateBthread : public BThread
+class SendRateSensorBthread : public BThread
 {
     public:
-        SendRateBthread();
-        ~SendRateBthread();
+        SendRateSensorBthread();
+        ~SendRateSensorBthread();
         void entryPoint();
         void notifyOnGetNextSendingRate(int id);
 
@@ -25,7 +25,7 @@ class SendRateBthread : public BThread
         std::vector<int> events_ids;   
 };
 
-#endif // __sendRateBThread_h__
+#endif // __sendRateSensorBthread_h__
 
 //
 // Local Variables:

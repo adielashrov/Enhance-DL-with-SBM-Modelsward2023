@@ -32,20 +32,20 @@ void IdentifyRTTDeviationBThread::entryPoint()
 
     while(true)
     {
-        Event getNextSendingRateEvent(1, id);
-        Event yieldBandwidthEvent(5, id); // 5 signals yield bandwidth event
+        Event queryNextSendingRateEvent(1, id);
+        Event enterYieldEvent(5, id); // 5 signals yield bandwidth event
         requested.clear();
         watched.clear();
         blocked.clear();
-        watched.append(getNextSendingRateEvent);
-        watched.append(yieldBandwidthEvent);
-        // printf("IdentifyRTTDeviationBThread: bSync(none, { getNextSendingRateEvent , yieldBandwidthEvent}, none)...\n"); // Stopped here
+        watched.append(queryNextSendingRateEvent);
+        watched.append(enterYieldEvent);
+        // printf("IdentifyRTTDeviationBThread: bSync(none, { queryNextSendingRateEvent , enterYieldEvent}, none)...\n"); // Stopped here
         bSync(requested, watched, blocked, "IdentifyRTTDeviationBThread");
         Event lastEvent = this->lastEvent();
 
-        if(lastEvent.type() == 1) // last event is getNextSendingRateEvent
+        if(lastEvent.type() == 1) // last event is queryNextSendingRateEvent
         {
-            // printf("IdentifyRTTDeviationBThread: last event is getNextSendingRateEvent, id %d\n", lastEvent.id());
+            // printf("IdentifyRTTDeviationBThread: last event is queryNextSendingRateEvent, id %d\n", lastEvent.id());
             Event updateSendingRate(2, id); // // First - listen to the update from the model event 2 - Extract to method(pattern)
             requested.clear();
             watched.clear();
@@ -74,7 +74,7 @@ void IdentifyRTTDeviationBThread::entryPoint()
 
             // Second - request the actual sending rate from the actuator
             Event monitorIntervalEvent_2(0, id);
-            Event getNextSendingRateEvent_2(1, id); // TODO: perhaps block 2 as well?
+            Event queryNextSendingRateEvent_2(1, id); // TODO: perhaps block 2 as well?
             Event updateSendingRateIdentifyThread(3, last_event_id, NULL, next_real_update_sending_rate); // 3 signals updateSendingRateReal
             Event updateSendingRateRestoreThread(4, id, NULL, sending_rate); // 4 signals updateSendingRateRestoreThread
 
@@ -85,16 +85,16 @@ void IdentifyRTTDeviationBThread::entryPoint()
             requested.append(updateSendingRateIdentifyThread);
             watched.append(updateSendingRateRestoreThread);
             blocked.append(monitorIntervalEvent_2);
-            blocked.append(getNextSendingRateEvent_2);
+            blocked.append(queryNextSendingRateEvent_2);
 
-            // printf("IdentifyRTTDeviationBThread: bSync(updateSendingRateIdentifyThread, updateSendingRateRestoreThread, {monitorIntervalEvent, getNextSendingRateEvent}), nextSendingRate: (%f)\n", updateSendingRateIdentifyThread.nextSendingRate());
+            // printf("IdentifyRTTDeviationBThread: bSync(updateSendingRateIdentifyThread, updateSendingRateRestoreThread, {monitorIntervalEvent, queryNextSendingRateEvent}), nextSendingRate: (%f)\n", updateSendingRateIdentifyThread.nextSendingRate());
             bSync(requested, watched, blocked, "IdentifyRTTDeviationBThread");
             Event lastEvent_3 = this->lastEvent();
             // printf("IdentifyRTTDeviationBThread: lastEvent.updateSendingRate(Identify/Restore), iteration: (%d), id: %d, type: %d, sending_rate: %f\n", id, lastEvent_3.id(), lastEvent_3.type(), lastEvent_3.nextSendingRate());
         }
-        else if(lastEvent.type() == 5) // last event is yieldBandwidthEvent
+        else if(lastEvent.type() == 5) // last event is enterYieldEvent
         {
-            // printf("****IdentifyRTTDeviationBThread: last event is yieldBandwidthEvent! - iteration: (%d)****\n", id);
+            // printf("****IdentifyRTTDeviationBThread: last event is enterYieldEvent! - iteration: (%d)****\n", id);
             enterYieldMode = true;            
         }
 
