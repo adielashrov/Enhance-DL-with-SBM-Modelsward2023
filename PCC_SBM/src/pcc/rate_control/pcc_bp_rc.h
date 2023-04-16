@@ -13,7 +13,7 @@
 #include "SensorBThread.h"
 #include "SendRateBthread.h"
 #include "SendRateActuatorBThread.h"
-#include "ODRL_BThread.h"
+#include "ODNN_BThread.h"
 #include "InterleaveBthread.h"
 #include "StatisticsFileHandler.h"
 #include "YieldThroughputBThread.h"
@@ -41,7 +41,7 @@ class PccBPRateController: public PccRateController {
 		SensorBThread* sensorBThread_;
 		SendRateBthread* sendRateBthread_;
 		SendRateActuatorBThread* sendRateActuatorBThread_;
-		ODRL_BThread* odrl_BThread_;
+		ODNN_BThread* odnn_BThread_;
 		InterleaveBThread* interleaveBThread_;
 		TestModelBThread* testModelBThread_;
 		YieldThroughputBThread* yieldThroughputBThread_;

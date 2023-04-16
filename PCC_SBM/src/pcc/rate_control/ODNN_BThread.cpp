@@ -1,7 +1,7 @@
-#include "ODRL_BThread.h"
+#include "ODNN_BThread.h"
 #include "../monitor_interval/pcc_mi.h"
 
-ODRL_BThread::ODRL_BThread() :  BThread("ODRL_BThread"), /*log_file_samples("monitor_intervals_bpc.txt", std::ios::out), */
+ODNN_BThread::ODNN_BThread() :  BThread("ODNN_BThread"), /*log_file_samples("monitor_intervals_bpc.txt", std::ios::out), */
                                 simulation_events_file("monitor_intervals_aurora_dl.txt", std::ios::in)
 {
     if (!this->python_initialized_) {
@@ -10,15 +10,6 @@ ODRL_BThread::ODRL_BThread() :  BThread("ODRL_BThread"), /*log_file_samples("mon
 
     current_rate = -1.0;
     counter = 1;
-    /*
-    if (log_file_samples.is_open()) {
-        std::cout << "BPC - log_file_samples opened succesufflly\n";
-    }
-    else
-    {
-        std::cout << "Error opening log_file_samples\n";
-    }
-    */
 
     id = 0; // Counter for number of flows (no need at the moment for more than 1).
     has_time_offset = false;
@@ -89,16 +80,16 @@ ODRL_BThread::ODRL_BThread() :  BThread("ODRL_BThread"), /*log_file_samples("mon
     */
 }
 
-ODRL_BThread::~ODRL_BThread()
+ODNN_BThread::~ODNN_BThread()
 {
     log_file_samples.close();
     simulation_events_file.close();
 }
 
 
-void ODRL_BThread::entryPoint()
+void ODNN_BThread::entryPoint()
 {
-    printf("Enter to ODRL_BThread...\n" );
+    printf("***Enter to ODNN_BThread...***\n" );
 
     Vector<Event> requested;
     Vector<Event> watched;
@@ -118,20 +109,20 @@ void ODRL_BThread::entryPoint()
         blocked.clear();
         watched.append(monitorIntervalEvent);
         watched.append(getNextSendingRateEvent);
-        // printf("ODRL: bSync(none, {monitorIntervalEvent, getNextSendingRateEvent}, none), id: %d\n", id); 
-        bSync(requested, watched, blocked, "ODRL_BThread"); // Stopeed here
+        printf("ODNN: bSync(none, {monitorIntervalEvent, getNextSendingRateEvent}, none), id: %d\n", id); 
+        bSync(requested, watched, blocked, "ODNN_BThread"); // Stopeed here
         Event lastEvent = this->lastEvent();
         
         if (lastEvent.type() == 0) // monitorIntervalEvent
         {
-            // printf("ODRL: lastEvent.monitorIntervalEvent id: %d, type: %d ,utility : %.4lf\n", lastEvent.id(), lastEvent.type(), lastEvent.monitorInterval()->GetUtility());
+            // printf("ODNN: lastEvent.monitorIntervalEvent id: %d, type: %d ,utility : %.4lf\n", lastEvent.id(), lastEvent.type(), lastEvent.monitorInterval()->GetUtility());
             MonitorIntervalFinished(lastEvent.monitorInterval());
-            // printf("\nODRL_BThread after MonitorIntervalFinished \n");
+            // printf("\nODNN_BThread after MonitorIntervalFinished \n");
         }
 
         if (lastEvent.type() == 1) // getNextSendingRateEvent - consider seperating 2 threads
         {
-            // printf("ODRL: lastEvent.getNextSendingRateEvent, id: %d, type: %d \n", lastEvent.id(), lastEvent.type());
+            // printf("ODNN: lastEvent.getNextSendingRateEvent, id: %d, type: %d \n", lastEvent.id(), lastEvent.type());
             QuicBandwidth result = GetNextSendingRate();
             int event_id = lastEvent.id();
             Event updateSendingRate(2, event_id, NULL, result);
@@ -141,9 +132,9 @@ void ODRL_BThread::entryPoint()
             blocked.clear();
             blocked.append(monitorIntervalEvent);
             blocked.append(getNextSendingRateEvent);
-            // printf("ODRL: bSync(updateSendingRate, none, {monitorIntervalEvent, getNextSendingRateEvent}), id: %d\n", id);
-            bSync(requested, watched, blocked, "ODRL_BThread"); 
-            // printf("ODRL: lastEvent.updateSendingRate, id: %d, sendRate: %f \n", this->lastEvent().id(), this->lastEvent().nextSendingRate());
+            // printf("ODNN: bSync(updateSendingRate, none, {monitorIntervalEvent, getNextSendingRateEvent}), id: %d\n", id);
+            bSync(requested, watched, blocked, "ODNN_BThread"); 
+            // printf("ODNN: lastEvent.updateSendingRate, id: %d, sendRate: %f \n", this->lastEvent().id(), this->lastEvent().nextSendingRate());
         }
 
         ++id;
@@ -151,10 +142,10 @@ void ODRL_BThread::entryPoint()
     }
 
     done();
-    printf("Leave ODRL_BThread...\n" );
+    printf("Leave ODNN_BThread...\n" );
 }
 
-void ODRL_BThread::InitializePython() {
+void ODNN_BThread::InitializePython() {
     Py_Initialize();
     PyRun_SimpleString("import sys");
 
@@ -180,7 +171,7 @@ void ODRL_BThread::InitializePython() {
     this->python_initialized_ = true;
 }
 
-void ODRL_BThread::GiveSample(int bytes_sent,
+void ODNN_BThread::GiveSample(int bytes_sent,
                                          int bytes_acked,
                                          int bytes_lost,
                                          double send_start_time_sec,
@@ -256,11 +247,11 @@ void ODRL_BThread::GiveSample(int bytes_sent,
     PyObject_CallObject(give_sample_func, args);
 }
 
-void ODRL_BThread::MonitorIntervalFinished(MonitorInterval* mi) {
+void ODNN_BThread::MonitorIntervalFinished(MonitorInterval* mi) {
     if (!has_time_offset) {
         time_offset_usec = mi->GetSendStartTime();
         has_time_offset = true;
-        // printf("ODRL_BThread - update time_offset_usec %ld\n", time_offset_usec);
+        // printf("ODNN_BThread - update time_offset_usec %ld\n", time_offset_usec);
     }
     GiveSample(
         mi->GetBytesSent(),
@@ -278,7 +269,7 @@ void ODRL_BThread::MonitorIntervalFinished(MonitorInterval* mi) {
     );
 }
 
-QuicBandwidth ODRL_BThread::GetNextSendingRate() {
+QuicBandwidth ODNN_BThread::GetNextSendingRate() {
     
     PyObject* id_obj = PyLong_FromLong(id);
     static PyObject* args = PyTuple_New(1);
@@ -312,7 +303,7 @@ QuicBandwidth ODRL_BThread::GetNextSendingRate() {
     return result_double;
 }
 
-void ODRL_BThread::testModel() {
+void ODNN_BThread::testModel() {
     
     int counter = 1;
     std::string currLine = "";
@@ -342,7 +333,7 @@ void ODRL_BThread::testModel() {
     return;
 }
 
-void ODRL_BThread::testMonitorInterval(std::vector<double> vec) {
+void ODNN_BThread::testMonitorInterval(std::vector<double> vec) {
     
     if(vec.size() > 12) {
         int bytes_sent = vec[2];
@@ -366,7 +357,7 @@ void ODRL_BThread::testMonitorInterval(std::vector<double> vec) {
     }
 }
 
-bool ODRL_BThread::getNextLine(std::string& line) {
+bool ODNN_BThread::getNextLine(std::string& line) {
 
     if (simulation_events_file.is_open()) 
     {
@@ -379,7 +370,7 @@ bool ODRL_BThread::getNextLine(std::string& line) {
     return false;
 }
 
-std::vector<double> ODRL_BThread::parseLine(std::string& line) {
+std::vector<double> ODNN_BThread::parseLine(std::string& line) {
     std::stringstream input_stringstream(line);
     std::vector<double> values;
     std::string word;
@@ -396,7 +387,7 @@ std::vector<double> ODRL_BThread::parseLine(std::string& line) {
     return values;
 }
 
-bool ODRL_BThread::isMonitorEvent(std::vector<double> vec) {
+bool ODNN_BThread::isMonitorEvent(std::vector<double> vec) {
 
     if(vec.size() > 2)
     {
@@ -408,7 +399,7 @@ bool ODRL_BThread::isMonitorEvent(std::vector<double> vec) {
     return false; // 2.0 stands for next sending rate event
 }
 
-void ODRL_BThread::setStatisticsFileHandler(StatisticsFileHandler* statisticsFileHandler)
+void ODNN_BThread::setStatisticsFileHandler(StatisticsFileHandler* statisticsFileHandler)
 {
     this->statisticsFileHandler = statisticsFileHandler;
 }

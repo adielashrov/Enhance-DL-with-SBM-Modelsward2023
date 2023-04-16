@@ -55,8 +55,8 @@ void PccBPRateController::initializeBPProgram() {
   sendRateActuatorBThread_ = new SendRateActuatorBThread();
   sendRateActuatorBThread_->setStatisticsFileHandler(statisticsFileHandler_);
   sensorBThread_ = new SensorBThread();
-  odrl_BThread_ = new ODRL_BThread();
-  odrl_BThread_->setStatisticsFileHandler(statisticsFileHandler_);
+  odnn_BThread_ = new ODNN_BThread();
+  odnn_BThread_->setStatisticsFileHandler(statisticsFileHandler_);
   identifyRTTDeviationBThread_ = new IdentifyRTTDeviationBThread();
   restoreThroughputBThread_ = new RestoreThroughputBThread();
   monitorNetworkStateBThread_ = new MonitorNetworkStateBThread();
@@ -66,7 +66,7 @@ void PccBPRateController::initializeBPProgram() {
   
   bProgram_->addThread(*sensorBThread_);
   bProgram_->addThread(*sendRateBthread_);
-  bProgram_->addThread(*odrl_BThread_);
+  bProgram_->addThread(*odnn_BThread_);
   bProgram_->addThread(*sendRateActuatorBThread_);
   bProgram_->addThread(*identifyRTTDeviationBThread_);
   bProgram_->addThread(*restoreThroughputBThread_);
