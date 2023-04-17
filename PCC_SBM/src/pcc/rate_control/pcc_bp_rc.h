@@ -18,7 +18,7 @@
 #include "StatisticsFileHandler.h"
 #include "YieldThroughputBThread.h"
 #include "TestModelBThread.h"
-#include "IdentifyRTTDeviationBThread.h"
+#include "ReduceThroughputBThread.h"
 #include "RestoreThroughputBThread.h"
 #include "MonitorNetworkStateBThread.h"
 
@@ -45,7 +45,7 @@ class PccBPRateController: public PccRateController {
 		InterleaveBThread* interleaveBThread_;
 		TestModelBThread* testModelBThread_;
 		YieldThroughputBThread* yieldThroughputBThread_;
-		IdentifyRTTDeviationBThread* identifyRTTDeviationBThread_;
+		ReduceThroughputBThread* reduceThroughputBThread_;
 		RestoreThroughputBThread* restoreThroughputBThread_;
 		MonitorNetworkStateBThread* monitorNetworkStateBThread_;
 		BProgram* bProgram_;

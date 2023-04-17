@@ -2,21 +2,19 @@
 
 PccBPRateController::PccBPRateController(double call_freq,
         PccEventLogger* log) {
-	//  std::cout << "Enter PccBPRateController::PccBPRateController(constructor)" << std::endl;
     this->_numOfGetNextSendingRate = 0;
     this->_numOfMonitorIntervalFinished = 0;
     this->initializeBPProgram();
 }
 
 PccBPRateController::~PccBPRateController() {
-	std::cout << "Enter PccBPRateController::~PccBPRateController(destructor)" << std::endl;
 	// delete statisticsFileHandler_;
     delete monitorIntervalSensorBThread_;
     delete bProgram_;
 }
 
 void PccBPRateController::Reset() {
-    std::cout << "Enter PccBPRateController::RESET" << std::endl;
+    // std::cout << "Enter PccBPRateController::RESET" << std::endl;
 }
 
 QuicBandwidth PccBPRateController::GetNextSendingRate(QuicBandwidth current_rate, QuicTime cur_time) {
@@ -26,30 +24,19 @@ QuicBandwidth PccBPRateController::GetNextSendingRate(QuicBandwidth current_rate
 	sendRateSensorBthread_->notifyOnGetNextSendingRate(_numOfGetNextSendingRate);
     QuicBandwidth retValue = sendRateActuatorBThread_->readNextSendingRate(_numOfGetNextSendingRate);
     
-    // auto end = std::chrono::steady_clock::now();
-    // std::cout << "BP-GetNextSendingRate: "<< _numOfGetNextSendingRate <<" ,microseconds: "
-    //    << std::chrono::duration_cast<std::chrono::microseconds>(end - start).count()
-    //    << " ms," << " sendingRate: " << retValue << std::endl;
     return retValue;
 }
 
 void PccBPRateController::MonitorIntervalFinished(const MonitorInterval& mi) { 
     
     ++_numOfMonitorIntervalFinished;
-    // auto start = std::chrono::steady_clock::now();
-
     float utility = mi.GetUtility();
     this->monitorIntervalSensorBThread_->notifyOnMonitorEvent(mi);
-
-    // auto end = std::chrono::steady_clock::now();
-    // std::cout << "BP-MonitorIntervalFinished: "<< _numOfMonitorIntervalFinished <<" ,microseconds: "
-    //    << std::chrono::duration_cast<std::chrono::microseconds>(end - start).count()
-    //    << " ms" << std::endl;
 }
 
 void PccBPRateController::initializeBPProgram() {
 
-  statisticsFileHandler_ = new StatisticsFileHandler(); // TODO: add statistics file name as parameter.
+  statisticsFileHandler_ = new StatisticsFileHandler();
   bProgram_ = new BProgram();
   sendRateSensorBthread_ = new SendRateSensorBthread();
   sendRateActuatorBThread_ = new SendRateActuatorBThread();
@@ -57,7 +44,7 @@ void PccBPRateController::initializeBPProgram() {
   monitorIntervalSensorBThread_ = new MonitorIntervalSensorBThread();
   odnn_BThread_ = new ODNN_BThread();
   odnn_BThread_->setStatisticsFileHandler(statisticsFileHandler_);
-  identifyRTTDeviationBThread_ = new IdentifyRTTDeviationBThread();
+  reduceThroughputBThread_ = new ReduceThroughputBThread();
   restoreThroughputBThread_ = new RestoreThroughputBThread();
   monitorNetworkStateBThread_ = new MonitorNetworkStateBThread();
 
@@ -68,7 +55,7 @@ void PccBPRateController::initializeBPProgram() {
   bProgram_->addThread(*sendRateSensorBthread_);
   bProgram_->addThread(*odnn_BThread_);
   bProgram_->addThread(*sendRateActuatorBThread_);
-  bProgram_->addThread(*identifyRTTDeviationBThread_);
+  bProgram_->addThread(*reduceThroughputBThread_);
   bProgram_->addThread(*restoreThroughputBThread_);
   bProgram_->addThread(*monitorNetworkStateBThread_);
 

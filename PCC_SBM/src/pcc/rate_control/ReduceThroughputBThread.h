@@ -11,11 +11,11 @@
 #include <cmath>
 
 
-class IdentifyRTTDeviationBThread : public BThread
+class ReduceThroughputBThread : public BThread
 {
     public:
-        IdentifyRTTDeviationBThread();
-        ~IdentifyRTTDeviationBThread();
+        ReduceThroughputBThread();
+        ~ReduceThroughputBThread();
         void entryPoint();
         bool checkIncreaseInRttDev(float rtt_deviation_1, float rtt_deviation_2);
 

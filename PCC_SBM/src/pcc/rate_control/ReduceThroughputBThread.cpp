@@ -1,7 +1,7 @@
-#include "IdentifyRTTDeviationBThread.h"
+#include "ReduceThroughputBThread.h"
 
 
-IdentifyRTTDeviationBThread::IdentifyRTTDeviationBThread() : BThread("IdentifyRTTDeviationBThread")
+ReduceThroughputBThread::ReduceThroughputBThread() : BThread("ReduceThroughputBThread")
 {
     this->yield_policy = 1;
     this->initial_sending_rate_for_yield = -1.0;
@@ -10,13 +10,13 @@ IdentifyRTTDeviationBThread::IdentifyRTTDeviationBThread() : BThread("IdentifyRT
     this->lambda = 0.001;
 }
 
-IdentifyRTTDeviationBThread::~IdentifyRTTDeviationBThread()
+ReduceThroughputBThread::~ReduceThroughputBThread()
 {
 }
 
-void IdentifyRTTDeviationBThread::entryPoint()
+void ReduceThroughputBThread::entryPoint()
 {
-    printf("Enter IdentifyRTTDeviationBThread...\n" );
+    printf("Enter ReduceThroughputBThread...\n" );
     
     int id = 1;
     int number_of_changes_in_deviation = 0;
@@ -39,22 +39,18 @@ void IdentifyRTTDeviationBThread::entryPoint()
         blocked.clear();
         watched.append(queryNextSendingRateEvent);
         watched.append(enterYieldEvent);
-        // printf("IdentifyRTTDeviationBThread: bSync(none, { queryNextSendingRateEvent , enterYieldEvent}, none)...\n"); // Stopped here
-        bSync(requested, watched, blocked, "IdentifyRTTDeviationBThread");
+        bSync(requested, watched, blocked, "ReduceThroughputBThread");
         Event lastEvent = this->lastEvent();
 
         if(lastEvent.type() == 1) // last event is queryNextSendingRateEvent
         {
-            // printf("IdentifyRTTDeviationBThread: last event is queryNextSendingRateEvent, id %d\n", lastEvent.id());
             Event updateSendingRate(2, id); // // First - listen to the update from the model event 2 - Extract to method(pattern)
             requested.clear();
             watched.clear();
             blocked.clear();
             watched.append(updateSendingRate);
-            // printf("IdentifyRTTDeviationBThread: bSync(none, updateSendingRate, none)...\n");
-            bSync(requested, watched, blocked, "IdentifyRTTDeviationBThread");
+            bSync(requested, watched, blocked, "ReduceThroughputBThread");
             Event lastEvent_2 = this->lastEvent();
-            // printf("IdentifyRTTDeviationBThread: lastEvent.updateSendingRate, iteration: (%d), id: (%d), type: (%d), sending_rate: (%f)\n", id, lastEvent_2.id(), lastEvent_2.type(), lastEvent_2.nextSendingRate());
 
             int last_event_id = lastEvent_2.id();
             double sending_rate = lastEvent_2.nextSendingRate();
@@ -74,7 +70,7 @@ void IdentifyRTTDeviationBThread::entryPoint()
 
             // Second - request the actual sending rate from the actuator
             Event monitorIntervalEvent_2(0, id);
-            Event queryNextSendingRateEvent_2(1, id); // TODO: perhaps block 2 as well?
+            Event queryNextSendingRateEvent_2(1, id);
             Event updateSendingRateIdentifyThread(3, last_event_id, NULL, next_real_update_sending_rate); // 3 signals updateSendingRateReal
             Event updateSendingRateRestoreThread(4, id, NULL, sending_rate); // 4 signals updateSendingRateRestoreThread
 
@@ -87,26 +83,22 @@ void IdentifyRTTDeviationBThread::entryPoint()
             blocked.append(monitorIntervalEvent_2);
             blocked.append(queryNextSendingRateEvent_2);
 
-            // printf("IdentifyRTTDeviationBThread: bSync(updateSendingRateIdentifyThread, updateSendingRateRestoreThread, {monitorIntervalEvent, queryNextSendingRateEvent}), nextSendingRate: (%f)\n", updateSendingRateIdentifyThread.nextSendingRate());
-            bSync(requested, watched, blocked, "IdentifyRTTDeviationBThread");
+            bSync(requested, watched, blocked, "ReduceThroughputBThread");
             Event lastEvent_3 = this->lastEvent();
-            // printf("IdentifyRTTDeviationBThread: lastEvent.updateSendingRate(Identify/Restore), iteration: (%d), id: %d, type: %d, sending_rate: %f\n", id, lastEvent_3.id(), lastEvent_3.type(), lastEvent_3.nextSendingRate());
         }
         else if(lastEvent.type() == 5) // last event is enterYieldEvent
         {
-            // printf("****IdentifyRTTDeviationBThread: last event is enterYieldEvent! - iteration: (%d)****\n", id);
             enterYieldMode = true;            
         }
 
         ++id;
-        // usleep(1000);
     }
 
     done();
-    printf("Leave IdentifyRTTDeviationBThread...\n" );
+    printf("Leave ReduceThroughputBThread...\n" );
 }
 
-bool IdentifyRTTDeviationBThread::checkIncreaseInRttDev(float rtt_deviation_1, float rtt_deviation_2)
+bool ReduceThroughputBThread::checkIncreaseInRttDev(float rtt_deviation_1, float rtt_deviation_2)
 {
     bool retValue = false;
     if(rtt_deviation_1 > 0 &&  rtt_deviation_2 > 0)
@@ -120,13 +112,13 @@ bool IdentifyRTTDeviationBThread::checkIncreaseInRttDev(float rtt_deviation_1, f
     
 }
 
-void IdentifyRTTDeviationBThread::setInitialSendingRateForYield(double sending_rate)
+void ReduceThroughputBThread::setInitialSendingRateForYield(double sending_rate)
 {
     this->initial_sending_rate_for_yield = sending_rate;
     this->time_counter = 0;
 }
 
-double IdentifyRTTDeviationBThread::getYieldSendingRate()
+double ReduceThroughputBThread::getYieldSendingRate()
 {
     double next_real_update_sending_rate = -1.0;
     if(this->yield_policy == 1) //1 - Hard coded values policy

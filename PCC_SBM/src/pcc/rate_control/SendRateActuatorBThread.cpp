@@ -25,7 +25,7 @@ void SendRateActuatorBThread::entryPoint()
     while(true)
     {
         // Event updateSendingRate(2, id); // 2 signals updateSendingRate from model
-        Event updateSendingRateIdentifyThread(3, id); // 3 signals updateSendingRate from IdentifyRTTDeviationBThread
+        Event updateSendingRateIdentifyThread(3, id); // 3 signals updateSendingRate from ReduceThroughputBThread
         Event updateSendingRateRestoreThread(4, id); // 4 signals updateSendingRate from RestoreThroughputBThread
         requested.clear();
         requested.clear();
