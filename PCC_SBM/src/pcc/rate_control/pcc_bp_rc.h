@@ -12,15 +12,12 @@
 #include "BProgram.h"
 #include "MonitorIntervalSensorBThread.h"
 #include "SendRateSensorBthread.h"
-#include "SendRateActuatorBThread.h"
 #include "ODNN_BThread.h"
-#include "InterleaveBthread.h"
-#include "StatisticsFileHandler.h"
-#include "YieldThroughputBThread.h"
-#include "TestModelBThread.h"
+#include "MonitorNetworkStateBThread.h"
 #include "ReduceThroughputBThread.h"
 #include "RestoreThroughputBThread.h"
-#include "MonitorNetworkStateBThread.h"
+#include "SendRateActuatorBThread.h"
+#include "StatisticsFileHandler.h"
 
 class PccBPRateController: public PccRateController {
 	public:
@@ -42,9 +39,6 @@ class PccBPRateController: public PccRateController {
 		SendRateSensorBthread* sendRateSensorBthread_;
 		SendRateActuatorBThread* sendRateActuatorBThread_;
 		ODNN_BThread* odnn_BThread_;
-		InterleaveBThread* interleaveBThread_;
-		TestModelBThread* testModelBThread_;
-		YieldThroughputBThread* yieldThroughputBThread_;
 		ReduceThroughputBThread* reduceThroughputBThread_;
 		RestoreThroughputBThread* restoreThroughputBThread_;
 		MonitorNetworkStateBThread* monitorNetworkStateBThread_;

@@ -25,8 +25,8 @@ class ReduceThroughputBThread : public BThread
         double lambda;
         int time_counter;
         double division_exp;
-        double getYieldSendingRate();
-        void setInitialSendingRateForYield(double sending_rate);
+        double getReduceSendingRate();
+        void setInitialSendingRateForReduce(double sending_rate);
 
 };
 

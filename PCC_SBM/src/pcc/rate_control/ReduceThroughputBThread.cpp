@@ -44,7 +44,7 @@ void ReduceThroughputBThread::entryPoint()
 
         if(lastEvent.type() == 1) // last event is queryNextSendingRateEvent
         {
-            Event updateSendingRate(2, id); // // First - listen to the update from the model event 2 - Extract to method(pattern)
+            Event updateSendingRate(2, id); // // First - listen to the update from the model
             requested.clear();
             watched.clear();
             blocked.clear();
@@ -54,7 +54,7 @@ void ReduceThroughputBThread::entryPoint()
 
             int last_event_id = lastEvent_2.id();
             double sending_rate = lastEvent_2.nextSendingRate();
-            double next_real_update_sending_rate = sending_rate; 
+            double updated_sending_rate = sending_rate; 
 
             if(yield_on_switch) // On/Off switch for yield behavior
             {
@@ -62,24 +62,24 @@ void ReduceThroughputBThread::entryPoint()
                 {
                     if(this->initial_sending_rate_for_yield == -1.0)
                     {
-                        setInitialSendingRateForYield(sending_rate);
+                        setInitialSendingRateForReduce(sending_rate);
                     }
-                    next_real_update_sending_rate = getYieldSendingRate();
+                    updated_sending_rate = getReduceSendingRate();
                 }
             }
 
             // Second - request the actual sending rate from the actuator
             Event monitorIntervalEvent_2(0, id);
             Event queryNextSendingRateEvent_2(1, id);
-            Event updateSendingRateIdentifyThread(3, last_event_id, NULL, next_real_update_sending_rate); // 3 signals updateSendingRateReal
-            Event updateSendingRateRestoreThread(4, id, NULL, sending_rate); // 4 signals updateSendingRateRestoreThread
+            Event updateSendingRateReduceEvent(3, last_event_id, NULL, updated_sending_rate); // 3 signals updateSendingRateReduceEvent
+            Event updateSendingRateRestoreEvent(4, id, NULL, sending_rate); // 4 signals updateSendingRateRestoreEvent
 
             requested.clear();
             watched.clear();
             blocked.clear();
             
-            requested.append(updateSendingRateIdentifyThread);
-            watched.append(updateSendingRateRestoreThread);
+            requested.append(updateSendingRateReduceEvent);
+            watched.append(updateSendingRateRestoreEvent);
             blocked.append(monitorIntervalEvent_2);
             blocked.append(queryNextSendingRateEvent_2);
 
@@ -112,23 +112,23 @@ bool ReduceThroughputBThread::checkIncreaseInRttDev(float rtt_deviation_1, float
     
 }
 
-void ReduceThroughputBThread::setInitialSendingRateForYield(double sending_rate)
+void ReduceThroughputBThread::setInitialSendingRateForReduce(double sending_rate)
 {
     this->initial_sending_rate_for_yield = sending_rate;
     this->time_counter = 0;
 }
 
-double ReduceThroughputBThread::getYieldSendingRate()
+double ReduceThroughputBThread::getReduceSendingRate()
 {
-    double next_real_update_sending_rate = -1.0;
+    double updated_sending_rate = -1.0;
     if(this->yield_policy == 1) //1 - Hard coded values policy
     {
-        next_real_update_sending_rate = 15000000.0;
+        updated_sending_rate = 15000000.0;
     }
     else if(this->yield_policy == 2) // 2 - Stairway policy - divide rate in fraction^K
     {
         double reduce_rate = pow(0.9, division_exp);
-        next_real_update_sending_rate = (this->initial_sending_rate_for_yield * reduce_rate);
+        updated_sending_rate = (this->initial_sending_rate_for_yield * reduce_rate);
 
         if (((this->time_counter % 2000) == 0) && reduce_rate >= 0.00001)
         {
@@ -139,8 +139,8 @@ double ReduceThroughputBThread::getYieldSendingRate()
     {
         double mul = ((-1) * this->lambda) * this->time_counter;
         double exp_value = exp(mul);
-        next_real_update_sending_rate = this->initial_sending_rate_for_yield * exp_value;
+        updated_sending_rate = this->initial_sending_rate_for_yield * exp_value;
     }
     this->time_counter = this->time_counter + 1;
-    return next_real_update_sending_rate;
+    return updated_sending_rate;
 }
