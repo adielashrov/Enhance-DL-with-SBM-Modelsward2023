@@ -1,5 +1,5 @@
-#ifndef __sensorBThread_h__
-#define __sensorBThread_h__
+#ifndef __monitorIntervalSensorBThread_h__
+#define __monitorIntervalSensorBThread_h__
 
 #include "../monitor_interval/pcc_mi.h"
 #include "Event.h"
@@ -10,11 +10,11 @@
 #include <vector>
 #include <math.h>
 
-class SensorBThread : public BThread
+class MonitorIntervalSensorBThread : public BThread
 {
     public:
-        SensorBThread();
-        ~SensorBThread();
+        MonitorIntervalSensorBThread();
+        ~MonitorIntervalSensorBThread();
         void entryPoint();
         void notifyOnMonitorEvent(const MonitorInterval& mi);
 
@@ -25,7 +25,7 @@ class SensorBThread : public BThread
         double utility_factor;
 };
 
-#endif // __sensorBThread_h__
+#endif // __monitorIntervalSensorBThread_h__
 
 //
 // Local Variables:

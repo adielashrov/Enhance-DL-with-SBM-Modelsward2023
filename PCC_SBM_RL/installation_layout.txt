@@ -1,0 +1,80 @@
+
+Prequiste:
+Python version required >= 3.7
+
+Step 1 - OpenMPI - Packege 
+-----------------------------------------
+	Solved with:
+		sudo apt-get update && sudo apt-get install cmake libopenmpi-dev python3-dev zlib1g-dev
+
+
+Step 2 - Create virtual envriontment and upgrade pip
+-----------------------------------------------------
+
+pip install --upgrade pip //upgrade pip
+python -m venv pcc_rl_env // create venv
+source [pcc_rl_env/bin/activate]  // activate venv
+
+if you want leave/deactivate the virtual environemtn:
+	deactivate
+
+
+Step 3 - How to install stable-baselines (version 2) [***]:
+-------------------------------------------------------------
+pip install git+https://github.com/hill-a/stable-baselines - [***]
+
+This should take care of the tensorflow appropriate version requierment
+
+Step 4 - Tensorflow - 1.8.0 to 1.15.0
+-----------------------------
++ Stable-Baselines supports Tensorflow versions from 1.8.0 to 1.15.0, and does not work on Tensorflow versions 2.0.0 and above. 
++ Current version installed - 1.15.5 - seems to be working fine
++ Command used to install - see Step 3 [***]
+
+Manaul installation:
+--------------------
+pip uninstall tensorflow
+pip install tensorflow==1.15
+
+
+Step 5 -numpy  collision error with tensorflow:
+----------------------------------------
+ERROR: tensorflow 1.15.5 has requirement numpy<1.19.0,>=1.16.0, but you'll have numpy 1.21.3 which is incompatible.
+
+Solved:
+-------------
+	pip uninstall numpy
+	pip3 install numpy==1.18.5
+
+
+Step 5 - mpi4py is a reqiremnet for stable-baselines
+------------------------------------------------------------------
+Issue:
+	Traceback (most recent call last):
+	  File "stable_solve.py", line 21, in <module>
+	    from stable_baselines import PPO1
+	ImportError: cannot import name 'PPO1'
+Solved:
+-------
+		pip install mpi4py==3.0.3
+
+
+Step 6 - Train using stable_solve:
+----------------------------------
+cd src/gym
+python3 stable_solve.py
+
+================================================================================================
+================================================================================================
+Packegs we need for pcc-rl
+================================================================================================
+================================================================================================
+gym	0.18.3	0.19.0
+Tensorflow
+Stable-lines
+MPI ? 
+
+stable-baselines	2.10.2	2.10.2
+stable-baselines3	1.1.0	1.1.0
+
+wheel	0.36.2	0.37.0

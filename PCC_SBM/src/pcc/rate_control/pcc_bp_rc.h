@@ -10,17 +10,14 @@
 #include <unistd.h>
 
 #include "BProgram.h"
-#include "SensorBThread.h"
-#include "SendRateBthread.h"
-#include "SendRateActuatorBThread.h"
-#include "ODRL_BThread.h"
-#include "InterleaveBthread.h"
-#include "StatisticsFileHandler.h"
-#include "YieldThroughputBThread.h"
-#include "TestModelBThread.h"
-#include "IdentifyRTTDeviationBThread.h"
-#include "RestoreThroughputBThread.h"
+#include "MonitorIntervalSensorBThread.h"
+#include "SendRateSensorBthread.h"
+#include "ODNN_BThread.h"
 #include "MonitorNetworkStateBThread.h"
+#include "ReduceThroughputBThread.h"
+#include "RestoreThroughputBThread.h"
+#include "SendRateActuatorBThread.h"
+#include "StatisticsFileHandler.h"
 
 class PccBPRateController: public PccRateController {
 	public:
@@ -30,7 +27,7 @@ class PccBPRateController: public PccRateController {
 		QuicBandwidth GetNextSendingRate(QuicBandwidth current_rate, QuicTime cur_time);
 		void MonitorIntervalFinished(const MonitorInterval & mi);
 		void Reset();
-		void setSensorBThread(const SensorBThread& sensorBThread);
+		void setSensorBThread(const MonitorIntervalSensorBThread& monitorIntervalSensorBThread);
 
 	private:
 		void initializeBPProgram();
@@ -38,14 +35,11 @@ class PccBPRateController: public PccRateController {
 		int _numOfGetNextSendingRate;
 		int _numOfMonitorIntervalFinished;
 		StatisticsFileHandler* statisticsFileHandler_;
-		SensorBThread* sensorBThread_;
-		SendRateBthread* sendRateBthread_;
+		MonitorIntervalSensorBThread* monitorIntervalSensorBThread_;
+		SendRateSensorBthread* sendRateSensorBthread_;
 		SendRateActuatorBThread* sendRateActuatorBThread_;
-		ODRL_BThread* odrl_BThread_;
-		InterleaveBThread* interleaveBThread_;
-		TestModelBThread* testModelBThread_;
-		YieldThroughputBThread* yieldThroughputBThread_;
-		IdentifyRTTDeviationBThread* identifyRTTDeviationBThread_;
+		ODNN_BThread* odnn_BThread_;
+		ReduceThroughputBThread* reduceThroughputBThread_;
 		RestoreThroughputBThread* restoreThroughputBThread_;
 		MonitorNetworkStateBThread* monitorNetworkStateBThread_;
 		BProgram* bProgram_;

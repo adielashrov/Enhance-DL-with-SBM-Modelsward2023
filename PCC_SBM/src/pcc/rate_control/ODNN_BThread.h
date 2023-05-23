@@ -1,5 +1,5 @@
-#ifndef __ODRL_BThread_h__
-#define __ODRL_BThread__
+#ifndef __ODNN_BThread_h__
+#define __ODNN_BThread__
 
 #include "Event.h"
 #include "BThread.h"
@@ -21,11 +21,11 @@
 
 #define BP_COUNTER_LIMIT 1000001
 
-class ODRL_BThread : public BThread
+class ODNN_BThread : public BThread
 {
     public:
-        ODRL_BThread();
-        ~ODRL_BThread();
+        ODNN_BThread();
+        ~ODNN_BThread();
         void entryPoint();
         void setStatisticsFileHandler(StatisticsFileHandler* statisticsFileHandler);
 
@@ -69,7 +69,7 @@ class ODRL_BThread : public BThread
 };
 
 
-#endif // __ODRL_BThread__
+#endif // __ODNN_BThread__
 
 //
 // Local Variables:

@@ -17,9 +17,6 @@ class MonitorNetworkStateBThread : public BThread
         MonitorNetworkStateBThread();
         ~MonitorNetworkStateBThread();
         void entryPoint();
-
-    private:
-        bool checkIncreaseInRttDev(float rtt_deviation_1, float rtt_deviation_2);
 };
 
 #endif // __monitorNetworkStateBThread_h__

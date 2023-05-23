@@ -11,11 +11,11 @@
 #include <cmath>
 
 
-class IdentifyRTTDeviationBThread : public BThread
+class ReduceThroughputBThread : public BThread
 {
     public:
-        IdentifyRTTDeviationBThread();
-        ~IdentifyRTTDeviationBThread();
+        ReduceThroughputBThread();
+        ~ReduceThroughputBThread();
         void entryPoint();
         bool checkIncreaseInRttDev(float rtt_deviation_1, float rtt_deviation_2);
 
@@ -25,8 +25,8 @@ class IdentifyRTTDeviationBThread : public BThread
         double lambda;
         int time_counter;
         double division_exp;
-        double getYieldSendingRate();
-        void setInitialSendingRateForYield(double sending_rate);
+        double getReduceSendingRate();
+        void setInitialSendingRateForReduce(double sending_rate);
 
 };
 

@@ -1,10 +1,10 @@
 export CC = g++
 
 # Compile with gdb flags
-export CCFLAGS = -g -std=c++0x -Wall -O0 -ggdb3
+#export CCFLAGS = -g -std=c++0x -Wall -O0 -ggdb3
 
 # Compile with release
-#export CCFLAGS = -std=c++0x -Wall
+export CCFLAGS = -std=c++0x -Wall
 
 export LDFLAGS = -Lcore -L/usr/lib/python3.7/config-3.7m-x86_64-linux-gnu/ -lpython3.7 -lstdc++ -lpthread -lm
 

@@ -14,7 +14,7 @@ class InterleaveBThread : public BThread
         void entryPoint();
 };
 
-#endif // __sensorBThread_h__
+#endif // __monitorIntervalSensorBThread_h__
 
 //
 // Local Variables:

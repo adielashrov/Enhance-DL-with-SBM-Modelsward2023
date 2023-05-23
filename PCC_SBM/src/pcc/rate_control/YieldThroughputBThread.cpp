@@ -53,7 +53,7 @@ void YieldThroughputBThread::entryPoint()
 
         // Second - request the actual sending rate from the actuator
         Event monitorIntervalEvent(0, id);
-        Event getNextSendingRateEvent(1, id);
+        Event queryNextSendingRateEvent(1, id);
         Event updateSendingRateReal(3, last_event_id, NULL, next_real_update_sending_rate); // 3 signals updateSendingRateReal
         
         requested.clear();
@@ -62,9 +62,9 @@ void YieldThroughputBThread::entryPoint()
         
         requested.append(updateSendingRateReal);
         blocked.append(monitorIntervalEvent);
-        blocked.append(getNextSendingRateEvent);
+        blocked.append(queryNextSendingRateEvent);
         this->statisticsFileHandler->LogSendingRate(next_real_update_sending_rate, 3); // 3 signals updateSendingRateReal
-        // printf("YieldThroughputBThread: bSync(updateSendingRateReal, none, {monitorIntervalEvent, getNextSendingRateEvent})...\n");
+        // printf("YieldThroughputBThread: bSync(updateSendingRateReal, none, {monitorIntervalEvent, queryNextSendingRateEvent})...\n");
         bSync(requested, watched, blocked, "YieldThroughputBThread");
         Event lastEvent_2 = this->lastEvent();
         // printf("YieldThroughputBThread: lastEvent.updateSendingRateReal, id: %d, type: %d, sending_rate: %f\n", lastEvent_2.id(), lastEvent_2.type(), lastEvent_2.nextSendingRate());

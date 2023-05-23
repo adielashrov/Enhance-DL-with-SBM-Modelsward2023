@@ -1,7 +1,7 @@
- #include "SensorBThread.h"
+#include "MonitorIntervalSensorBThread.h"
 
 
-SensorBThread::SensorBThread() : BThread("SensorBThread")
+MonitorIntervalSensorBThread::MonitorIntervalSensorBThread() : BThread("MonitorIntervalSensorBThread")
 {
     this->sensor_bthread_lock_ = new std::mutex();
     this->ready_ = false;
@@ -9,16 +9,16 @@ SensorBThread::SensorBThread() : BThread("SensorBThread")
     utility_factor = 1.0;
 }
 
-SensorBThread::~SensorBThread()
+MonitorIntervalSensorBThread::~MonitorIntervalSensorBThread()
 {
     //TODO: Iterate over intervals pointers vector and delete each pointer
     delete this->sensor_bthread_lock_;
 }
 
 
-void SensorBThread::entryPoint()
+void MonitorIntervalSensorBThread::entryPoint()
 {
-    printf("Enter to SensorBthread...\n" );
+    printf("Enter to MonitorIntervalSensorBThread...\n" );
     
     Vector<Event> requested;
     Vector<Event> watched;
@@ -41,29 +41,17 @@ void SensorBThread::entryPoint()
             Event currentEvent(0, id, t_mi);
             requested.clear();
             requested.append(currentEvent);
-            // printf("Sensor: bSync(monitorIntervalEvent, none, none) id: %d \n", id);
             bSync(requested, watched, blocked, "SensorBthread");
             Event lastEvent = this->lastEvent();
-            
-            if(lastEvent.monitorInterval() != NULL)
-            {
-                // printf("Sensor: lastEvent.monitorInterval, id: %d , utility %f\n", lastEvent.id(), lastEvent.monitorInterval()->GetUtility());
-            }
-            else
-            {
-                // printf("\nSensorBthread - after bSync, id: %d, monitorInterval is NULL \n", lastEvent.id());   
-            }
-            
             ++id;
-            // usleep(1000);
         }
     }
 
     done();
-    printf("Leave SensorBthread...\n" );
+    printf("Leave MonitorIntervalSensorBThread...\n" );
 }
 
-void SensorBThread::notifyOnMonitorEvent(const MonitorInterval& mi)
+void MonitorIntervalSensorBThread::notifyOnMonitorEvent(const MonitorInterval& mi)
 {
     MonitorInterval* miCopy = new MonitorInterval(mi);
 	auto it = this->mi_p_vec.begin();
