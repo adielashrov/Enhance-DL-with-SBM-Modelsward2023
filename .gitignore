@@ -58,3 +58,8 @@ PCC_SBM_RL/pcc_rl_env/bin/ale-import-roms
 PCC_SBM_RL/pcc_rl_env/bin/activate.fish
 PCC_SBM_RL/pcc_rl_env/bin/activate.csh
 PCC_SBM_RL/pcc_rl_env/bin/activate
+baseline_testing.xlsx
+.idea/vcs.xml
+.idea/testGitEnhance.iml
+.idea/modules.xml
+.idea/inspectionProfiles/profiles_settings.xml

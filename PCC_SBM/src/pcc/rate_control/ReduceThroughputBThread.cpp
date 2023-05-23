@@ -123,7 +123,7 @@ double ReduceThroughputBThread::getReduceSendingRate()
     double updated_sending_rate = -1.0;
     if(this->yield_policy == 1) //1 - Hard coded values policy
     {
-        updated_sending_rate = 15000000.0;
+        updated_sending_rate = 10000000.0;
     }
     else if(this->yield_policy == 2) // 2 - Stairway policy - divide rate in fraction^K
     {

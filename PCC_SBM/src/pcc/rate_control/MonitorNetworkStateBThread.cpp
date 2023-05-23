@@ -40,7 +40,7 @@ void MonitorNetworkStateBThread::entryPoint()
         {
             if(!enterYieldMode)
             {
-                if(numOfIterInRestoreMode >= 1000)
+                if(numOfIterInRestoreMode >= 2000)
                 {
                     if(numOfIterInRestoreMode % 5000 == 0)
                     {
@@ -77,7 +77,7 @@ void MonitorNetworkStateBThread::entryPoint()
             }
             else
             {
-                if(numOfIterInYieldMode >= 1000)
+                if(numOfIterInYieldMode >= 2000)
                 {
                     enterYieldMode = false;                        
                     numOfIterInYieldMode = 0;

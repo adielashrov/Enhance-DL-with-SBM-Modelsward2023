@@ -3,7 +3,7 @@
 
 RestoreThroughputBThread::RestoreThroughputBThread() : BThread("RestoreThroughputBThread")
 {
-    this->restore_policy = 1;
+    this->restore_policy = 2;
     this->next_sending_rate_for_restore = -1.0;
     this->sending_rate_upper_limit = 300000000.0;
     this->time_counter = -1;
