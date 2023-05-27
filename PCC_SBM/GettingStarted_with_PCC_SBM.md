@@ -36,8 +36,6 @@ g++: error: say_good_morning/src/EngineFactory.obj: No such file or directory
 
 #### Step 1.1 - Build the BPC package
 
-
-
 Build say_good_morning
 ```
 cd say_good_morning
@@ -50,22 +48,70 @@ cd ..
 cd bpc_core_v1.0.0
 make
 ```
-#### Step 1.2 - Build the PCC-SBM protocol
+
+#### Step 1.2 - Build the PCC-SBM protocol(Second trial)
 
 Build PCC-SBM protocol
 ```
 cd ..
 make
 ```
+You should see the following messages.
 
-## Configuring Reduce/Restore policies 
-### Reduce policy
+```
+./EngineTests.tests
+Running 30 tests..............................OK!
+make[2]: Leaving directory '/Enhance-DL-with-SBM-Modelsward2023/PCC_SBM/src/bpc_core_v1.0.0/engine/tests'
+make[1]: Leaving directory '/Enhance-DL-with-SBM-Modelsward2023/PCC_SBM/src/bpc_core_v1.0.0/engine'
+Done
+```
 
-### Restore policy
+### Step 2 - Run the PCC_SBM protocol
+
+**Prerequistes:** 
+
+(1) This part assumes that you have trained an agent for controlling the sending rate.
+
+The full guide can be found here:  [Getting_Started_with_PCC_RL](https://github.com/adielashrov/Enhance-DL-with-SBM-Modelsward2023/blob/main/PCC_SBM/GettingStarted_with_PCC_RL_PCC_Uspace.md).
+
+(2) You have a trained model named  ```paper_model_v0``` at the folder ```PCC_SBM_RL/src/gym/```.
+
+Go to the project source folder.
+```
+cd /Enhance-DL-with-SBM-Modelsward2023/PCC_SBM/src
+```
+
+#### Step 2.1 - Run the PCC_SBM server
+
+Start the server:
+```
+./app/pccserver recv 9000
+```
+
+#### Step 2.2 - Run the PCC_SBM protocol
+
+Start the PCC-SBM:
+```
+./app/pccclient send 127.0.0.1 9000 --pcc-rate-control=bp -pyhelper=loaded_client -pypath=/mnt/hgfs/PCC_SBM_RL/src/udt-plugins/testing/ --history-len=10 --pcc-utility-calc=loss-only --model-path=/mnt/hgfs/PCC_SBM_RL/src/gym/paper_model_v0
+```
+
+Meaningful parameters:
+```
+--pcc-rate-control: the protocl which will control the sending rate, in this it is PCC_SBM, a.k.a bp protocol.
+--pcc-utility-calc: the loss function utilized in the monitor interval statistics provdied to the agent
+--model-path: the path to the model extended by the PCC_SBM protocol 
+```
+
+### Step 3 - Configuring Reduce/Restore policies 
 
 
-### Launching PCC-SBM together with the naive PCC-IXP
+#### Reduce policy
 
-### Launching PCC-SBM together with PCC-RL
+#### Restore policy
+
+
+### Step 4 - Launching PCC-SBM together with the naive PCC-IXP
+
+### Step 5 - Launching PCC-SBM together with PCC-RL
 
 
