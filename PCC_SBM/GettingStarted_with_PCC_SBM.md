@@ -136,25 +136,68 @@ You can control the policy by setting the ```restore_policy``` member to the app
 
 #### Alternating between restore/reduce
 
-The ```MonitorNetworkStateBThread``` class controls the transition  of the sending rate.
-
+The ```MonitorNetworkStateBThread``` class controls the transition btween reduce and restore states.
 If you wish to change the policy, you will need to modify the member ```restore_policy``` in this class.
+
 There are two possible restore policies.
 1. Slow start - slow restoration to the previous values policy
 2. Immediate return to the model’s original output
 
-You can control the policy by setting the ```restore_policy``` member to the appropriate index.
+You can control the duration until the scenario starts to notify on reducing or restoring throughput by modifying the following parameters:
 
-
-Additional parameters:
 ```
-initial_sending_rate_for_yield: remembers the initial sending rate when reduce begins.
-division_exp: parameter controlling the step function policy
-lambda: constant affecting exponential decay policy
+monitorHotSwitch: controls if the monitor sceanrio is active.
+numOfDecraseInUtilityValue: number of times the utility value needs to decrease for reduce mode to start.
+numOfIterInRestoreMode: number of iterations / monitor_interval events, until the protocol starts to check the decrease in the utility function values, and eventually can start to reduce throughput.
+numOfIterInYieldMode: number of iterations/ monitor_interval events the protocol remains in reduce mode, until the protocol starts to restore throughput
 ```
-
 ### Step 4 - Launching PCC-SBM together with the naive PCC-IXP
+
+Follow these instructions to repeat the [experiment](https://arxiv.org/pdf/2301.08114.pdf) that compares the PCC-SBM to the naïve PCC-IXP protocol.
+
+#### Step 4.1 - Run the PCC_SBM server
+
+Start the server:
+```
+./app/pccserver recv 9000
+```
+
+#### Step 4.2 - Run the naive_ixp protocol
+
+Start the IXP protocol:
+```
+./app/pccclient send 127.0.0.1 9000 --pcc-rate-control=ixp --history-len=10 --pcc-utility-calc=ixp 
+```
+
+#### Step 4.3 - Run the PCC_SBM protocol
+
+Start the PCC-SBM:
+```
+./app/pccclient send 127.0.0.1 9000 --pcc-rate-control=bp -pyhelper=loaded_client -pypath=/mnt/hgfs/PCC_SBM_RL/src/udt-plugins/testing/ --history-len=10 --pcc-utility-calc=loss-only --model-path=/mnt/hgfs/PCC_SBM_RL/src/gym/paper_model_v0
+```
 
 ### Step 5 - Launching PCC-SBM together with PCC-RL
 
+Follow these instructions to compare the PCC-SBM to [Aurora](http://proceedings.mlr.press/v97/jay19a/jay19a.pdf).
 
+#### Step 5.1 - Run the PCC_SBM server
+
+Start the server:
+```
+./app/pccserver recv 9000
+```
+
+#### Step 5.2 - Run Aurora
+
+Start the Aurora protocol:
+```
+./app/pccclient send 127.0.0.1 9000 --pcc-rate-control=python -pyhelper=loaded_client -pypath=/mnt/hgfs/PCC_SBM_RL/src/udt-plugins/testing/ --history-len=10 --pcc-utility-calc=loss-only --model-path=/mnt/hgfs/PCC_SBM_RL/src/gym/paper_model_v0
+```
+
+#### Step 5.3 - Run the PCC_SBM protocol
+
+Start the PCC-SBM:
+```
+./app/pccclient send 127.0.0.1 9000 --pcc-rate-control=bp -pyhelper=loaded_client -pypath=/mnt/hgfs/PCC_SBM_RL/src/udt-plugins/testing/ --history-len=10 --pcc-utility-calc=loss-only --model-path=/mnt/hgfs/PCC_SBM_RL/src/gym/paper_model_v0
+```
+Good luck!
