@@ -104,7 +104,6 @@ Meaningful parameters:
 
 ### Step 3 - Configuring Reduce/Restore policies 
 
-
 #### Reduce policy
 
 The ```ReduceThroughputBThread``` class controls the reduction of the sending rate.
@@ -137,7 +136,7 @@ You can control the policy by setting the ```restore_policy``` member to the app
 
 #### Alternating between restore/reduce
 
-The ```RestoreThroughputBThread``` class controls the restoration of the sending rate.
+The ```MonitorNetworkStateBThread``` class controls the transition  of the sending rate.
 
 If you wish to change the policy, you will need to modify the member ```restore_policy``` in this class.
 There are two possible restore policies.
