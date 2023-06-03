@@ -108,7 +108,6 @@ Meaningful parameters:
 #### Reduce policy
 
 The ```ReduceThroughputBThread``` class controls the reduction of the sending rate.
-Meaningful parameters:
 
 If you wish to change the policy, you will need to modify the member ```yield_policy``` in this class.
 There are three possible yield policies.
@@ -127,6 +126,33 @@ lambda: constant affecting exponential decay policy
 
 #### Restore policy
 
+The ```RestoreThroughputBThread``` class controls the restoration of the sending rate.
+
+If you wish to change the policy, you will need to modify the member ```restore_policy``` in this class.
+There are two possible restore policies.
+1. Slow start - slow restoration to the previous values policy
+2. Immediate return to the model’s original output
+
+You can control the policy by setting the ```restore_policy``` member to the appropriate index.
+
+#### Alternating between restore/reduce
+
+The ```RestoreThroughputBThread``` class controls the restoration of the sending rate.
+
+If you wish to change the policy, you will need to modify the member ```restore_policy``` in this class.
+There are two possible restore policies.
+1. Slow start - slow restoration to the previous values policy
+2. Immediate return to the model’s original output
+
+You can control the policy by setting the ```restore_policy``` member to the appropriate index.
+
+
+Additional parameters:
+```
+initial_sending_rate_for_yield: remembers the initial sending rate when reduce begins.
+division_exp: parameter controlling the step function policy
+lambda: constant affecting exponential decay policy
+```
 
 ### Step 4 - Launching PCC-SBM together with the naive PCC-IXP
 
