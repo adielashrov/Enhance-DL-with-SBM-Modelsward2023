@@ -1,6 +1,0 @@
-model,num_of_experiments,time_out,time_out_with_override,num_of_solved,num_of_steps,num_of_solved_with_override,num_of_steps_with_override,num_of_overrides,num_of_collisions,num_of_collisions_with_override,unknown_termination,unknown_termination_with_override,avg_num_steps_to_solve,avg_num_steps_to_solve_with_override
-STD_id673_ep101_no_rules_srate4.h5,2,0,0,0,0,0,0,0,2,2,0,0,0,0
-STD_id673_ep650_no_rules_srate11.h5,2,1,2,1,831,0,0,0,0,0,0,0,831.0,0
-STD_id673_ep860_no_rules_srate23.h5,2,0,0,1,61,2,1547,35,1,0,0,0,61.0,773.5
-STD_id673_ep961_no_rules_srate30.h5,2,0,0,2,182,2,624,28,0,0,0,0,91.0,312.0
-STD_id673_ep1062_no_rules_srate45.h5,2,0,0,1,252,2,394,38,1,0,0,0,252.0,197.0
