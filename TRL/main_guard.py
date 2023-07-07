@@ -466,8 +466,8 @@ def init_csv_file():
 
 if __name__ == "__main__":
     try:
-        # models_dir_path = "models/gradual_models_no_rules"
-        models_dir_path = "models/test_models"
+        # models_dir_path = "models/c_agents"
+        models_dir_path = "models/test_agents"
 
         csv_file, file_writer = init_csv_file()
 
